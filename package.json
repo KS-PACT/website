@@ -1,0 +1,23 @@
+{
+  "name": "ks-pact-website",
+  "version": "1.0.0",
+  "description": "\"Node.js application for the KS-PACT organization\"",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KS-PACT/website.git"
+  },
+  "author": "KS-PACT",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/KS-PACT/website/issues"
+  },
+  "homepage": "https://github.com/KS-PACT/website#readme",
+  "dependencies": {
+    "express": "4.15.2"
+  }
+}

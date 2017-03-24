@@ -19,7 +19,7 @@ CREATE TYPE PRIVILEGE_ENUM AS ENUM (
 	'Member');
 	
 CREATE TYPE REQUEST_STATUS_ENUM AS ENUM (
-	'Requested',
+	'Processing',
 	'Confirmed',
 	'Closed');
 
@@ -66,6 +66,7 @@ CREATE TABLE CurriculumUtil (
 
 CREATE TABLE HardwareResource (
 	id serial PRIMARY KEY,
+	serial_num varcharss,
     name varchar,
     description varchar
 );

@@ -27,9 +27,81 @@
         margin-left: 2px;
         box-shadow: 5px 5px 2px black;
       }
+      nav{
+        margin:auto;
+        padding: inherit;
+        background-color: #5c00e6;
+      }
+      li{
+        float:left;
+      }
+      li b, .dropbtn{
+        display:inline-block;
+        color: white;
+        text-align: center;
+        padding: 12px  15px;
+        text-decoration: none;
+      }
+      li b:hover:not(.active), .dropdown:hover .dropbtn{
+        background-color: #751aff;
+      }
+      .active{
+        background-color: #24248f;
+      }
+
+      li.dropdown{
+        display: inline-block;
+      }
+
+      .dropdown-content{
+        display: none;
+        position:absolute;
+        background-color: #ebebfa;
+        min-width: 100px;
+        box-shadow:0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index:1;
+      }
+
+      .dropdown-content b{
+        color: black;
+        padding: 12px 15px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
+    <img src="KS-PACT.svg" alt="KS-PACT logo" height="100px" width ="183px">
+    <nav>
+      <li class="dropdown">
+        <b href="members.html" class="dropbtn">Member</b>
+        <div class="dropdown-content">
+          <b href="members.html">Members</b>
+          <b href="forum.html">Forum</b>
+          <b href="member_approval.html">Mamber Approval (admins)</b>
+        </div>
+      </li>
+      <li class="dropdown">
+        <b href="hardware.html" class="dropbtn">Hardware</b>
+        <div class= "dropdown-content">
+          <b href="hardware.html">Hardware</b>
+          <b class="active" href="hardware_request.html">Make a Request</b>
+          <b href="hardware_approval.html">Request Approval (admins)</b>
+          <b href="inventory_edit.html">Inventory Edit (admins)</b>
+        </div>
+      </li>
+      <li><b href="cirriculum.html">Curriculum</b></li>
+      <li><b href="software.html">Software</b></li>
+      <li class="dropdown">
+        <b class="dropbtn">Your Stuff</b>
+        <div class="dropdown-content">
+          <b href="login.html">Login</b>
+          <b href="profile.html">Profile</b>
+        </div>
+      </li>
+      <li><b href="about.html">About</b></li>
+    </nav>
       <p>
         This is where hardware requests are made!
       </p>

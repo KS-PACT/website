@@ -18,35 +18,41 @@
         padding: 10px 50px;
         font-size: 20px;
         text-decoration: none;
-        border-radius: 5px;
         box-shadow: 8px 8px 4px gray;
       }
       a:hover {
         color: #ccc;
-        margin-top: 2px;
-        margin-left: 2px;
         box-shadow: 5px 5px 2px black;
       }
-      nav{
-        margin:auto;
-        padding: inherit;
-        background-color: #5c00e6;
-      }
-      li{
+      .forms{
         float:left;
       }
-      li b, .dropbtn{
+      ul{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        overflow: hidden;
+        background-color: #2828a4;
+      }
+      li{
+        display:inline;
+        float:left;
+      }
+      li a, .dropbtn{
         display:inline-block;
         color: white;
         text-align: center;
-        padding: 12px  15px;
+        padding: 12px 15px;
         text-decoration: none;
+        background-color: #2828a4;
+        box-shadow:none;
       }
-      li b:hover:not(.active), .dropdown:hover .dropbtn{
-        background-color: #751aff;
+      li a:hover:not(.active), .dropdown:hover .dropbtn{
+        background-color: #6600ff;
+        box-shadow: none;
       }
       .active{
-        background-color: #24248f;
+        background-color: #191966;
       }
 
       li.dropdown{
@@ -56,54 +62,140 @@
       .dropdown-content{
         display: none;
         position:absolute;
-        background-color: #ebebfa;
         min-width: 100px;
         box-shadow:0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index:1;
       }
 
-      .dropdown-content b{
+      .dropdown-content a{
         color: black;
         padding: 12px 15px;
         text-decoration: none;
         display: block;
         text-align: center;
+        background-color: #ebebfa;
       }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1
+      }
+
+      .dropdown:hover .dropdown-content{
+        display:block;
+      }
+
     </style>
   </head>
   <body>
-    <img src="KS-PACT.svg" alt="KS-PACT logo" height="100px" width ="183px">
-    <nav>
+    <h1><img src="KS-PACT.svg" alt="KS-PACT logo" height="100px" width ="183px">
+      Kansas Partnership for Applied Computational Thinking
+    </h1>
+    <ul>
       <li class="dropdown">
-        <b href="members.html" class="dropbtn">Member</b>
+        <a href="members.html" class="dropbtn">Members</a>
         <div class="dropdown-content">
-          <b href="members.html">Members</b>
-          <b href="forum.html">Forum</b>
-          <b href="member_approval.html">Mamber Approval (admins)</b>
+          <a href="members.html">Members</a>
+          <a href="forum.html">Forum</a>
+          <a href="member_approval.html">Mamber Approval (admins)</a>
         </div>
       </li>
       <li class="dropdown">
-        <b href="hardware.html" class="dropbtn">Hardware</b>
+        <a href="hardware.html" class="dropbtn">Hardware</a>
         <div class= "dropdown-content">
-          <b href="hardware.html">Hardware</b>
-          <b href="hardware_request.html">Make a Request</b>
-          <b href="hardware_approval.html">Request Approval (admins)</b>
-          <b href="inventory_edit.html">Inventory Edit (admins)</b>
+          <a href="hardware.html">Hardware</a>
+          <a href="hardware_request.html">Make a Request</a>
+          <a href="hardware_approval.html">Request Approval (admins)</a>
+          <a href="inventory_edit.html">Inventory Edit (admins)</a>
         </div>
       </li>
-      <li><b href="cirriculum.html">Curriculum</b></li>
-      <li><b href="software.html">Software</b></li>
+      <li><a href="curriculum.html">Curriculum</a></li>
+      <li><a href="software.html">Software</a></li>
       <li class="dropdown">
-        <b class="dropbtn">Your Stuff</b>
+        <a class="dropbtn">Your Stuff</a>
         <div class="dropdown-content">
-          <b class="active" href="login.html">Login</b>
-          <b href="profile.html">Profile</b>
+          <a class="active" href="login.html">Login</a>
+          <a href="profile.html">Profile</a>
         </div>
       </li>
-      <li><b href="about.html">About</b></li>
-    </nav>
+      <li><a href="about.html">About</a></li>
+    </ul>
       <p>
         Our Stuff is cool, login or register today!!!
       </p>
+      <form class="forms">
+        <h2>Register here!</h2>
+        First Name:<br>
+        <input type="text" name="first_name" required><br>
+        Last Name:<br>
+        <input type="text" name="last_name" required><br>
+        Username:<br>
+        <input type="text" name="username"><br>
+        Password:<br>
+        <input id="password" type="password" name="password" required><br>
+        Confirm Password:<br>
+        <input id="c_pass" type="password" name="password" required><br>
+        Email:<br>
+        <input id="email" type="email" name="email" required><br>
+        School:<br>
+        <select id="school" name="school" required>
+          <option value="KSU">Kansas State University</option>
+          <option value="MHS">Manhattan High School</option>
+        </select><br>
+        Bio:<br>
+        <input type="text" name="bio" height=100px width=50px><br>
+        Profile Picture:<br>
+        <input type="file" name="picture" accept="image/*" value="user_generic2_black.png" required><br>
+        Grade Level:<br>
+        <select id="grade_level" name="grade_level" required>
+          <option value=null>Choose a grade level</otion>
+          <option value=GRADE_ENUM>Not Specified</option>
+          <option value=GRADE_ENUM>Kindergarten</option>
+          <option value=GRADE_ENUM>1st</option>
+          <option value=GRADE_ENUM>2nd</option>
+          <option value=GRADE_ENUM>3rd</option>
+          <option value=GRADE_ENUM>4th</option>
+          <option value=GRADE_ENUM>5th</option>
+          <option value=GRADE_ENUM>6th</option>
+          <option value=GRADE_ENUM>7th</option>
+          <option value=GRADE_ENUM>8th</option>
+          <option value=GRADE_ENUM>9th</option>
+          <option value=GRADE_ENUM>10th</option>
+          <option value=GRADE_ENUM>11th</option>
+          <option value=GRADE_ENUM>12th</option>
+        </select><br>
+        <input type="button" id="submit" value="Submit" onClick="validatePassword()">
+      </form>
+      <form class="forms">
+        <h2>Log In Here!</h2>
+        Username or Email:<br>
+        <input type="text" id="name" required><br>
+        Password:<br>
+        <input type="password" name="password" required><br>
+        <input type="button" id="submit" value="Submit" onClick="validateLogin()">
+      </form>
+      <script>
+
+      function validatePassword(){
+        var pass1 = document.getElementById("password").value;
+        var pass2 = document.getElementById("c_pass").value;
+        if(pass1!=pass2){
+          pass2.setCustomValidity("Passwords don't Match");
+        }
+        else{
+          pass2.setCustomValidity(' ');
+        }
+      }
+
+      function validateLogin(){
+        var field = document.getElementById("name").value;
+        var pass = document.getElementById("pass").value;
+        if(/\@/.test(field)){
+          //validate email address
+        }
+        else{
+          //validate username
+        }
+      }
+
   </body>
 </html>

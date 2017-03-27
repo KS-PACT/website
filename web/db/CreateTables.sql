@@ -13,11 +13,11 @@ CREATE TYPE GRADE_ENUM AS ENUM (
 	'11th',
 	'12th',
 	'Not Specified');
-	
+
 CREATE TYPE PRIVILEGE_ENUM AS ENUM (
 	'Admin',
 	'Member');
-	
+
 CREATE TYPE REQUEST_STATUS_ENUM AS ENUM (
 	'Requested',
 	'Confirmed',

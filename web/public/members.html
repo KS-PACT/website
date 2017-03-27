@@ -18,35 +18,38 @@
         padding: 10px 50px;
         font-size: 20px;
         text-decoration: none;
-        border-radius: 5px;
         box-shadow: 8px 8px 4px gray;
       }
       a:hover {
         color: #ccc;
-        margin-top: 2px;
-        margin-left: 2px;
         box-shadow: 5px 5px 2px black;
       }
-      nav{
-        margin:auto;
-        padding: inherit;
-        background-color: #5c00e6;
+      ul{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        overflow: hidden;
+        background-color: #2828a4;
       }
       li{
+        display:inline;
         float:left;
       }
-      li b, .dropbtn{
+      li a, .dropbtn{
         display:inline-block;
         color: white;
         text-align: center;
-        padding: 12px  15px;
+        padding: 12px 15px;
         text-decoration: none;
+        background-color: #2828a4;
+        box-shadow:none;
       }
-      li b:hover:not(.active), .dropdown:hover .dropbtn{
-        background-color: #751aff;
+      li a:hover:not(.active), .dropdown:hover .dropbtn{
+        background-color: #6600ff;
+        box-shadow: none;
       }
       .active{
-        background-color: #24248f;
+        background-color: #191966;
       }
 
       li.dropdown{
@@ -56,52 +59,63 @@
       .dropdown-content{
         display: none;
         position:absolute;
-        background-color: #ebebfa;
         min-width: 100px;
         box-shadow:0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index:1;
       }
 
-      .dropdown-content b{
+      .dropdown-content a{
         color: black;
         padding: 12px 15px;
         text-decoration: none;
         display: block;
         text-align: center;
+        background-color: #ebebfa;
       }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1
+      }
+
+      .dropdown:hover .dropdown-content{
+        display:block;
+      }
+
     </style>
   </head>
   <body>
-    <img src="KS-PACT.svg" alt="KS-PACT logo" height="100px" width ="183px">
-    <nav>
+    <h1><img src="KS-PACT.svg" alt="KS-PACT logo" height="100px" width ="183px">
+      Kansas Partnership for Applied Computational Thinking
+    </h1>
+    <ul>
       <li class="dropdown">
-        <b href="members.html" class="dropbtn">Member</b>
+        <a class="active" href="members.html" class="dropbtn">Members</a>
         <div class="dropdown-content">
-          <b class="active" href="members.html">Members</b>
-          <b href="forum.html">Forum</b>
-          <b href="member_approval.html">Mamber Approval (admins)</b>
+          <a class="active" href="members.html">Members</a>
+          <a href="forum.html">Forum</a>
+          <a href="member_approval.html">Mamber Approval (admins)</a>
         </div>
       </li>
       <li class="dropdown">
-        <b href="hardware.html" class="dropbtn">Hardware</b>
+        <a href="hardware.html" class="dropbtn">Hardware</a>
         <div class= "dropdown-content">
-          <b href="hardware.html">Hardware</b>
-          <b href="hardware_request.html">Make a Request</b>
-          <b href="hardware_approval.html">Request Approval (admins)</b>
-          <b href="inventory_edit.html">Inventory Edit (admins)</b>
+          <a href="hardware.html">Hardware</a>
+          <a href="hardware_request.html">Make a Request</a>
+          <a href="hardware_approval.html">Request Approval (admins)</a>
+          <a href="inventory_edit.html">Inventory Edit (admins)</a>
         </div>
       </li>
-      <li><b href="cirriculum.html">Curriculum</b></li>
-      <li><b href="software.html">Software</b></li>
+      <li><a href="curriculum.html">Curriculum</a></li>
+      <li><a href="software.html">Software</a></li>
       <li class="dropdown">
-        <b class="dropbtn">Your Stuff</b>
+        <a class="dropbtn">Your Stuff</a>
         <div class="dropdown-content">
-          <b href="login.html">Login</b>
-          <b href="profile.html">Profile</b>
+          <a href="login.html">Login</a>
+          <a href="profile.html">Profile</a>
         </div>
       </li>
-      <li><b href="about.html">About</b></li>
-    </nav>
+      <li><a href="about.html">About</a></li>
+    </ul>
       <p>
         This is where all the members will be displayed!
       </p>

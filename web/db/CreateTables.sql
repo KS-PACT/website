@@ -23,7 +23,7 @@ CREATE TYPE REQUEST_STATUS_ENUM AS ENUM (
 	'Confirmed',
 	'Closed');
 
-CREATE TABLE User (
+CREATE TABLE webUser (
     id serial PRIMARY KEY,
 	first_name varchar NOT NULL,
 	last_name varchar NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE User (
 
 CREATE TABLE Forums (
     id serial PRIMARY KEY,
-	user_id int REFERENCES User(id) NOT NULL,
+	user_id int REFERENCES webUser(id) NOT NULL,
     date_time timestamp NOT NULL,
     subject varchar NOT NULL
 );
@@ -47,7 +47,7 @@ CREATE TABLE Forums (
 CREATE TABLE Comment (
     id serial PRIMARY KEY,
     forum_id int REFERENCES Forums(id) NOT NULL,
-	user_id int REFERENCES User(id) NOT NULL,
+	user_id int REFERENCES webUser(id) NOT NULL,
 	date_time timestamp NOT NULL,
 	content varchar NOT NULL
 );
@@ -66,14 +66,14 @@ CREATE TABLE CurriculumUtil (
 
 CREATE TABLE HardwareResource (
 	id serial PRIMARY KEY,
-	serial_num varcharss,
+	serial_num varchar,
     name varchar,
     description varchar
 );
 
 CREATE TABLE ResourceRequest (
     id serial PRIMARY KEY,
-    user_id int REFERENCES User(id) NOT NULL,
+    user_id int REFERENCES webUser(id) NOT NULL,
 	item_id int REFERENCES HardwareResource(id) NOT NULL,
 	checked_out timestamp NOT NULL,
 	return timestamp NOT NULL,

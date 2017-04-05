@@ -23,7 +23,7 @@ CREATE TYPE REQUEST_STATUS_ENUM AS ENUM (
 	'Confirmed',
 	'Closed');
 
-CREATE TABLE webUser (
+CREATE TABLE WebUser (
     id serial PRIMARY KEY,
 	first_name varchar NOT NULL,
 	last_name varchar NOT NULL,

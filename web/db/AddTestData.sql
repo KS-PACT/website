@@ -94,3 +94,41 @@ INSERT INTO Forums (
 	CURDATE(),
 	'Blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
 	'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+
+/* Comment test data */
+INSERT INTO Comment (
+	forum_id,
+	comment_id,
+	user_id,
+	date_time,
+	content) VALUES (
+	1,
+	0,
+	1,
+	CURDATE(),
+	'All the knowledge!'
+	);
+INSERT INTO Comment (
+	forum_id,
+	comment_id,
+	user_id,
+	date_time,
+	content) VALUES (
+	1,
+	0,
+	1,
+	CURDATE(),
+	'You are wrong! This is all the knowledge!'
+	);
+INSERT INTO Comment (
+	forum_id,
+	comment_id,
+	user_id,
+	date_time,
+	content) VALUES (
+	2,
+	0,
+	1,
+	CURDATE(),
+	'Meh'
+	);

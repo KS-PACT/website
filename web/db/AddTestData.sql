@@ -65,3 +65,32 @@ INSERT INTO WebUser (
 	'College Prep',
 	'Admin'
 	);
+
+/* Forums test data */
+INSERT INTO Forums (
+	user_id,
+	date_time,
+	title,
+	forum_body) VALUES (
+	0,
+	CURDATE(),
+	'Forum #1',
+	'Body #1');
+INSERT INTO Forums (
+	user_id,
+	date_time,
+	title,
+	forum_body) VALUES (
+	1,
+	CURDATE(),
+	'Forum #2',
+	'This totally has a completely legit body.');
+INSERT INTO Forums (
+	user_id,
+	date_time,
+	title,
+	forum_body) VALUES (
+	2,
+	CURDATE(),
+	'Blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
+	'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');

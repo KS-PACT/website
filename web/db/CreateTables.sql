@@ -12,6 +12,7 @@ CREATE TYPE GRADE_ENUM AS ENUM (
 	'10th',
 	'11th',
 	'12th',
+	'College Prep',
 	'Not Specified');
 
 CREATE TYPE PRIVILEGE_ENUM AS ENUM (

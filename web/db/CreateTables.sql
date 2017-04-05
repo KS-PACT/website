@@ -43,7 +43,8 @@ CREATE TABLE Forums (
     id serial PRIMARY KEY,
 	user_id int REFERENCES webUser(id) NOT NULL,
     date_time timestamp NOT NULL,
-    subject varchar NOT NULL
+    title varchar NOT NULL,
+	forum_body varchar
 );
 
 CREATE TABLE Comment (

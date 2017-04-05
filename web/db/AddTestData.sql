@@ -1,6 +1,5 @@
 /* User test data */
 INSERT INTO WebUser (
-	id,
 	first_name,
 	last_name,
 	username,
@@ -23,7 +22,6 @@ INSERT INTO WebUser (
 	'Admin'
 	);
 INSERT INTO WebUser (
-	id,
 	first_name,
 	last_name,
 	username,
@@ -46,7 +44,6 @@ INSERT INTO WebUser (
 	'Member'
 	);
 INSERT INTO WebUser (
-	id,
 	first_name,
 	last_name,
 	username,

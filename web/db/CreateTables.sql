@@ -12,6 +12,8 @@ CREATE TYPE GRADE_ENUM AS ENUM (
 	'10th',
 	'11th',
 	'12th',
+	'College Prep',
+	'AP',
 	'Not Specified');
 
 CREATE TYPE PRIVILEGE_ENUM AS ENUM (
@@ -23,7 +25,7 @@ CREATE TYPE REQUEST_STATUS_ENUM AS ENUM (
 	'Confirmed',
 	'Closed');
 
-CREATE TABLE webUser (
+CREATE TABLE WebUser (
     id serial PRIMARY KEY,
 	first_name varchar NOT NULL,
 	last_name varchar NOT NULL,
@@ -41,12 +43,14 @@ CREATE TABLE Forums (
     id serial PRIMARY KEY,
 	user_id int REFERENCES webUser(id) NOT NULL,
     date_time timestamp NOT NULL,
-    subject varchar NOT NULL
+    title varchar NOT NULL,
+	forum_body varchar
 );
 
 CREATE TABLE Comment (
     id serial PRIMARY KEY,
     forum_id int REFERENCES Forums(id) NOT NULL,
+	comment_id int REFERENCES Comment(id),
 	user_id int REFERENCES webUser(id) NOT NULL,
 	date_time timestamp NOT NULL,
 	content varchar NOT NULL

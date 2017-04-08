@@ -3,14 +3,17 @@
 const express = require('express');
 
 // Constants
-const PORT = 8080;
+const PORT = 8080
 
 // App
-const app = express();
-app.use(express.static('web/public'));
+const app = express()
 
-app.listen(PORT);
-console.log('Running on http://localhost:' + PORT);
+
+app.listen(PORT, function() {
+  console.log('Running on http://localhost:' + PORT);
+})
+
+
 
 var pgp = require('pg-promise')();
 var cn = {
@@ -29,4 +32,14 @@ db.connect()
     })
     .catch(function (error) {
         console.log("ERROR:", error.message || error);
-    });
+});
+
+app.get('/', function (req, res) {
+  res.redirect('/login.html');
+});
+
+app.post('/login.html', function(req, res){
+  conosle.log("Got post request to login");
+})
+
+app.use(express.static('web/public'))

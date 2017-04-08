@@ -40,6 +40,14 @@ app.get('/', function (req, res) {
 
 app.post('/login.html', function(req, res){
   conosle.log("Got post request to login");
-})
+});
+
+app.get('/members.html', function(req, res){
+  db.any("select * from webuser")
+    .then(data => {
+      console.log("Data:", data);
+      res.send(/web/public/members.html);
+    });
+});
 
 app.use(express.static('web/public'))

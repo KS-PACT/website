@@ -72,8 +72,8 @@ INSERT INTO Forums (
 	date_time,
 	title,
 	forum_body) VALUES (
-	0,
-	CURDATE(),
+	1,
+	CURRENT_TIMESTAMP(0),
 	'Forum #1',
 	'Body #1');
 INSERT INTO Forums (
@@ -81,8 +81,8 @@ INSERT INTO Forums (
 	date_time,
 	title,
 	forum_body) VALUES (
-	1,
-	CURDATE(),
+	2,
+	CURRENT_TIMESTAMP(0),
 	'Forum #2',
 	'This totally has a completely legit body.');
 INSERT INTO Forums (
@@ -90,8 +90,8 @@ INSERT INTO Forums (
 	date_time,
 	title,
 	forum_body) VALUES (
-	2,
-	CURDATE(),
+	3,
+	CURRENT_TIMESTAMP(0),
 	'Blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
 	'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
 
@@ -102,10 +102,10 @@ INSERT INTO Comment (
 	user_id,
 	date_time,
 	content) VALUES (
+	2,
+	NULL,
 	1,
-	0,
-	1,
-	CURDATE(),
+	CURRENT_TIMESTAMP(0),
 	'All the knowledge!'
 	);
 INSERT INTO Comment (
@@ -114,10 +114,10 @@ INSERT INTO Comment (
 	user_id,
 	date_time,
 	content) VALUES (
+	2,
 	1,
-	0,
 	1,
-	CURDATE(),
+	CURRENT_TIMESTAMP(0),
 	'You are wrong! This is all the knowledge!'
 	);
 INSERT INTO Comment (
@@ -126,10 +126,10 @@ INSERT INTO Comment (
 	user_id,
 	date_time,
 	content) VALUES (
-	2,
-	0,
+	3,
 	1,
-	CURDATE(),
+	1,
+	CURRENT_TIMESTAMP(0),
 	'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooofffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee things.'
 	);
 
@@ -180,27 +180,27 @@ INSERT INTO CurriculumUtil (
 	'www.invalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalid.com');
 
 /* Hardware resource test data */
-INSERT INTO HardwareResources (
+INSERT INTO HardwareResource (
 	serial_num,
 	name,
 	description) VALUES (
-	"00000000000111111111222222222223333",
-	"Hardware #1",
-	"Da description");
-INSERT INTO HardwareResources (
+	'00000000000111111111222222222223333',
+	'Hardware #1',
+	'Da description');
+INSERT INTO HardwareResource (
 	serial_num,
 	name,
 	description) VALUES (
-	"00660-11155GH-12228882-223333",
-	"Hardware #2",
-	"Da description #2");
-INSERT INTO HardwareResources (
+	'00660-11155GH-12228882-223333',
+	'Hardware #2',
+	'Da description #2');
+INSERT INTO HardwareResource (
 	serial_num,
 	name,
 	description) VALUES (
-	"0000000000011111111122222222222333344444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444445555555555555555555555555555555555555555555555555666666666666666666666666666666666666666666666666666",
-	"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
-	"Da best DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRIPTION");
+	'0000000000011111111122222222222333344444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444445555555555555555555555555555555555555555555555555666666666666666666666666666666666666666666666666666',
+	'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHH',
+	'Da best DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRIPTION');
 
 /* Resource request test data */
 INSERT INTO ResourceRequest (
@@ -209,8 +209,8 @@ INSERT INTO ResourceRequest (
 	checked_out,
 	return,
 	status) VALUES (
-	0,
-	0,
+	1,
+	1,
 	'2017-01-01 10:03:29',
 	'2017-01-03 06:02:01',
 	'Processing');
@@ -221,7 +221,7 @@ INSERT INTO ResourceRequest (
 	return,
 	status) VALUES (
 	1,
-	0,
+	1,
 	'2017-05-01 10:03:29',
 	'2017-06-03 06:02:01',
 	'Processing');

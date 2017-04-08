@@ -49,14 +49,27 @@ app.get('/members.html', function(req, res){
     .then(data => {
       console.log("Data:", data);
       var dataLength = data.length;
-      var myList;
+      var myList = new Array(data.length);
       for(var i=0; i < dataLength; i++){
-        console.log("hellow");
-        myList[i] = {"picture": data[i].picture.value, "first_name": data[i].first_name.value, "last_name": data[i].last_name.value, "school": data[i].school.value};
-        console.log(myList[i]);
-        console.log("by");
+        myList[i, 0] = data[i].picture;
+        console.log(myList[i, 0]);
+        myList[i, 1] = data[i].first_name;
+        console.log(myList[i, 1]);
+        myList[i, 2] = data[i].last_name;
+        console.log(myList[i, 2]);
+        myList[i, 3] = data[i].school;
+        console.log(myList[i, 3]);
       }
-      res.render('members', {title: 'Members',list: myList});
+      console.log(myList[0, 0]);
+      console.log(myList[0, 1]);
+      console.log(myList[0, 2]);
+      console.log(myList[0, 3]);
+      console.log(myList[1, 0]);
+      console.log(myList[1, 1]);
+      console.log(myList[1, 2]);
+      console.log(myList[1, 3]);
+
+      res.render('members', {title: 'Members', list: myList});
     });
 });
 

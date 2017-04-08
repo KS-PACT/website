@@ -8,9 +8,6 @@ const PORT = 8080
 // App
 const app = express()
 
-app.get('/', function (req, res) {
-  res.redirect('/login.html');
-});
 
 app.listen(PORT, function() {
   console.log('Running on http://localhost:' + PORT);
@@ -36,5 +33,13 @@ db.connect()
     .catch(function (error) {
         console.log("ERROR:", error.message || error);
 });
+
+app.get('/', function (req, res) {
+  res.redirect('/login.html');
+});
+
+app.post('/login.html', function(req, res){
+  conosle.log("Got post request to login");
+})
 
 app.use(express.static('web/public'))

@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/login.html', function(req, res){
-  conosle.log("Got post request to login");
+  console.log("Got post request to login");
 });
 
 app.get('/members.html', function(req, res){

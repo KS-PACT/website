@@ -8,6 +8,8 @@ const PORT = 8080
 // App
 const app = express()
 
+app.set('view engine', 'pug');
+
 
 app.listen(PORT, function() {
   console.log('Running on http://localhost:' + PORT);
@@ -46,7 +48,47 @@ app.get('/members.html', function(req, res){
   db.any("select * from webuser")
     .then(data => {
       console.log("Data:", data);
-      res.send(/web/public/members.html);
+      var dataLength = data.length;
+      var myList;
+      for(var i=0; i < dataLength; i++){
+        console.log("hellow");
+        myList[i] = {"picture": data[i].picture.value, "first_name": data[i].first_name.value, "last_name": data[i].last_name.value, "school": data[i].school.value};
+        console.log(myList[i]);
+        console.log("by");
+      }
+      res.render('members', {title: 'Members',list: myList});
+    });
+});
+
+app.get('/hardware.html', function(req, res){
+  db.any("select * from hardwareresource")
+    .then(data => {
+      console.log("Data:", data);
+      res.send(data);
+    });
+});
+
+app.get('/software.html', function(req, res){
+  db.any("select * from softwareresource")
+    .then(data => {
+      console.log("Data:", data);
+      res.send(data);
+    });
+});
+
+app.get('/curriculum.html', function(req, res){
+  db.any("select * from curriculumutil")
+    .then(data => {
+      console.log("Data:", data);
+      res.send(data);
+    });
+});
+
+app.get('/forum.html', function(req, res){
+  db.any("select * from forums")
+    .then(data => {
+      console.log("Data:", data);
+      res.send(data);
     });
 });
 

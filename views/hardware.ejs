@@ -37,9 +37,15 @@
       </li>
       <li><a href="about.html">About</a></li>
     </ul>
-      <p>
-        Checkout all of our cool hardware here!
-      </p>
-      <script>//make a function that sets a variable for the request page</script>
+		<% for(var i=0; i<data.length; i++) { %>
+			<div class='hardware-card'>
+				<p>
+					<%= data[i].name %>
+				</p>
+				<p>
+					<%= data[i].serial_num %>
+				</p>
+			</div>
+    <% } %>
   </body>
 </html>

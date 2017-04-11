@@ -67,15 +67,15 @@ app.get('/members', function(req, res){
     });
 });
 
-/* app.get('/hardware.html', function(req, res){
+app.get('/hardware', function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {
       console.log("Data:", data);
-      res.send(data);
+      res.render('hardware', {data: data});
     });
 });
 
-app.get('/software.html', function(req, res){
+/* app.get('/software.html', function(req, res){
   db.any("select * from softwareresource")
     .then(data => {
       console.log("Data:", data);

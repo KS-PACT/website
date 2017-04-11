@@ -11,7 +11,7 @@ const PORT = 8080
 const app = express()
 
 // Set templating engine to EJS
-app.set('view engine', 'ejs'
+app.set('view engine', 'ejs');
 
 // Setup JQuery
 var $;

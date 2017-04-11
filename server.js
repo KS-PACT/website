@@ -88,12 +88,11 @@ app.get('/curriculum', function(req, res){
     });
 });
 
-/* app.get('/forum.html', function(req, res){
+app.get('/forum', function(req, res){
   db.any("select * from forums")
     .then(data => {
-      console.log("Data:", data);
-      res.send(data);
+      res.render('forum', {data: data});
     });
-}); */
+});
 
 app.use(express.static('views'))

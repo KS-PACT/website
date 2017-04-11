@@ -63,16 +63,6 @@ app.post('/login.html', function(req, res){
 app.get('/members', function(req, res){
   db.any("select * from webuser")
     .then(data => {
-      console.log("Data:", data);
-      var dataLength = data.length;
-      for(var i=0; i < dataLength; i++){
-				console.log("Hello");
-				console.log(data[i].first_name);
-				console.log(data[i].last_name);
-				console.log("");
-      }
-			
-			//var html = new EJS({url: 'members.ejs'}).render(data);
 			res.render('members', {data: data});
     });
 });

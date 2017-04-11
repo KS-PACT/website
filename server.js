@@ -49,13 +49,17 @@ db.connect()
         console.log("ERROR:", error.message || error);
 });
 
-/* app.get('/', function (req, res) {
-  res.redirect('/login.html');
+app.get('/', function (req, res) {
+  res.redirect('/login');
 });
 
-app.post('/login.html', function(req, res){
+app.get('/login', function (req, res) {
+  res.render('login');
+});
+
+app.post('/login', function(req, res){
   conosle.log("Got post request to login");
-}); */
+});
 
 // use jquery on HTML pages only
 // use ajax for sending requests to server

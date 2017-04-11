@@ -1,5 +1,6 @@
 'use strict';
 
+// Define module variables
 const express = require('express')
 var ejs = require('ejs')
 
@@ -9,9 +10,10 @@ const PORT = 8080
 // App
 const app = express()
 
-app.set('view engine', 'ejs');
+// Set templating engine to EJS
+app.set('view engine', 'ejs'
 
-//app.set('view engine', 'pug');
+// Setup JQuery
 var $;
 require("jsdom").env("", function(err, window) {
     if (err) {
@@ -22,11 +24,12 @@ require("jsdom").env("", function(err, window) {
     $ = require("jquery")(window);
 });
 
-
+// Listen to traffic on the website
 app.listen(PORT, function() {
   console.log('Running on http://localhost:' + PORT);
 })
 
+// Create connection to database
 var pgp = require('pg-promise')();
 var cn = {
   host: 'localhost',
@@ -54,7 +57,6 @@ app.post('/login.html', function(req, res){
   conosle.log("Got post request to login");
 }); */
 
-// look up ejs for templating engine
 // use jquery on HTML pages only
 // use ajax for sending requests to server
 

@@ -70,7 +70,6 @@ app.get('/members', function(req, res){
 app.get('/hardware', function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {
-      console.log("Data:", data);
       res.render('hardware', {data: data});
     });
 });

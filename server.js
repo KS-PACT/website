@@ -74,13 +74,12 @@ app.get('/hardware', function(req, res){
     });
 });
 
-/* app.get('/software.html', function(req, res){
+app.get('/software', function(req, res){
   db.any("select * from softwareresource")
     .then(data => {
-      console.log("Data:", data);
-      res.send(data);
+      res.render('software', {data: data});
     });
-}); */
+});
 
 app.get('/curriculum', function(req, res){
   db.any("select * from curriculumutil")

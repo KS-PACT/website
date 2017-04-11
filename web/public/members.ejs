@@ -7,6 +7,16 @@
 		<script type="text/javascript" src="ejs_production.js"></script>
   </head>
   <body>
-    blahs
+    <h1><%= title %></h1>
+		hello
+		hello
+		hello
+		<ul>
+			<% for(var i=0; i<5; i++) { %>
+				<li>
+					<%= data[i] %>
+				</li>
+			<% } %>
+		</ul>
   </body>
 </html>

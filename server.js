@@ -78,6 +78,27 @@ app.get('/hardware', function(req, res){
     });
 });
 
+app.get('/hardware_approval', function(req, res){
+  db.any("select * from hardwareresource")
+    .then(data => {
+      res.render('hardware_approval', {data: data});
+    });
+});
+
+app.get('/hardware_request', function(req, res){
+  db.any("select * from hardwareresource")
+    .then(data => {
+      res.render('hardware_request', {data: data});
+    });
+});
+
+app.get('/inventory_edit', function(req, res){
+  db.any("select * from hardwareresource")
+    .then(data => {
+      res.render('inventory_edit', {data: data});
+    });
+});
+
 app.get('/software', function(req, res){
   db.any("select * from softwareresource")
     .then(data => {

@@ -5,40 +5,9 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css" />
   </head>
   <body>
-    <h1><img src="KS-PACT.svg" alt="KS-PACT logo" height="100px" width ="183px">
-      Kansas Partnership for Applied Computational Thinking
-    </h1>
-    <ul>
-      <li class="dropdown">
-        <a href="members.html" class="dropbtn">Members</a>
-        <div class="dropdown-content">
-          <a href="members.html">Members</a>
-          <a href="forum.html">Forum</a>
-          <a href="member_approval.html">Mamber Approval (admins)</a>
-        </div>
-      </li>
-      <li class="dropdown">
-        <a href="hardware.html" class="dropbtn">Hardware</a>
-        <div class= "dropdown-content">
-          <a href="hardware.html">Hardware</a>
-          <a href="hardware_request.html">Make a Request</a>
-          <a href="hardware_approval.html">Request Approval (admins)</a>
-          <a class="active" href="inventory_edit.html">Inventory Edit (admins)</a>
-        </div>
-      </li>
-      <li><a href="curriculum.html">Curriculum</a></li>
-      <li><a href="software.html">Software</a></li>
-      <li class="dropdown">
-        <a class="dropbtn">Your Stuff</a>
-        <div class="dropdown-content">
-          <a href="login.html">Login</a>
-          <a href="profile.html">Profile</a>
-        </div>
-      </li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-      <p>
-        This is where admins can edit the current hardware inventory!
-      </p>
+    <%- include header.ejs %>
+		<p>
+			This is where admins can edit the current hardware inventory!
+		</p>
   </body>
 </html>

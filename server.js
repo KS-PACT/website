@@ -93,7 +93,7 @@ app.get('/curriculum', function(req, res){
 });
 
 app.get('/forum', function(req, res){
-  db.any("select * from forums")
+  db.any("select * from forums join comment on forums.id = comment.forum_id")
     .then(data => {
       res.render('forum', {data: data});
     });

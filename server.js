@@ -81,17 +81,16 @@ app.get('/software.html', function(req, res){
       console.log("Data:", data);
       res.send(data);
     });
-});
+}); */
 
-app.get('/curriculum.html', function(req, res){
+app.get('/curriculum', function(req, res){
   db.any("select * from curriculumutil")
     .then(data => {
-      console.log("Data:", data);
-      res.send(data);
+      res.render('curriculum', {data: data});
     });
 });
 
-app.get('/forum.html', function(req, res){
+/* app.get('/forum.html', function(req, res){
   db.any("select * from forums")
     .then(data => {
       console.log("Data:", data);

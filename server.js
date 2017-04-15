@@ -71,6 +71,13 @@ app.get('/members', function(req, res){
     });
 });
 
+app.get('/member_approval', function(req, res){
+  db.any("select * from webuser")
+    .then(data => {
+			res.render('member_approval', {data: data});
+    });
+});
+
 app.get('/hardware', function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {

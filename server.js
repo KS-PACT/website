@@ -120,4 +120,11 @@ app.get('/forum', function(req, res){
     });
 });
 
+app.get('/profile', function(req, res){
+  db.any("select * from webuser")
+    .then(data => {
+      res.render('profile', {data: data});
+    });
+});
+
 app.use(express.static('views'))

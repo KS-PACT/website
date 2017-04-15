@@ -6,19 +6,83 @@
   </head>
   <body>
     <%- include header.ejs %>
+		<p>
+			Our Stuff is cool, login or register today!!!
+		</p>
+		<form class="forms" method="post">
+			<h2>Register here!</h2>
+			First Name:<br>
+			<input type="text" name="first_name" required><br>
+			Last Name:<br>
+			<input type="text" name="last_name" required><br>
+			Username:<br>
+			<input type="text" name="username"><br>
+			Password:<br>
+			<input id="password" type="password" name="password" required><br>
+			Confirm Password:<br>
+			<input id="c_pass" type="password" name="password" required><br>
+			Email:<br>
+			<input id="email" type="email" name="email" required><br>
+			School:<br>
+			<select id="school" name="school" required>
+				<option value="KSU">Kansas State University</option>
+				<option value="MHS">Manhattan High School</option>
+			</select><br>
+			Bio:<br>
+			<input type="text" name="bio" height=100px width=50px><br>
+			Profile Picture:<br>
+			<input type="file" name="picture" accept="image/*" value="user_generic2_black.png" required><br>
+			Grade Level:<br>
+			<select id="grade_level" name="grade_level" required>
+				<option value=null>Choose a grade level</otion>
+				<option value=GRADE_ENUM>Not Specified</option>
+				<option value=GRADE_ENUM>Kindergarten</option>
+				<option value=GRADE_ENUM>1st</option>
+				<option value=GRADE_ENUM>2nd</option>
+				<option value=GRADE_ENUM>3rd</option>
+				<option value=GRADE_ENUM>4th</option>
+				<option value=GRADE_ENUM>5th</option>
+				<option value=GRADE_ENUM>6th</option>
+				<option value=GRADE_ENUM>7th</option>
+				<option value=GRADE_ENUM>8th</option>
+				<option value=GRADE_ENUM>9th</option>
+				<option value=GRADE_ENUM>10th</option>
+				<option value=GRADE_ENUM>11th</option>
+				<option value=GRADE_ENUM>12th</option>
+			</select><br>
+			<input type="button" id="submit" value="Submit" onClick="validatePassword()">
+		</form>
+		<form class="forms" method="post">
+			<h2>Log In Here!</h2>
+			Username or Email:<br>
+			<input type="text" id="name" required><br>
+			Password:<br>
+			<input type="password" name="password" required><br>
+			<input type="button" id="submit" value="Submit" onClick="validateLogin()">
+		</form>
+		<script>
+		function validatePassword(){
+			var pass1 = document.getElementById("password").value;
+			var pass2 = document.getElementById("c_pass").value;
+			if(pass1!=pass2){
+				pass2.setCustomValidity("Passwords don't Match");
+			}
+			else{
+				pass2.setCustomValidity(' ');
+			}
+		}
 
-      function validateLogin(){
-        var field = document.getElementById("name").value;
-        var pass = document.getElementById("pass").value;
-        if(/\@/.test(field)){
-          //validate email address
-        }
-        else{
-          //validate username
-        }
-      }
+		function validateLogin(){
+			var field = document.getElementById("name").value;
+			var pass = document.getElementById("pass").value;
+			if(/\@/.test(field)){
+				//validate email address
+			}
+			else{
+				//validate username
+			}
+		}
 
-      </script>
-
+		</script>
   </body>
 </html>

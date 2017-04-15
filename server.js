@@ -127,6 +127,10 @@ app.get('/forum', function(req, res){
     });
 });
 
+app.get('/about', function(req, res){
+	res.render('about');
+});
+
 app.get('/profile', function(req, res){
   db.any("select * from webuser")
     .then(data => {

@@ -20,57 +20,57 @@
 			</div>
 			<form class="signup collapse" id="signup">
 				<div class="form-group row">
-					<label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+					<label for="signUpFirstName" class="col-sm-2 col-form-label">First Name</label>
 					<div class="col-sm-10">
-						<input type="firstName" class="form-control" id="inputFirstName" placeholder="First Name" required>
+						<input type="firstName" class="form-control" id="signUpFirstName" placeholder="First Name" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+					<label for="signUpLastName" class="col-sm-2 col-form-label">Last Name</label>
 					<div class="col-sm-10">
-						<input type="lastName" class="form-control" id="inputLastName" placeholder="Last Name" required>
+						<input type="lastName" class="form-control" id="signUpLastName" placeholder="Last Name" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+					<label for="signUpEmailsignUpEmail" class="col-sm-2 col-form-label">Email</label>
 					<div class="col-sm-10">
-						<input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+						<input type="email" class="form-control" id="signUpEmail" placeholder="Email" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+					<label for="signUpUsername" class="col-sm-2 col-form-label">Username</label>
 					<div class="col-sm-10">
-						<input type="username" class="form-control" id="inputUsername" placeholder="Username" required>
+						<input type="username" class="form-control" id="signUpUsername" placeholder="Username" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+					<label for="signUpPassword" class="col-sm-2 col-form-label">Password</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+						<input type="password" class="form-control" id="signUpPassword" placeholder="Password" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+					<label for="signUpConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
 					<div class="col-sm-10">
-						<input type="confirmPassword" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" required>
+						<input type="confirmPassword" class="form-control" id="signUpConfirmPassword" placeholder="Confirm Password" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputSchool" class="col-sm-2 col-form-label">School</label>
+					<label for="signUpSchool" class="col-sm-2 col-form-label">School</label>
 					<div class="col-sm-10">
-						<input type="school" class="form-control" id="inputSchool" placeholder="School" required>
+						<input type="school" class="form-control" id="signUpSchool" placeholder="School" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputBio" class="col-sm-2 col-form-label">Bio</label>
+					<label for="signUpBio" class="col-sm-2 col-form-label">Bio</label>
 					<div class="col-sm-10">
-						<textarea class="span6" rows="3" placeholder="Bio" required></textarea>
+						<textarea class="span6" rows="3" placeholder="Bio" id="signUpBio" required></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputGrade" class="col-sm-2 col-form-label">Grade</label>
+					<label for="signUpGrade" class="col-sm-2 col-form-label">Grade</label>
 					<div class="col-sm-10">
-						<select class="custom-select">
+						<select class="custom-select" id="signUpGrade">
 							<option value=GRADE_ENUM selected>Not Specified</option>
 							<option value=GRADE_ENUM>Kindergarten</option>
 							<option value=GRADE_ENUM>1st</option>
@@ -89,10 +89,10 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputPic" class="col-sm-2 col-form-label">Profile Picture</label>
+					<label for="signUpPic" class="col-sm-2 col-form-label">Profile Picture</label>
 					<div class="col-sm-10">
 						<label class="custom-file">
-							<input type="file" id="file" class="custom-file-input">
+							<input type="file" id="signUpPicsignUpPic" class="custom-file-input">
 							<span class="custom-file-control"></span>
 						</label>
 					</div>
@@ -103,15 +103,15 @@
 			</form>
 			<form class="login collapse" id="login">
 				<div class="form-group row">
-					<label for="inputUsername" class="col-sm-2 col-form-label">Username or Email</label>
+					<label for="loginUsername" class="col-sm-2 col-form-label">Username or Email</label>
 					<div class="col-sm-10">
-						<input type="username" class="form-control" id="inputUsername" placeholder="Username" required>
+						<input type="username" class="form-control" id="loginUsername" placeholder="Username" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+					<label for="loginPassword" class="col-sm-2 col-form-label">Password</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+						<input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
 					</div>
 				</div>
 				<button class="btn btn-primary" type="button" id="login-btn">
@@ -144,10 +144,13 @@
 		}
 		
 		function sendLoginRequest() {
+			alert($("#loginUsername").val());
+			alert($("#loginPassword").val());
+		
 			$.ajax({
 				type: 'POST',
 				url: '/static/json/login-data.json',
-				data: { username: $('#inputUsername').value, password: $('#inputPassword').value },
+				data: { 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
 				success: function (data) {
 						alert('Success');
 				},

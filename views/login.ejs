@@ -144,24 +144,26 @@
 		}
 		
 		function sendLoginRequest() {
-			alert($("#loginUsername").val());
-			alert($("#loginPassword").val());
+			console.log($("#loginUsername").val());
+			console.log($("#loginPassword").val());
 		
 			$.ajax({
-				type: 'POST',
-				url: '/static/json/login-data.json',
+				type: 'post',
+				url: '/login',
 				data: { 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
+				dataType: "json",
 				success: function (data) {
-						alert('Success');
+						console.log(data);
+						console.log('Success');
 				},
-				error: function (xhr, status, error) {
-						alert('text status '+textStatus+', err '+err);
+				error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
 				}
 			});
 		}
 		
 		$('#login-btn').on('click', function() {
-			alert('start login btn');
+			console.log('start login btn');
       sendLoginRequest();
     });
 

@@ -1,33 +1,27 @@
 'use strict';
 
 // Define module variables
-const express = require('express')
-var ejs = require('ejs')
+const express = require('express');
+var ejs = require('ejs');
+var bodyParser = require('body-parser');
 
 // Constants
-const PORT = 8080
+const PORT = 8080;
 
 // App
-const app = express()
+const app = express();
 
 // Set templating engine to EJS
 app.set('view engine', 'ejs');
 
-// Setup JQuery
-var $;
-require("jsdom").env("", function(err, window) {
-    if (err) {
-        console.error(err);
-        return;
-    }
-
-    $ = require("jquery")(window);
-});
+app.use(express.static('views'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Listen to traffic on the website
 app.listen(PORT, function() {
   console.log('Running on http://localhost:' + PORT);
-})
+});
 
 // Create connection to database
 var pgp = require('pg-promise')();
@@ -57,9 +51,12 @@ app.get('/login', function (req, res) {
   res.render('login');
 });
 
-app.post('/static/json/login-data.json', function(req, res){
+app.post('/login', function(req, res){
   console.log("Got post request to login");
-	console.log(req.query.username);
+
+	console.log(req.body);
+	
+	res.json({'key': 'do the thing'});
 });
 
 // use jquery on HTML pages only
@@ -138,5 +135,3 @@ app.get('/profile', function(req, res){
       res.render('profile', {data: data});
     });
 });
-
-app.use(express.static('views'))

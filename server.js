@@ -93,7 +93,7 @@ app.get('/members', function(req, res){
 });
 
 app.get('/member_approval', function(req, res){
-  db.any("select * from webuser")
+  db.any("select * from webuser where status = 'Processing'")
     .then(data => {
 			res.render('member_approval', {data: data});
     });

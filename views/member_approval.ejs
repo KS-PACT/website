@@ -6,8 +6,17 @@
   </head>
   <body>
     <%- include header.ejs %>
-		<p>
-			This is where admins can approve new registrations and promote members to administrators!
-		</p>
+		<div class="content">
+			<% for(var i=0; i<data.length; i++) { %>
+				<div class="w3-card-4">
+					<!-- Need to add logic to replace the default image if actual image exists. <%= data[i].picture %> -->
+					<img src="default_profile_img.png" alt="Profile">
+					<div class="w3-container w3-left">
+						<h3><%= data[i].first_name %> <%= data[i].last_name %></h3>
+						<p><%= data[i].school %></p>
+					</div>
+				</div>
+			<% } %>
+		</div>
   </body>
 </html>

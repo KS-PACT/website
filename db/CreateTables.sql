@@ -25,31 +25,37 @@ CREATE TYPE REQUEST_STATUS_ENUM AS ENUM (
 	'Confirmed',
 	'Closed');
 
+CREATE TYPE USER_STATUS_ENUM AS ENUM (
+	'Processing',
+	'Confirmed',
+	'Closed');
+
 CREATE TABLE WebUser (
-    id serial PRIMARY KEY,
+  id serial PRIMARY KEY,
 	first_name varchar NOT NULL,
 	last_name varchar NOT NULL,
 	username varchar,
-    password varchar NOT NULL,
+  password varchar NOT NULL,
 	email varchar NOT NULL,
 	school varchar NOT NULL,
-    bio varchar,
-    picture varchar NOT NULL,
-    grade_level GRADE_ENUM DEFAULT 'Not Specified',
-	privilege PRIVILEGE_ENUM NOT NULL
+  bio varchar,
+  picture varchar NOT NULL,
+  grade_level GRADE_ENUM DEFAULT 'Not Specified',
+	privilege PRIVILEGE_ENUM NOT NULL,
+	status USER_STATUS_ENUM NOT NULL
 );
 
 CREATE TABLE Forums (
-    id serial PRIMARY KEY,
+  id serial PRIMARY KEY,
 	user_id int REFERENCES webUser(id) NOT NULL,
-    date_time timestamp NOT NULL,
-    title varchar NOT NULL,
+  date_time timestamp NOT NULL,
+  title varchar NOT NULL,
 	forum_body varchar
 );
 
 CREATE TABLE Comment (
-    id serial PRIMARY KEY,
-    forum_id int REFERENCES Forums(id) NOT NULL,
+  id serial PRIMARY KEY,
+  forum_id int REFERENCES Forums(id) NOT NULL,
 	comment_id int REFERENCES Comment(id),
 	user_id int REFERENCES webUser(id) NOT NULL,
 	date_time timestamp NOT NULL,
@@ -57,27 +63,27 @@ CREATE TABLE Comment (
 );
 
 CREATE TABLE SoftwareResource (
-    name varchar NOT NULL,
-    description varchar,
+  name varchar NOT NULL,
+  description varchar,
 	link varchar NOT NULL
 );
 
 CREATE TABLE CurriculumUtil (
-    name varchar NOT NULL,
-    description varchar NOT NULL,
+  name varchar NOT NULL,
+  description varchar NOT NULL,
 	link varchar NOT NULL
 );
 
 CREATE TABLE HardwareResource (
 	id serial PRIMARY KEY,
 	serial_num varchar,
-    name varchar,
-    description varchar
+  name varchar,
+  description varchar
 );
 
 CREATE TABLE ResourceRequest (
-    id serial PRIMARY KEY,
-    user_id int REFERENCES webUser(id) NOT NULL,
+  id serial PRIMARY KEY,
+  user_id int REFERENCES webUser(id) NOT NULL,
 	item_id int REFERENCES HardwareResource(id) NOT NULL,
 	checked_out timestamp NOT NULL,
 	return timestamp NOT NULL,

@@ -57,8 +57,10 @@ app.get('/login', function (req, res) {
   res.render('login');
 });
 
-app.post('/login', function(req, res){
-  conosle.log("Got post request to login");
+app.post('/static/json/login-data.json', function(req, res){
+  console.log("Got post request to login");
+	console.log(req);
+	console.log(res);
 });
 
 // use jquery on HTML pages only

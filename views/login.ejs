@@ -114,7 +114,7 @@
 						<input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
 					</div>
 				</div>
-				<button class="btn btn-primary" type="button">
+				<button class="btn btn-primary" type="button" id="login-btn">
 					Submit
 				</button>
 			</form>
@@ -142,6 +142,25 @@
 				//validate username
 			}
 		}
+		
+		function sendLoginRequest() {
+			$.ajax({
+				type: 'POST',
+				url: '/static/json/login-data.json',
+				data: { username: $('#inputUsername').value, password: $('#inputPassword').value },
+				success: function (data) {
+						alert('Success');
+				},
+				error: function (xhr, status, error) {
+						alert('text status '+textStatus+', err '+err);
+				}
+			});
+		}
+		
+		$('#login-btn').on('click', function() {
+			alert('start login btn');
+      sendLoginRequest();
+    });
 
 		</script>
   </body>

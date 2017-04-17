@@ -55,8 +55,31 @@ app.post('/login', function(req, res){
   console.log("Got post request to login");
 
 	console.log(req.body);
-	
-	res.json({'key': 'do the thing'});
+	if(req.body.action == "login") {
+		console.log("Login attempt");
+		console.log("Username: " + req.body.username);
+		console.log("Password: " + req.body.password);
+		db.any("select * from webuser where (username = $1 or email = $1) and password = $2", [req.body.username, req.body.password])
+    .then(data => {
+			console.log(data);
+			if(data.length == 0) {
+				res.json({'status': 'Username or password is not valid'});
+			}
+			else if (data.length > 1) {
+				res.json({'status': 'More than one user exists with that account'});
+			}
+			else {
+				res.json({'status': 'Success'});
+			}
+    });
+	}
+	else if(req.body.action == "signup") {
+		console.log("Sign up attempt");
+		res.json({'status': 'Empty sign up'});
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
 });
 
 // use jquery on HTML pages only

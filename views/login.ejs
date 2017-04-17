@@ -146,10 +146,10 @@
 				$.ajax({
 					type: 'post',
 					url: '/login',
-					data: { 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
+					data: { 'action': 'login', 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
 					dataType: "json",
 					success: function (data) {
-							console.log(data);
+							console.log(data.status);
 							console.log('Success');
 					},
 					error: function (xhr, status, err) {

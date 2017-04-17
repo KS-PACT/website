@@ -52,16 +52,12 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/login', function(req, res){
-  console.log("Got post request to login");
-
-	console.log(req.body);
 	if(req.body.action == "login") {
 		console.log("Login attempt");
 		console.log("Username: " + req.body.username);
 		console.log("Password: " + req.body.password);
 		db.any("select * from webuser where (username = $1 or email = $1) and password = $2", [req.body.username, req.body.password])
     .then(data => {
-			console.log(data);
 			if(data.length == 0) {
 				res.json({'status': 'Username or password is not valid'});
 			}
@@ -74,8 +70,6 @@ app.post('/login', function(req, res){
     });
 	}
 	else if(req.body.action == "signup") {
-		console.log("Sign up attempt");
-		
 		db.any("insert into webuser (first_name, last_name, email, username, password, school, bio, picture, grade_level, privilege, status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'Member', 'Processing')",
 			[req.body.first_name,
 			req.body.last_name,
@@ -87,16 +81,7 @@ app.post('/login', function(req, res){
 			req.body.picture,
 			req.body.grade])
     .then(data => {
-			console.log(data);
-			if(data.length == 0) {
-				res.json({'status': 'Username or password is not valid'});
-			}
-			else if (data.length > 1) {
-				res.json({'status': 'More than one user exists with that account'});
-			}
-			else {
-				res.json({'status': 'Success'});
-			}
+			res.json({'status': 'Success'});
     });
 	}
 	else {

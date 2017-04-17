@@ -136,9 +136,6 @@
 
 			// Send data to server functions
 			function sendLoginRequest() {
-				console.log($("#loginUsername").val());
-				console.log($("#loginPassword").val());
-
 				if(!checkJavascript($("#loginUsername").val())) {
 					console.log("Login username does not consist of javascript");
 				}
@@ -153,18 +150,19 @@
 					data: { 'action': 'login', 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
 					dataType: "json",
 					success: function (data) {
-							console.log(data.status);
-							console.log('Success');
+						console.log(data.status);
 					},
 					error: function (xhr, status, err) {
-							console.error('text status '+status+', err '+err);
+						console.error('text status '+status+', err '+err);
 					}
 				});
 			}
 			
-			function sendSignUpRequest() {
-				console.log($("#signUpUsername").val());
-				console.log($("#signUpPassword").val());
+			function sendSignUpRequest() {				
+				// Make sure that the passwords are the same
+				if($("#signUpPassword").val() != $("#signUpConfirmPassword").val()) {
+					console.log("Passwords don't match")
+				}
 
 				if(!checkJavascript($("#signUpUsername").val())) {
 					console.log("Sign up username does not consist of javascript");
@@ -193,23 +191,20 @@
 					data: signUpRequestData,
 					dataType: "json",
 					success: function (data) {
-							console.log(data.status);
-							console.log('Success');
+						console.log(data.status);
 					},
 					error: function (xhr, status, err) {
-							console.error('text status '+status+', err '+err);
+						console.error('text status '+status+', err '+err);
 					}
 				});
 			}
 
 			// Handle on click event functions
 			$('#login-btn').on('click', function() {
-				console.log('start login btn');
 				sendLoginRequest();
 			});
 			
 			$('#signup-btn').on('click', function() {
-				console.log('start sign up btn');
 				sendSignUpRequest();
 			});
 		</script>

@@ -121,46 +121,48 @@
 		</div>
 
 		<script>
-		function checkBadLanguage(str) {
-			return false;
-		}
-		
-		function checkJavascript(str) {
-			return false;
-		}
-		
-		function sendLoginRequest() {
-			console.log($("#loginUsername").val());
-			console.log($("#loginPassword").val());
-
-			if(!checkJavascript($("#loginUsername").val())) {
-				console.log("Username is foo");
+			// Input checking functions
+			function checkBadLanguage(str) {
+				return false;
 			}
 
-			if(!checkJavascript($("#loginPassword").val())) {
-				console.log("Password is foo");
+			function checkJavascript(str) {
+				return false;
 			}
 
-			$.ajax({
-				type: 'post',
-				url: '/login',
-				data: { 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
-				dataType: "json",
-				success: function (data) {
-						console.log(data);
-						console.log('Success');
-				},
-				error: function (xhr, status, err) {
-						console.error('text status '+status+', err '+err);
+			// Send data to server functions
+			function sendLoginRequest() {
+				console.log($("#loginUsername").val());
+				console.log($("#loginPassword").val());
+
+				if(!checkJavascript($("#loginUsername").val())) {
+					console.log("Login username does not consist of javascript");
 				}
+
+				if(!checkJavascript($("#loginPassword").val())) {
+					console.log("Login password does not consist of javascript");
+				}
+
+				$.ajax({
+					type: 'post',
+					url: '/login',
+					data: { 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
+					dataType: "json",
+					success: function (data) {
+							console.log(data);
+							console.log('Success');
+					},
+					error: function (xhr, status, err) {
+							console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+
+			// Handle on click event functions
+			$('#login-btn').on('click', function() {
+				console.log('start login btn');
+				sendLoginRequest();
 			});
-		}
-
-		$('#login-btn').on('click', function() {
-			console.log('start login btn');
-      sendLoginRequest();
-    });
-
 		</script>
   </body>
 </html>

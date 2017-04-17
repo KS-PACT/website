@@ -121,32 +121,26 @@
 		</div>
 
 		<script>
-		function validatePassword(){
-			var pass1 = document.getElementById("password").value;
-			var pass2 = document.getElementById("c_pass").value;
-			if(pass1!=pass2){
-				pass2.setCustomValidity("Passwords don't Match");
-			}
-			else{
-				pass2.setCustomValidity(' ');
-			}
+		function checkBadLanguage(str) {
+			return false;
 		}
-
-		function validateLogin(){
-			var field = document.getElementById("name").value;
-			var pass = document.getElementById("pass").value;
-			if(/\@/.test(field)){
-				//validate email address
-			}
-			else{
-				//validate username
-			}
+		
+		function checkJavascript(str) {
+			return false;
 		}
 		
 		function sendLoginRequest() {
 			console.log($("#loginUsername").val());
 			console.log($("#loginPassword").val());
-		
+
+			if(!checkJavascript($("#loginUsername").val())) {
+				console.log("Username is foo");
+			}
+
+			if(!checkJavascript($("#loginPassword").val())) {
+				console.log("Password is foo");
+			}
+
 			$.ajax({
 				type: 'post',
 				url: '/login',
@@ -161,7 +155,7 @@
 				}
 			});
 		}
-		
+
 		$('#login-btn').on('click', function() {
 			console.log('start login btn');
       sendLoginRequest();

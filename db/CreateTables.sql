@@ -1,4 +1,5 @@
 CREATE TYPE GRADE_ENUM AS ENUM (
+	'Not Specified',
 	'K',
 	'1st',
 	'2nd',
@@ -13,8 +14,7 @@ CREATE TYPE GRADE_ENUM AS ENUM (
 	'11th',
 	'12th',
 	'College Prep',
-	'AP',
-	'Not Specified');
+	'AP');
 
 CREATE TYPE PRIVILEGE_ENUM AS ENUM (
 	'Admin',

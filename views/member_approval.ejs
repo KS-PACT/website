@@ -2,7 +2,10 @@
 <html>
   <head>
     <title>Membership Approval</title>
-    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/common.css" />
   </head>
   <body>
     <%- include header.ejs %>
@@ -14,9 +17,59 @@
 					<div class="w3-container w3-left">
 						<h3><%= data[i].first_name %> <%= data[i].last_name %></h3>
 						<p><%= data[i].school %></p>
+						<div class="decision-buttons">
+							<button type="button" class="btn btn-success approve" data-id="<%= data[i].id %>">Accept</button>
+							<button type="button" class="btn btn-danger decline" data-id="<%= data[i].id %>">Decline</button>
+						</div>
 					</div>
 				</div>
 			<% } %>
 		</div>
+
+		<script>
+			// Send data to server functions
+			function sendUserRequestAccept(id) {
+				$.ajax({
+					type: 'post',
+					url: '/member_approval',
+					data: { 'action': 'approve', 'id': id },
+					dataType: "json",
+					success: function (data) {
+						console.log(data.status);
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+
+			function sendUserRequestDecline(id) {
+				$.ajax({
+					type: 'post',
+					url: '/member_approval',
+					data: { 'action': 'decline', 'id': id },
+					dataType: "json",
+					success: function (data) {
+						console.log(data.status);
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+
+			// Handle on click events for buttons
+			$('.btn.approve').on('click', function() {
+				console.log("Approve button clicked");
+				console.log($(this).data("id"));
+				sendUserRequestAccept($(this).data("id"));
+			});
+
+			$('.btn.decline').on('click', function() {
+				console.log("Decline button clicked");
+				console.log($(this).data("id"));
+				sendUserRequestDecline($(this).data("id"));
+			});
+		</script>
   </body>
 </html>

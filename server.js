@@ -93,7 +93,7 @@ app.post('/login', function(req, res){
 // use ajax for sending requests to server
 
 app.get('/members', function(req, res){
-  db.any("select * from webuser")
+  db.any("select * from webuser where status = 'Confirmed'")
     .then(data => {
 			res.render('members', {data: data});
     });

@@ -4,6 +4,7 @@
 const express = require('express');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 // Constants
 const PORT = 8080;
@@ -17,6 +18,10 @@ app.set('view engine', 'ejs');
 app.use(express.static('views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(session({
+	secret: 'keyboard cat',
+	cookie: {}
+	}));
 
 // Listen to traffic on the website
 app.listen(PORT, function() {
@@ -65,6 +70,8 @@ app.post('/login', function(req, res){
 				res.json({'status': 'More than one user exists with that account'});
 			}
 			else {
+				req.session.user_id = data[0].id;
+				req.session.priv = data[0].privilege;
 				res.json({'status': 'Success'});
 			}
     });
@@ -99,7 +106,19 @@ app.get('/members', function(req, res){
     });
 });
 
-app.get('/member_approval', function(req, res){
+var checkAdmin = function(req, res, next) {
+	console.log("Start admin check");
+	console.log(req.session.priv);
+	if(req.session.priv == 'Admin') {
+		next();
+	}
+	else {
+		res.status(404);
+		res.send('Status 404');
+	}
+}
+
+app.get('/member_approval', checkAdmin, function(req, res){
   db.any("select * from webuser where status = 'Processing'")
     .then(data => {
 			res.render('member_approval', {data: data});

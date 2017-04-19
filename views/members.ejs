@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
   <body>
 		<%- include header.ejs %>
 		<div class="content">
@@ -16,5 +17,32 @@
 				</div>
 			<% } %>
 		</div>
+		<script>
+			// Send data to server functions
+			function showUserProfile(id) {
+				console.log("Before send profile data");
+				$.ajax({
+					type: 'post',
+					url: '/members',
+					data: { 'action': 'get profile', 'id': id },
+					dataType: "json",
+					success: function (data) {
+						console.log(data.status);
+						console.log(data.member_info);
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+				console.log("After send profile data");
+			}
+
+			// Handle on click events for buttons
+			$('.btn').on('click', function() {
+				console.log("Get profile button");
+				console.log($(this).data("id"));
+				showUserProfile($(this).data("id"));
+			});
+		</script>
   </body>
 </html>

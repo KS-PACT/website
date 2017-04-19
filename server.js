@@ -211,9 +211,14 @@ app.get('/about', function(req, res){
 	res.render('about');
 });
 
-app.get('/profile', function(req, res){
-  db.any("select * from webuser")
+app.get('/profile', checkMember, function(req, res){
+  db.any("select * from webuser where id = $1", [req.session.user_id])
     .then(data => {
-      res.render('profile', {data: data});
+			if(data.length == 1) {
+				res.render('profile', {data: data});
+			}
+			else {
+				res.render('profile', {data: []});
+			}
     });
 });

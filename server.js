@@ -118,6 +118,18 @@ var checkAdmin = function(req, res, next) {
 	}
 }
 
+var checkMember = function(req, res, next) {
+	console.log("Start admin check");
+	console.log(req.session.priv);
+	if(req.session.priv == 'Member') {
+		next();
+	}
+	else {
+		res.status(404);
+		res.send('Status 404');
+	}
+}
+
 app.get('/member_approval', checkAdmin, function(req, res){
   db.any("select * from webuser where status = 'Processing'")
     .then(data => {

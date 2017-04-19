@@ -72,20 +72,22 @@
 						<label for="signUpGrade" class="col-sm-2 col-form-label">Grade</label>
 						<div class="col-sm-10">
 							<select class="custom-select" id="signUpGrade">
-								<option value=GRADE_ENUM selected>Not Specified</option>
-								<option value=GRADE_ENUM>Kindergarten</option>
-								<option value=GRADE_ENUM>1st</option>
-								<option value=GRADE_ENUM>2nd</option>
-								<option value=GRADE_ENUM>3rd</option>
-								<option value=GRADE_ENUM>4th</option>
-								<option value=GRADE_ENUM>5th</option>
-								<option value=GRADE_ENUM>6th</option>
-								<option value=GRADE_ENUM>7th</option>
-								<option value=GRADE_ENUM>8th</option>
-								<option value=GRADE_ENUM>9th</option>
-								<option value=GRADE_ENUM>10th</option>
-								<option value=GRADE_ENUM>11th</option>
-								<option value=GRADE_ENUM>12th</option>
+								<option value='Not Specified' selected>Not Specified</option>
+								<option value='Kindergarten'>Kindergarten</option>
+								<option value='1st'>1st</option>
+								<option value='2nd'>2nd</option>
+								<option value='3rd'>3rd</option>
+								<option value='4th'>4th</option>
+								<option value='5th'>5th</option>
+								<option value='6th'>6th</option>
+								<option value='7th'>7th</option>
+								<option value='8th'>8th</option>
+								<option value='9th'>9th</option>
+								<option value='10th'>10th</option>
+								<option value='11th'>11th</option>
+								<option value='12th'>12th</option>
+								<option value='College Prep'>College Prep</option>
+								<option value='AP'>AP</option>
 							</select>
 						</div>
 					</div>
@@ -93,12 +95,12 @@
 						<label for="signUpPic" class="col-sm-2 col-form-label">Profile Picture</label>
 						<div class="col-sm-10">
 							<label class="custom-file">
-								<input type="file" id="signUpPicsignUpPic" class="custom-file-input">
+								<input type="file" id="signUpPic" class="custom-file-input">
 								<span class="custom-file-control"></span>
 							</label>
 						</div>
 					</div>
-					<button class="btn btn-primary" type="button">
+					<button class="btn btn-primary" type="button" id="signup-btn">
 						Submit
 					</button>
 				</form>
@@ -134,9 +136,6 @@
 
 			// Send data to server functions
 			function sendLoginRequest() {
-				console.log($("#loginUsername").val());
-				console.log($("#loginPassword").val());
-
 				if(!checkJavascript($("#loginUsername").val())) {
 					console.log("Login username does not consist of javascript");
 				}
@@ -151,19 +150,62 @@
 					data: { 'action': 'login', 'username': $("#loginUsername").val(), 'password': $("#loginPassword").val() },
 					dataType: "json",
 					success: function (data) {
-							console.log(data.status);
-							console.log('Success');
+						console.log(data.status);
 					},
 					error: function (xhr, status, err) {
-							console.error('text status '+status+', err '+err);
+						console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+			
+			function sendSignUpRequest() {				
+				// Make sure that the passwords are the same
+				if($("#signUpPassword").val() != $("#signUpConfirmPassword").val()) {
+					console.log("Passwords don't match")
+				}
+
+				if(!checkJavascript($("#signUpUsername").val())) {
+					console.log("Sign up username does not consist of javascript");
+				}
+
+				if(!checkJavascript($("#signUpPassword").val())) {
+					console.log("Sign up password does not consist of javascript");
+				}
+
+				var signUpRequestData = {
+					'action': 'signup',
+					'first_name': $("#signUpFirstName").val(),
+					'last_name': $("#signUpLastName").val(),
+					'email': $("#signUpEmail").val(),
+					'username': $("#signUpUsername").val(),
+					'password': $("#signUpPassword").val(),
+					'school': $("#signUpSchool").val(),
+					'bio': $("#signUpBio").val(),
+					'picture': $("#signUpPic").val(),
+					'grade': $("#signUpGrade").val()
+					};
+
+				$.ajax({
+					type: 'post',
+					url: '/login',
+					data: signUpRequestData,
+					dataType: "json",
+					success: function (data) {
+						console.log(data.status);
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
 					}
 				});
 			}
 
 			// Handle on click event functions
 			$('#login-btn').on('click', function() {
-				console.log('start login btn');
 				sendLoginRequest();
+			});
+			
+			$('#signup-btn').on('click', function() {
+				sendSignUpRequest();
 			});
 		</script>
   </body>

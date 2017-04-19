@@ -52,16 +52,12 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/login', function(req, res){
-  console.log("Got post request to login");
-
-	console.log(req.body);
 	if(req.body.action == "login") {
 		console.log("Login attempt");
 		console.log("Username: " + req.body.username);
 		console.log("Password: " + req.body.password);
 		db.any("select * from webuser where (username = $1 or email = $1) and password = $2", [req.body.username, req.body.password])
     .then(data => {
-			console.log(data);
 			if(data.length == 0) {
 				res.json({'status': 'Username or password is not valid'});
 			}
@@ -74,8 +70,19 @@ app.post('/login', function(req, res){
     });
 	}
 	else if(req.body.action == "signup") {
-		console.log("Sign up attempt");
-		res.json({'status': 'Empty sign up'});
+		db.any("insert into webuser (first_name, last_name, email, username, password, school, bio, picture, grade_level, privilege, status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'Member', 'Processing')",
+			[req.body.first_name,
+			req.body.last_name,
+			req.body.email,
+			req.body.username,
+			req.body.password,
+			req.body.school,
+			req.body.bio,
+			req.body.picture,
+			req.body.grade])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
 	}
 	else {
 		res.json({'status': 'Something went wrong'});
@@ -86,17 +93,38 @@ app.post('/login', function(req, res){
 // use ajax for sending requests to server
 
 app.get('/members', function(req, res){
-  db.any("select * from webuser")
+  db.any("select * from webuser where status = 'Confirmed'")
     .then(data => {
 			res.render('members', {data: data});
     });
 });
 
 app.get('/member_approval', function(req, res){
-  db.any("select * from webuser")
+  db.any("select * from webuser where status = 'Processing'")
     .then(data => {
 			res.render('member_approval', {data: data});
     });
+});
+
+app.post('/member_approval', function(req, res){
+	console.log(req.body.action);
+  if(req.body.action == "approve") {
+		console.log("Approve user request");
+		db.any("update webuser set status = 'Confirmed' where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "decline") {
+		console.log("Decline user request");
+		db.any("update webuser set status = 'Closed' where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
 });
 
 app.get('/hardware', function(req, res){

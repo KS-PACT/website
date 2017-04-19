@@ -3,13 +3,14 @@ INSERT INTO WebUser (
 	first_name,
 	last_name,
 	username,
-    password,
+  password,
 	email,
 	school,
-    bio,
-    picture,
-    grade_level,
-	privilege) VALUES (
+  bio,
+  picture,
+  grade_level,
+	privilege,
+	status) VALUES (
 	'Josh',
 	'Weese',
 	'weeser',
@@ -19,19 +20,21 @@ INSERT INTO WebUser (
 	NULL,
 	'blah',
 	'3rd',
-	'Admin'
+	'Admin',
+	'Confirmed'
 	);
 INSERT INTO WebUser (
 	first_name,
 	last_name,
 	username,
-    password,
+  password,
 	email,
 	school,
-    bio,
-    picture,
-    grade_level,
-	privilege) VALUES (
+  bio,
+  picture,
+  grade_level,
+	privilege,
+	status) VALUES (
 	'Nathan',
 	'Bean',
 	'nbean',
@@ -41,19 +44,21 @@ INSERT INTO WebUser (
 	NULL,
 	'Hello World',
 	'5th',
-	'Member'
+	'Member',
+	'Confirmed'
 	);
 INSERT INTO WebUser (
 	first_name,
 	last_name,
 	username,
-    password,
+  password,
 	email,
 	school,
-    bio,
-    picture,
-    grade_level,
-	privilege) VALUES (
+  bio,
+  picture,
+  grade_level,
+	privilege,
+	status) VALUES (
 	'Blahahahahahahahahahahahahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
 	'De Blahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
 	'bdeblahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
@@ -63,7 +68,8 @@ INSERT INTO WebUser (
 	NULL,
 	'All of the wordssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
 	'College Prep',
-	'Admin'
+	'Admin',
+	'Confirmed'
 	);
 
 /* Forums test data */

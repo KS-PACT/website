@@ -106,6 +106,19 @@ app.get('/members', function(req, res){
     });
 });
 
+app.post('/members', function(req, res){
+	if(req.body.action == "get profile") {
+		db.any("select * from webuser where id = $1", [req.body.id])
+    .then(data => {
+			console.log(data);
+			res.json({'status': 'Success', 'member_info': data});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});
+
 var checkAdmin = function(req, res, next) {
 	console.log("Start admin check");
 	console.log(req.session.priv);

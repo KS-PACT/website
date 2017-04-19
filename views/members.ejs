@@ -9,7 +9,9 @@
 					<div class="w3-container w3-left">
 						<h3><%= data[i].first_name %> <%= data[i].last_name %></h3>
 						<p><%= data[i].school %></p>
-            <p><a href="/profile?id="<%= data[i].id %>"">View Profile</a></p>
+            <button class="btn btn-primary" type="button" data-id="<%= data[i].id %>">
+							Get Info
+						</button>
 					</div>
 				</div>
 			<% } %>

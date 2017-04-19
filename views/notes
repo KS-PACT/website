@@ -1,15 +1,25 @@
-building a website with node.js
-database connection
-where is the database????
-Do we have a mySQL already up that we connect to?
-Put together wireframe for all pages
-define each page's func and what needs to happen
-  start writing code for that
-done yay party
-
-
-
-
-
-
-Common css contains all of current css
+job 1: allow people to sign up
+		A: form to collect data already exists
+		B: need to write data into database (not front-dev job)
+	2: Need to decide what content is available to public vs logged in users
+		A: Figure out when logged in what page to take people to
+	3: Hardware thing...
+		A: management panel
+		B: add hardware
+		C: update hardware
+		D: admin logins
+	4: Request forms required
+		A: How does logged in user request hardware checkout?
+	5: define pages for admin
+		A: manage hardware
+			i: list hardware
+			ii: add
+			iii: edit
+			iv: delete?
+		B: Forum moderated?
+			i: go buy a template, stop reinventing the wheel
+		C: Curriculum
+			i: management functionality
+		D: Software what even is?
+	6: Design in general
+		A: Stop messing it up!

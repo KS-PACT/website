@@ -49,7 +49,11 @@ db.connect()
 });
 
 app.get('/', function (req, res) {
-  res.redirect('/login');
+  res.redirect('/home');
+});
+
+app.get('/home', function (req, res) {
+  res.render('home');
 });
 
 app.get('/login', function (req, res) {

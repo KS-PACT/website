@@ -235,3 +235,19 @@ app.get('/profile', checkMember, function(req, res){
 			}
     });
 });
+
+app.post('/profile', checkMember, function(req, res){
+	console.log("Show all the user info");
+	console.log(req.body);
+	if(req.body.action == "update") {
+		db.any("update webuser set first_name = $2, last_name = $3, email = $4, username = $5, school = $6, bio = $7, grade_level = $8, picture = $9 where id = $1",
+			[req.session.user_id, req.body.first_name, req.body.last_name, req.body.email, req.body.username, req.body.school, req.body.bio, req.body.grade, req.body.picture])
+    .then(data => {
+			console.log("DB has been updated");
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});

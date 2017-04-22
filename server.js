@@ -130,8 +130,7 @@ var checkAdmin = function(req, res, next) {
 		next();
 	}
 	else {
-		res.status(404);
-		res.send('Status 404');
+		res.redirect('/home');
 	}
 }
 
@@ -142,8 +141,7 @@ var checkMember = function(req, res, next) {
 		next();
 	}
 	else {
-		res.status(404);
-		res.send('Status 404');
+		res.redirect('/home');
 	}
 }
 

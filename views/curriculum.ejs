@@ -7,7 +7,7 @@
   <body>
     <%- include header.ejs %>
     <% for(var i=0; i<data.length; i++) { %>
-			<div class="w3-card-4">
+			<div class="w3-card-4" onclick="location.href='http://<%= data[i].link %>';" >
 				<div class="card-image opt-image" style="background-color:red">
 				</div>
 				<div class="w3-container w3-left">

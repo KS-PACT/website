@@ -6,7 +6,9 @@
 			<% for(var i=0; i<data.length; i++) { %>
 				<div class="w3-card-4">
 					<!-- Need to add logic to replace the default image if actual image exists. <%= data[i].picture %> -->
-					<img src="images/defaults/profile_default.png" alt="Profile">
+					<div class="card-image">
+						<img src="images/defaults/profile_default.png" alt="Profile">
+					</div>
 					<div class="w3-container w3-left">
 						<h3><%= data[i].first_name %> <%= data[i].last_name %></h3>
 						<p><%= data[i].school %></p>

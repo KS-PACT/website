@@ -55,7 +55,10 @@ h1 {
 
 .card-image {
 	text-align: center;
-	
+}
+
+.opt-image {
+	height: 250px;
 }
 
 .content {

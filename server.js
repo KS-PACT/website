@@ -180,6 +180,50 @@ app.get('/hardware', function(req, res){
     });
 });
 
+app.get('/hardware_add', function(req, res){
+	res.render('hardware_add');
+});
+
+app.post('/hardware_add', function(req, res){
+	console.log("Got to server");
+	if(req.body.action == "remove") {
+		console.log("Login attempt");
+		console.log("Username: " + req.body.username);
+		console.log("Password: " + req.body.password);
+		db.any("select * from webuser where (username = $1 or email = $1) and password = $2", [req.body.username, req.body.password])
+    .then(data => {
+			if(data.length == 0) {
+				res.json({'status': 'Username or password is not valid'});
+			}
+			else if (data.length > 1) {
+				res.json({'status': 'More than one user exists with that account'});
+			}
+			else {
+				req.session.user_id = data[0].id;
+				req.session.priv = data[0].privilege;
+				res.json({'status': 'Success'});
+			}
+    });
+	}
+	else if(req.body.action == "add") {
+		console.log("Add action called");
+		console.log("Serial Number: ", req.body.serial_num);
+		console.log("Name: ", req.body.name);
+		console.log("Description: ", req.body.description);
+		db.any("insert into hardwareresource (serial_num, name, description) values ($1, $2, $3)",
+			[req.body.serial_num,
+			req.body.name,
+			req.body.description])
+    .then(data => {
+			console.log("Successful insertion");
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});
+
 app.get('/hardware_approval', function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {

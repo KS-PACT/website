@@ -100,8 +100,9 @@ app.post('/login', function(req, res){
 	}
 });
 
-// use jquery on HTML pages only
-// use ajax for sending requests to server
+// Create different JS files for each page and then
+// use browserify or webpack to put them together in the end
+// This is for people whose computers aren't the best
 
 app.get('/members', function(req, res){
   db.any("select * from webuser where status = 'Confirmed'")

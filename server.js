@@ -248,7 +248,7 @@ app.get('/inventory_edit', function(req, res){
 app.get('/software', function(req, res){
   db.any("select * from softwareresource")
     .then(data => {
-      res.render('software', {data: data});
+      res.render('software', {data: data, 'priv': req.session.priv});
     });
 });
 

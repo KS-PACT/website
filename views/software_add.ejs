@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Add Software Resource</title>
+  </head>
+  <body>
+    <%- include header.ejs %>
+		<div class="container">
+			<div id = "alert_placeholder"></div>
+			<div class="main-card">
+				<form>
+					<div class="form-group row">
+						<label for="name" class="col-sm-2 col-form-label">Name</label>
+						<div class="col-sm-10">
+							<input type="name" class="form-control" id="name" placeholder="Name" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="description" class="col-sm-2 col-form-label">Description</label>
+						<div class="col-sm-10">
+							<textarea class="span6" rows="3" placeholder="Description" id="description" required></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="link" class="col-sm-2 col-form-label">Link</label>
+						<div class="col-sm-10">
+							<input type="link" class="form-control" id="link" placeholder="Link" required>
+						</div>
+					</div>
+					<button class="btn btn-primary" type="button" id="submit-btn">
+						Submit
+					</button>
+				</form>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			// Send data to server functions
+			function addSoftware() {
+				$.ajax({
+					type: 'post',
+					url: '/software_add',
+					data: { 'action': 'add', 'name': $("#name").val(), 'description': $("#description").val(), 'link': $("#link").val() },
+					dataType: "json",
+					success: function (data) {
+						console.log("Status: ", data.status);
+						if(data.status == "Success") {
+							bootstrap_alert.success('You correctly added a software resource.');
+						}
+						else {
+							bootstrap_alert.error(data.status);
+						}
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+
+			// Handle notifications
+			bootstrap_alert = function() {}
+			bootstrap_alert.success = function(message) {
+				$('#alert_placeholder').html('<div class="alert alert-success"><strong>Success!</strong><span> '+message+'</span></div>');
+			}
+			bootstrap_alert.error = function(message) {
+				$('#alert_placeholder').html('<div class="alert alert-danger"><strong>Error:</strong><span> '+message+'</span></div>');
+			}
+
+			// Handle on click event functions
+			$('#submit-btn').on('click', function() {
+				console.log("Submit button was clicked");
+				addSoftware();
+			});
+		</script>
+  </body>
+</html>

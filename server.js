@@ -246,6 +246,25 @@ app.get('/software', function(req, res){
     });
 });
 
+app.get('/software_add', function(req, res){
+	res.render('software_add');
+});
+
+app.post('/software_add', function(req, res){
+	if(req.body.action == "add") {
+		db.any("insert into softwareresource (name, description, link) values ($1, $2, $3)",
+			[req.body.name,
+			req.body.description,
+			req.body.link])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});
+
 app.get('/curriculum', function(req, res){
   db.any("select * from curriculumutil")
     .then(data => {

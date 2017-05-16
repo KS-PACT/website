@@ -18,7 +18,7 @@
             <button class="btn btn-primary get-info-btn" type="button" data-id="<%= data[i].id %>">
 							Get Info
 						</button>
-						<% if(data[i].privilege != "Admin"){ %>
+						<% if((priv == "Admin") && (data[i].privilege != "Admin")){ %>
 							<button class="btn btn-primary promote-btn" type="button" data-id="<%= data[i].id %>">
 								Promote to Admin
 							</button>

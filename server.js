@@ -107,7 +107,7 @@ app.post('/login', function(req, res){
 app.get('/members', function(req, res){
   db.any("select * from webuser where status = 'Confirmed'")
     .then(data => {
-			res.render('members', {data: data});
+			res.render('members', {data: data, 'priv': req.session.priv });
     });
 });
 

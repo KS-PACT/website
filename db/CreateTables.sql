@@ -63,6 +63,7 @@ CREATE TABLE Comment (
 );
 
 CREATE TABLE SoftwareResource (
+	id serial PRIMARY KEY,
   name varchar NOT NULL,
   description varchar,
 	link varchar NOT NULL

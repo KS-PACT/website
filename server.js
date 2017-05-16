@@ -264,7 +264,7 @@ app.post('/software', function(req, res){
 	}
 });
 
-app.get('/software_add', function(req, res){
+app.get('/software_add', checkAdmin, function(req, res){
 	res.render('software_add');
 });
 

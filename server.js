@@ -200,7 +200,7 @@ app.post('/hardware', function(req, res){
 	}
 });
 
-app.get('/hardware_add', function(req, res){
+app.get('/hardware_add', checkAdmin, function(req, res){
 	res.render('hardware_add');
 });
 

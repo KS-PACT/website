@@ -18,11 +18,13 @@
 					<h3><%= data[i].name %></h3>
 					<p><%= data[i].serial_num %></p>
 				</div>
-				<div class="decision-buttons">
-					<button class="btn btn-danger remove-btn" type="button" data-id="<%= data[i].id %>">
-						Remove
-					</button>
-				</div>
+				<% if(priv == 'Admin'){ %>
+					<div class="decision-buttons">
+						<button class="btn btn-danger remove-btn" type="button" data-id="<%= data[i].id %>">
+							Remove
+						</button>
+					</div>
+				<% } %>
 			</div>
     <% } %>
 		<div class="w3-card-4">

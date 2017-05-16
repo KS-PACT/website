@@ -183,7 +183,7 @@ app.post('/member_approval', function(req, res){
 app.get('/hardware', function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {
-      res.render('hardware', {data: data});
+      res.render('hardware', {data: data, 'priv': req.session.priv});
     });
 });
 

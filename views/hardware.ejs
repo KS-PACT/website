@@ -27,11 +27,14 @@
 				<% } %>
 			</div>
     <% } %>
-		<div class="w3-card-4">
-			<div class="card-image">
-				<img src="images/defaults/add_button.png" />
+		
+		<% if(priv == 'Admin'){ %>
+			<div class="w3-card-4">
+				<div class="card-image">
+					<img src="images/defaults/add_button.png" />
+				</div>
 			</div>
-		</div>
+		<% } %>
 		
 		<script type="text/javascript">
 			// Send data to server functions

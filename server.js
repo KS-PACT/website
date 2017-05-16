@@ -284,6 +284,18 @@ app.get('/curriculum', function(req, res){
     });
 });
 
+app.post('/curriculum', function(req, res){
+	if(req.body.action == "remove") {
+		db.any("delete from curriculumutil where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});
+
 app.get('/curriculum_add', function(req, res){
   res.render('curriculum_add');
 });

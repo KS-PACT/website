@@ -224,7 +224,7 @@ app.post('/hardware_add', function(req, res){
 	}
 });
 
-app.get('/hardware_approval', function(req, res){
+app.get('/hardware_approval', checkAdmin, function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {
       res.render('hardware_approval', {data: data});

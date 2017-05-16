@@ -286,7 +286,7 @@ app.post('/software_add', function(req, res){
 app.get('/curriculum', function(req, res){
   db.any("select * from curriculumutil")
     .then(data => {
-      res.render('curriculum', {data: data});
+      res.render('curriculum', {data: data, 'priv': req.session.priv});
     });
 });
 

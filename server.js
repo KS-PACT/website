@@ -284,6 +284,25 @@ app.get('/curriculum', function(req, res){
     });
 });
 
+app.get('/curriculum_add', function(req, res){
+  res.render('curriculum_add');
+});
+
+app.post('/curriculum_add', function(req, res){
+	if(req.body.action == "add") {
+		db.any("insert into curriculumutil (name, description, link) values ($1, $2, $3)",
+			[req.body.name,
+			req.body.description,
+			req.body.link])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});
+
 app.get('/forum', function(req, res){
   db.any("select * from forums join comment on forums.id = comment.forum_id")
     .then(data => {

@@ -246,6 +246,18 @@ app.get('/software', function(req, res){
     });
 });
 
+app.post('/software', function(req, res){
+	if(req.body.action == "remove") {
+		db.any("delete from softwareresource where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});
+
 app.get('/software_add', function(req, res){
 	res.render('software_add');
 });

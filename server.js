@@ -119,6 +119,12 @@ app.post('/members', function(req, res){
 			res.json({'status': 'Success', 'member_info': data});
     });
 	}
+	else if(req.body.action == "promote") {
+		db.any("update webuser set privilege = 'Admin' where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
 	else {
 		res.json({'status': 'Something went wrong'});
 	}

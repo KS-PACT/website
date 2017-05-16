@@ -3,6 +3,9 @@
   <body>
 		<%- include header.ejs %>
 		<div class="content">
+			<div class="container">
+				<div id = "alert_placeholder"></div>
+			</div>
 			<% for(var i=0; i<data.length; i++) { %>
 				<div class="w3-card-4">
 					<!-- Need to add logic to replace the default image if actual image exists. <%= data[i].picture %> -->
@@ -12,9 +15,14 @@
 					<div class="w3-container w3-left">
 						<h3><%= data[i].first_name %> <%= data[i].last_name %></h3>
 						<p><%= data[i].school %></p>
-            <button class="btn btn-primary" type="button" data-id="<%= data[i].id %>">
+            <button class="btn btn-primary get-info-btn" type="button" data-id="<%= data[i].id %>">
 							Get Info
 						</button>
+						<% if(data[i].privilege != "Admin"){ %>
+							<button class="btn btn-primary promote-btn" type="button" data-id="<%= data[i].id %>">
+								Promote to Admin
+							</button>
+						<% } %>
 					</div>
 				</div>
 			<% } %>
@@ -38,12 +46,46 @@
 				});
 				console.log("After send profile data");
 			}
+			
+			function promoteUserToAdmin(id) {
+				$.ajax({
+					type: 'post',
+					url: '/members',
+					data: { 'action': 'promote', 'id': id },
+					dataType: "json",
+					success: function (data) {
+						if(data.status == "Success") {
+							bootstrap_alert.success('You correctly promoted a user to admin.');
+						}
+						else {
+							bootstrap_alert.error(data.status);
+						}
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+			
+			// Handle notifications
+			bootstrap_alert = function() {}
+			bootstrap_alert.success = function(message) {
+				$('#alert_placeholder').html('<div class="alert alert-success"><strong>Success!</strong><span> '+message+'</span></div>');
+			}
+			bootstrap_alert.error = function(message) {
+				$('#alert_placeholder').html('<div class="alert alert-danger"><strong>Error:</strong><span> '+message+'</span></div>');
+			}
 
 			// Handle on click events for buttons
-			$('.btn').on('click', function() {
+			$('.get-info-btn').on('click', function() {
 				console.log("Get profile button");
 				console.log($(this).data("id"));
 				showUserProfile($(this).data("id"));
+			});
+			
+			// Handle on click events for buttons
+			$('.promote-btn').on('click', function() {
+				promoteUserToAdmin($(this).data("id"));
 			});
 		</script>
   </body>

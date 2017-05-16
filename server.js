@@ -302,7 +302,7 @@ app.post('/curriculum', function(req, res){
 	}
 });
 
-app.get('/curriculum_add', function(req, res){
+app.get('/curriculum_add', checkAdmin, function(req, res){
   res.render('curriculum_add');
 });
 

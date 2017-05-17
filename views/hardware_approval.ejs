@@ -1,13 +1,77 @@
 <!doctype html>
 <html>
   <head>
-    <title>Hardware Approval</title>
-    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <title>Membership Approval</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/common.css" />
   </head>
   <body>
     <%- include header.ejs %>
-		<p>
-			This is where admins can approve hardware requests!
-		</p>
+		<div class="content">
+			<% for(var i=0; i<data.length; i++) { %>
+				<div class="w3-card-4">
+					<% if(!data[i].picture){ %>
+						<div class="card-image opt-image" style="background-color:<%= data[i].color %>">
+						</div>
+					<% } else { %>
+						<div class="card-image opt-image">
+							<img src=<%= data[i].picture %> />
+						</div>
+					<% } %>
+					<div class="w3-container w3-left">
+						<h3><%= data[i].name %></h3>
+						<p><%= data[i].serial_num %></p>
+						<div class="decision-buttons">
+							<button type="button" class="btn btn-success approve" data-id="<%= data[i].id %>">Accept</button>
+							<button type="button" class="btn btn-danger decline" data-id="<%= data[i].id %>">Decline</button>
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+
+		<script>
+			// Send data to server functions
+			function sendUserRequestAccept(id) {
+				$.ajax({
+					type: 'post',
+					url: '/hardware_approval',
+					data: { 'action': 'approve', 'id': id },
+					dataType: "json",
+					success: function (data) {
+						console.log(data.status);
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+
+			function sendUserRequestDecline(id) {
+				$.ajax({
+					type: 'post',
+					url: '/member_approval',
+					data: { 'action': 'decline', 'id': id },
+					dataType: "json",
+					success: function (data) {
+						console.log(data.status);
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+			}
+
+			// Handle on click events for buttons
+			$('.btn.approve').on('click', function() {
+				sendUserRequestAccept($(this).data("id"));
+			});
+
+			$('.btn.decline').on('click', function() {
+				sendUserRequestDecline($(this).data("id"));
+			});
+		</script>
   </body>
 </html>

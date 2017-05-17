@@ -66,7 +66,9 @@ CREATE TABLE SoftwareResource (
 	id serial PRIMARY KEY,
   name varchar NOT NULL,
   description varchar,
-	link varchar NOT NULL
+	link varchar NOT NULL,
+	color varchar NOT NULL,
+	picture varchar
 );
 
 CREATE TABLE CurriculumUtil (

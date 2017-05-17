@@ -10,7 +10,7 @@
 			<div id = "alert_placeholder"></div>
 		</div>
     <% for(var i=0; i<data.length; i++) { %>
-			<div class="w3-card-4" onclick="location.href='http://<%= data[i].link %>';" >
+			<div class="w3-card-4" onclick="location.href='<%= data[i].link %>';" >
 				<% if(!data[i].picture){ %>
 					<div class="card-image opt-image" style="background-color:<%= data[i].color %>">
 					</div>

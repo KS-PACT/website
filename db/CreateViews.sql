@@ -5,8 +5,8 @@ CREATE VIEW Hardware_Item_View AS
 		ON h.id = r.item_id;
 		
 CREATE VIEW Hardware_Processing_View AS
-	SELECT *
+	SELECT h.serial_num, h.name, h.description, h.color, h.picture, r.id, r.user_id, r.item_id, r.checked_out, r.return
 	FROM HardwareResource h
 	JOIN ResourceRequest r
 		ON h.id = r.item_id
-	WHERE r.status == 'Processing';
+	WHERE r.status = 'Processing';

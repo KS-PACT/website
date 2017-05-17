@@ -84,7 +84,9 @@ CREATE TABLE HardwareResource (
 	id serial PRIMARY KEY,
 	serial_num varchar,
   name varchar,
-  description varchar
+  description varchar,
+	color varchar NOT NULL,
+	picture varchar
 );
 
 CREATE TABLE ResourceRequest (

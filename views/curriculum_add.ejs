@@ -37,10 +37,12 @@
 		<script type="text/javascript">
 			// Send data to server functions
 			function addCurriculumUtil() {
+				var color = '#'+Math.floor(Math.random()*16777215).toString(16);
+			
 				$.ajax({
 					type: 'post',
 					url: '/curriculum_add',
-					data: { 'action': 'add', 'name': $("#name").val(), 'description': $("#description").val(), 'link': $("#link").val() },
+					data: { 'action': 'add', 'name': $("#name").val(), 'description': $("#description").val(), 'link': $("#link").val(), 'color': color },
 					dataType: "json",
 					success: function (data) {
 						console.log("Status: ", data.status);

@@ -284,6 +284,13 @@ app.post('/software_add', function(req, res){
 	}
 });
 
+app.get('/software_edit', function(req, res){
+  db.any("select * from softwareresource")
+    .then(data => {
+      res.render('software_edit', {data: data});
+    });
+});
+
 app.get('/curriculum', function(req, res){
   db.any("select * from curriculumutil")
     .then(data => {

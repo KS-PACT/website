@@ -303,6 +303,13 @@ app.post('/curriculum', function(req, res){
 	}
 });
 
+app.get('/curriculum_edit', function(req, res){
+  db.any("select * from curriculumutil")
+    .then(data => {
+      res.render('curriculum_edit', {data: data});
+    });
+});
+
 app.get('/curriculum_add', checkAdmin, function(req, res){
   res.render('curriculum_add');
 });

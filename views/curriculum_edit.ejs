@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Edit Curriculum</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+  </head>
+  <body>
+    <%- include header.ejs %>
+		<div class="container">
+			<div class="main-card">
+				<form>
+					<div class="form-group row">
+						<label for="name" class="col-sm-2 col-form-label">Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="name" name="givenName" value="<%= data[0].name %>" disabled>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="description" class="col-sm-2 col-form-label">Description</label>
+						<div class="col-sm-10">
+							<textarea class="span6" rows="3" id="description" required disabled><%= data[0].description %></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="color" class="col-sm-2 col-form-label">Color</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="color" name="givenName" value="<%= data[0].color %>" disabled>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="inputPic" class="col-sm-2 col-form-label">Picture</label>
+						<div class="col-sm-10">
+							<label class="custom-file">
+								<input type="file" id="inputPic" class="custom-file-input" value="<%= data[0].picture %>" disabled>
+								<span class="custom-file-control"></span>
+							</label>
+						</div>
+					</div>
+					<button class="btn btn-primary" type="button" id="update-btn">
+						Update
+					</button>
+					<button class="btn btn-primary" type="button" id="reset-btn" style="display:none">
+						Reset
+					</button>
+					<button class="btn btn-primary" type="button" id="save-btn" style="display:none">
+						Save
+					</button>
+				</form>
+			</div>
+		</div>
+		
+		<script>
+			// Send data to server functions
+			function updateProfile() {
+				console.log("Before send profile data");
+				
+				$.ajax({
+					type: 'post',
+					url: '/profile',
+					data: { 'action': 'update',
+									'first_name': $('#inputFirstName').val(),
+									'last_name': $('#inputLastName').val(),
+									'email': $('#inputEmail').val(),
+									'username': $('#inputUsername').val(),
+									'school': $('#inputSchool').val(),
+									'bio': $('#inputBio').val(),
+									'grade': $('#inputGrade').val(),
+									'picture': $('#inputPic').val() },
+					dataType: "json",
+					success: function (data) {
+						console.log(data.status);
+						location.reload();
+					},
+					error: function (xhr, status, err) {
+						console.error('text status '+status+', err '+err);
+					}
+				});
+				console.log("After send profile data");
+			}
+			
+			// Update whether fields are enabled or not
+			function enableAllFields() {
+				$('#inputFirstName').prop("disabled", false);
+				$('#inputLastName').prop("disabled", false);
+				$('#inputEmail').prop("disabled", false);
+				$('#inputUsername').prop("disabled", false);
+				$('#inputSchool').prop("disabled", false);
+				$('#inputBio').prop("disabled", false);
+				$('#inputGrade').prop("disabled", false);
+				$('#inputPic').prop("disabled", false);
+			}
+		
+			// Handle on click events
+			$('#update-btn').on('click', function() {
+				enableAllFields();
+				
+				$('#update-btn').hide();
+				$('#reset-btn').show();
+				$('#save-btn').show();
+			});
+			
+			$('#reset-btn').on('click', function() {
+				location.reload();
+			});
+			
+			$('#save-btn').on('click', function() {
+				console.log("Save profile button");
+				
+				updateProfile();
+			});
+		</script>
+  </body>
+</html>

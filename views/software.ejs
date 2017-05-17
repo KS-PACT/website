@@ -11,8 +11,14 @@
 		</div>
 		<% for(var i=0; i<data.length; i++) { %>
 			<div class="w3-card-4" onclick="location.href='http://<%= data[i].link %>';" >
-				<div class="card-image opt-image" style="background-color:blue">
-				</div>
+				<% if(!data[i].picture){ %>
+					<div class="card-image opt-image" style="background-color:<%= data[i].color %>">
+					</div>
+				<% } else { %>
+					<div class="card-image opt-image">
+						<img src=<%= data[i].picture %> />
+					</div>
+				<% } %>
 				<div class="w3-container w3-left">
 					<h3><%= data[i].name %></h3>
 				</div>

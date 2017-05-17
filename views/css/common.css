@@ -1,5 +1,5 @@
 body {
-	background-color: #DDF1EA;
+	background-color: var(--body-color);
 	margin:0px auto;
 }
 
@@ -101,7 +101,7 @@ h1 {
 
 /* -- Header -- */
 .header {
-	background-color: var(--normal-option-back-color);
+	background-color: var(--header-color);
 }
 
 #logo {
@@ -135,7 +135,7 @@ h1 {
 	padding: 0;
 	list-style-type: none;
 	overflow: hidden;
-	background-color: var(--normal-option-back-color);
+	background-color: var(--header-color);
 	float: right;
 }
 
@@ -150,7 +150,7 @@ h1 {
 	text-align: center;
 	padding: 12px 15px;
 	text-decoration: none;
-	background-color: var(--normal-option-back-color);
+	background-color: var(--header-color);
 	box-shadow:none;
 }
 
@@ -196,6 +196,7 @@ h1 {
 /* -- Constants -- */
 :root {
   --dropdown-content-back-color: #ebebfa;
-  --active-option-back-color: #191966;
-  --normal-option-back-color: #265493;
+  --active-option-back-color: #228b22;
+  --header-color: #276d27;
+	--body-color: #f3f5f6;
 }

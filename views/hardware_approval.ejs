@@ -52,7 +52,7 @@
 			function sendUserRequestDecline(id) {
 				$.ajax({
 					type: 'post',
-					url: '/member_approval',
+					url: '/hardware_approval',
 					data: { 'action': 'decline', 'id': id },
 					dataType: "json",
 					success: function (data) {

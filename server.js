@@ -231,6 +231,27 @@ app.get('/hardware_approval', checkAdmin, function(req, res){
     });
 });
 
+app.post('/hardware_approval', function(req, res){
+	console.log(req.body.action);
+  if(req.body.action == "approve") {
+		console.log("Approve user request");
+		db.any("update resourcerequest set status = 'Confirmed' where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "decline") {
+		console.log("Decline user request");
+		db.any("update webuser set status = 'Closed' where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});
+
 app.get('/hardware_request', checkMember, function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {

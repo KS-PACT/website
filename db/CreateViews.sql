@@ -3,3 +3,10 @@ CREATE VIEW Hardware_Item_View AS
 	FROM HardwareResource h
 	JOIN ResourceRequest r
 		ON h.id = r.item_id;
+		
+CREATE VIEW Hardware_Processing_View AS
+	SELECT *
+	FROM HardwareResource h
+	JOIN ResourceRequest r
+		ON h.id = r.item_id
+	WHERE r.status == 'Processing';

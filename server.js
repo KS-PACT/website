@@ -270,10 +270,11 @@ app.get('/software_add', checkAdmin, function(req, res){
 
 app.post('/software_add', function(req, res){
 	if(req.body.action == "add") {
-		db.any("insert into softwareresource (name, description, link) values ($1, $2, $3)",
+		db.any("insert into softwareresource (name, description, link, color, picture) values ($1, $2, $3, $4, NULL)",
 			[req.body.name,
 			req.body.description,
-			req.body.link])
+			req.body.link,
+			req.body.color])
     .then(data => {
 			res.json({'status': 'Success'});
     });

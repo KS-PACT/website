@@ -75,7 +75,9 @@ CREATE TABLE CurriculumUtil (
 	id serial PRIMARY KEY,
   name varchar NOT NULL,
   description varchar NOT NULL,
-	link varchar NOT NULL
+	link varchar NOT NULL,
+	color varchar NOT NULL,
+	picture varchar
 );
 
 CREATE TABLE HardwareResource (

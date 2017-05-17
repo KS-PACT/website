@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Forum</title>
-    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/forum.css" />
   </head>
   <body>
     <%- include header.ejs %>
-		<% for(var i=0; i<data.length; i++) { %>
+		<!-- <% for(var i=0; i<data.length; i++) { %>
 			<div class='forum-card'>
 				<p>
 					<%= data[i].user_id %>
@@ -21,6 +21,30 @@
 					<%= data[i].content %>
 				</p>
 			</div>
-    <% } %>
+    <% } %> -->
+		<section class="container">
+			<section class="row clearfix">
+				<section class="col-md-12 column">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<div class="panel panel-default title-panel">
+								<% for(var i=0; i<data.length; i++) { %>
+									<section class="row panel-body">
+										<%= data[i].title %>
+										<hr>
+									</section>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				</section>
+			</section>
+		</section>
+		
+		<script>
+			$('#replyLink').on('click', function() {
+				$('.reply-box').show();
+			});
+		</script>
   </body>
 </html>

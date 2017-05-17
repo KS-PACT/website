@@ -1,0 +1,54 @@
+section.panel-title{
+	padding:15px;
+	padding-top:0;
+}
+
+#user-description{
+	height:100%; 
+	margin:10px auto;
+	text-align:center;
+}
+
+figure img{
+	display :inline !important;
+}
+
+h4.online:before{
+  background-color:green;
+	height:10px;
+	width:10px;
+	border: 2px solid #11f464;
+}
+
+dd{
+	margin-left:2% !important;
+}
+    
+.panel-footer{
+    width:100%;
+  	min-height:40px;
+}
+
+#reply-options, #send-options {
+	text-align: right;
+	padding-right: 10px;
+}
+
+section.row.panel-body.reply-box {
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.replyText {
+	height: 100%;
+	width: 97%;
+	margin: 10px;
+}
+
+.reply-form .row {
+	margin: 0px;
+}
+
+.title-panel hr {
+	margin: 0px;
+}

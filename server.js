@@ -328,6 +328,13 @@ app.get('/forum', function(req, res){
     });
 });
 
+app.get('/forum_entry', function(req, res){
+  db.any("select * from forums join comment on forums.id = comment.forum_id")
+    .then(data => {
+      res.render('forum_entry', {data: data});
+    });
+});
+
 app.get('/about', function(req, res){
 	res.render('about');
 });

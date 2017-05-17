@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Forum</title>
+    <link rel="stylesheet" type="text/css" href="/css/forum.css" />
+  </head>
+  <body>
+    <%- include header.ejs %>
+		<!-- <% for(var i=0; i<data.length; i++) { %>
+			<div class='forum-card'>
+				<p>
+					<%= data[i].user_id %>
+				</p>
+				<p>
+					<%= data[i].title %>
+				</p>
+				<p>
+					<%= data[i].forum_body %>
+				</p>
+				<p>
+					<%= data[i].content %>
+				</p>
+			</div>
+    <% } %> -->
+		<section class="container">
+			<section class="row clearfix">
+				<section class="col-md-12 column">
+					<ol class="breadcrumb">
+						<li><a href="#">Forum</a></li>
+						<li><a href="#">Web design</a></li>
+						<li class="active">Help me in this code? </li>
+					</ol>
+				</section>
+			</section>
+			<section class="row clearfix">
+				<section class="col-md-12 column">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<section class="panel-title">
+										<time class="pull-right">
+											<i class="fa fa-calendar"></i> 2014-09-15 , <i class="fa fa-clock-o"></i> 1:35 pm
+										</time>
+										<section class="pull-left" id="id">
+											<abbr title="count of posts in this topic">#1</abbr>
+										</section>
+									</section>
+								</div>
+								
+								<section id="user-description" class="col-md-3 ">
+									<section class="well">
+										<figure>
+											<img class="img-rounded img-responsive" src="http://www.webdesignforums.net/img/wdf_avatar.jpg" alt="Mohammad Sharifi's avatar">
+										</figure>
+										MOHAMMAD SHARIFI
+									</section>
+								</section>
+								<section class="row panel-body">
+									<section class="col-md-9">
+										<h2>
+											Whats the name of the element of this website?
+										</h2>
+										<hr>
+										Hi, I'm wondering whats the name of the element that appaers in this website: Startupbus
+
+										Im talking about the images that remain static in the back and change everytime a new section is reached.
+
+										Is there a framework that does this?
+
+										Thank you for helping 
+									</section>
+								</section>
+								<div class="panel-footer">
+									<div class="row" id="reply-options">
+										<i class="fa fa-mail-reply "></i><a href="#" id="replyLink"> Reply </a>
+									</div>
+								</div>
+								<section class="row panel-body reply-box" style="display:none">
+									<form class="reply-form">
+										<div class="form-group row">
+											<textarea class="replyText" rows="3" placeholder="Comment" id="replyText" required></textarea>
+										</div>
+										<div class="panel-footer">
+											<div class="row" id="send-options">
+												<i class="fa fa-paper-plane-o" aria-hidden="true"></i><a href="#" id="sendLink"> Send </a>
+											</div>
+										</div>
+									</form>
+								</section>
+							</div>
+						</div>
+					</div>
+				</section>
+			</section>
+		</section>
+		
+		<script>
+			$('#replyLink').on('click', function() {
+				$('.reply-box').show();
+			});
+		</script>
+  </body>
+</html>

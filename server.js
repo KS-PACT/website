@@ -159,7 +159,7 @@ app.get('/member_approval', checkAdmin, function(req, res){
     });
 });
 
-app.post('/member_approval', function(req, res){
+app.post('/member_approval', checkAdmin, function(req, res){
 	console.log(req.body.action);
   if(req.body.action == "approve") {
 		console.log("Approve user request");

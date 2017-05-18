@@ -204,7 +204,7 @@ app.get('/hardware_add', checkAdmin, function(req, res){
 	res.render('hardware_add');
 });
 
-app.post('/hardware_add', function(req, res){
+app.post('/hardware_add', checkAdmin, function(req, res){
 	if(req.body.action == "add") {
 		console.log("Add action called");
 		console.log("Serial Number: ", req.body.serial_num);

@@ -26,50 +26,6 @@
 			<% } %>
 		</div>
 
-		<script>
-			// Send data to server functions
-			function sendUserRequestAccept(id) {
-				$.ajax({
-					type: 'post',
-					url: '/member_approval',
-					data: { 'action': 'approve', 'id': id },
-					dataType: "json",
-					success: function (data) {
-						console.log(data.status);
-					},
-					error: function (xhr, status, err) {
-						console.error('text status '+status+', err '+err);
-					}
-				});
-			}
-
-			function sendUserRequestDecline(id) {
-				$.ajax({
-					type: 'post',
-					url: '/member_approval',
-					data: { 'action': 'decline', 'id': id },
-					dataType: "json",
-					success: function (data) {
-						console.log(data.status);
-					},
-					error: function (xhr, status, err) {
-						console.error('text status '+status+', err '+err);
-					}
-				});
-			}
-
-			// Handle on click events for buttons
-			$('.btn.approve').on('click', function() {
-				console.log("Approve button clicked");
-				console.log($(this).data("id"));
-				sendUserRequestAccept($(this).data("id"));
-			});
-
-			$('.btn.decline').on('click', function() {
-				console.log("Decline button clicked");
-				console.log($(this).data("id"));
-				sendUserRequestDecline($(this).data("id"));
-			});
-		</script>
+		<script src="js/member_approval.js"></script>
   </body>
 </html>

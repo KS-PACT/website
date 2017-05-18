@@ -305,7 +305,7 @@ app.post('/software_add', checkAdmin, function(req, res){
 	}
 });
 
-app.get('/software_edit', function(req, res){
+app.get('/software_edit', checkAdmin, function(req, res){
   db.any("select * from softwareresource")
     .then(data => {
       res.render('software_edit', {data: data});

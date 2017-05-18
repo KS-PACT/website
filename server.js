@@ -289,7 +289,7 @@ app.get('/software_add', checkAdmin, function(req, res){
 	res.render('software_add');
 });
 
-app.post('/software_add', function(req, res){
+app.post('/software_add', checkAdmin, function(req, res){
 	if(req.body.action == "add") {
 		db.any("insert into softwareresource (name, description, link, color, picture) values ($1, $2, $3, $4, NULL)",
 			[req.body.name,

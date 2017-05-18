@@ -231,7 +231,7 @@ app.get('/hardware_approval', checkAdmin, function(req, res){
     });
 });
 
-app.post('/hardware_approval', function(req, res){
+app.post('/hardware_approval', checkAdmin, function(req, res){
 	console.log(req.body.action);
   if(req.body.action == "approve") {
 		console.log("Approve user request");

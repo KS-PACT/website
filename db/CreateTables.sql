@@ -85,7 +85,7 @@ CREATE TABLE HardwareResource (
 	serial_num varchar,
   name varchar,
   description varchar,
-	color varchar NOT NULL,
+	color varchar,
 	picture varchar
 );
 

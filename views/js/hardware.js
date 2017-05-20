@@ -1,4 +1,48 @@
-// Send data to server functions
+// Get user information from server
+function getHardwareInfo(id) {
+	$.ajax({
+		type: 'post',
+		url: '/hardware',
+		data: { 'action': 'get info', 'id': id },
+		dataType: "json",
+		success: function (data) {
+			$("#editSerialNum").val(data.info[0].serial_num);
+			$("#editName").val(data.info[0].name);
+			$("#editDescription").val(data.info[0].description);
+		},
+		error: function (xhr, status, err) {
+			console.error('text status '+status+', err '+err);
+		}
+	});
+}
+
+// Add hardware element to database
+function addHardware() {
+	$.ajax({
+		type: 'post',
+		url: '/hardware',
+		data: { 'action': 'add', 'serial_num': $("#addSerialNum").val(), 'name': $("#addName").val(), 'description': $("#addDescription").val() },
+		dataType: "json",
+		success: function (data) {
+			console.log("Status: ", data.status);
+			if(data.status == "Success") {
+				bootstrap_alert.success('You correctly added a hardware resource.');
+			}
+			else {
+				bootstrap_alert.error(data.status);
+			}
+			
+			$("#addSerialNum").val("");
+			$("#addName").val("");
+			$("#addDescription").val("");
+		},
+		error: function (xhr, status, err) {
+			console.error('text status '+status+', err '+err);
+		}
+	});
+}
+
+// Remove hardware element from database
 function removeHardware(id) {
 	$.ajax({
 		type: 'post',
@@ -30,7 +74,33 @@ bootstrap_alert.error = function(message) {
 }
 
 // Handle on click event functions
+$('.edit-hardware-card').on('click', function() {
+	getHardwareInfo($(this).data("id"));
+	
+	$("#editSerialNum").prop('disabled', true);
+	$("#editName").prop('disabled', true);
+	$("#editDescription").prop('disabled', true);
+	
+	$('#editHardwareModal').modal('show');
+});
+
+$('.add-hardware-card').on('click', function() {
+	$('#addHardwareModal').modal('show');
+});
+
 $('.remove-btn').on('click', function() {
-	console.log("Remove button was clicked");
+	// Ignore overarching action
+	event.cancelBubble = true;
+	if(event.stopPropagation) event.stopPropagation();
+	
 	removeHardware($(this).data("id"));
+});
+
+$('.add-submit-btn').on('click', function() {
+	console.log("Clicked submit button on new hardware form");
+	
+	// Close the modal
+	//$('#modal').modal('toggle');
+	
+	addHardware();
 });

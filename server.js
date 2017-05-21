@@ -277,6 +277,12 @@ app.post('/software', function(req, res){
 			res.json({'status': 'Success'});
     });
 	}
+	else if(req.body.action == "get info") {
+		db.any("select * from softwareresource where id = $1", [req.body.id])
+    .then(data => {
+      res.json({'status': 'Success', 'info': data});
+    });
+	}
 	else if(req.body.action == "remove") {
 		db.any("delete from softwareresource where id = $1", [req.body.id])
     .then(data => {
@@ -286,13 +292,6 @@ app.post('/software', function(req, res){
 	else {
 		res.json({'status': 'Something went wrong'});
 	}
-});
-
-app.get('/software_edit', checkAdmin, function(req, res){
-  db.any("select * from softwareresource")
-    .then(data => {
-      res.render('software_edit', {data: data});
-    });
 });
 
 app.get('/curriculum', function(req, res){

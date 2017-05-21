@@ -64,6 +64,40 @@ function removeHardware(id) {
 	});
 }
 
+// Update hardware on server
+function updateHardware() {
+	$.ajax({
+		type: 'post',
+		url: '/hardware',
+		data: { 'action': 'update',
+						'serial_num': $('#editSerialNum').val(),
+						'name': $('#editName').val(),
+						'description': $('#editDescription').val() },
+		dataType: "json",
+		success: function (data) {
+			console.log(data.status);
+			location.reload();
+		},
+		error: function (xhr, status, err) {
+			console.error('text status '+status+', err '+err);
+		}
+	});
+}
+
+// Enable all fields on edit modal
+function enableEditModalFields() {
+	$('#editSerialNum').prop('disabled', false);
+	$('#editName').prop('disabled', false);
+	$('#editDescription').prop('disabled', false);
+}
+
+// Disable all fields on edit modal
+function disableEditModalFields() {
+	$('#editSerialNum').prop('disabled', true);
+	$('#editName').prop('disabled', true);
+	$('#editDescription').prop('disabled', true);
+}
+
 // Handle notifications
 bootstrap_alert = function() {}
 bootstrap_alert.success = function(message) {
@@ -77,9 +111,7 @@ bootstrap_alert.error = function(message) {
 $('.edit-hardware-card').on('click', function() {
 	getHardwareInfo($(this).data("id"));
 	
-	$("#editSerialNum").prop('disabled', true);
-	$("#editName").prop('disabled', true);
-	$("#editDescription").prop('disabled', true);
+	disableEditModalFields();
 	
 	$('#editHardwareModal').modal('show');
 });
@@ -97,10 +129,22 @@ $('.remove-btn').on('click', function() {
 });
 
 $('.add-submit-btn').on('click', function() {
-	console.log("Clicked submit button on new hardware form");
-	
-	// Close the modal
-	//$('#modal').modal('toggle');
-	
 	addHardware();
+});
+
+// Handle on click events
+$('.update-btn').on('click', function() {
+	enableEditModalFields();
+	
+	$('.update-btn').hide();
+	$('.reset-btn').show();
+	$('.save-btn').show();
+});
+
+$('.reset-btn').on('click', function() {
+	location.reload();
+});
+
+$('.save-btn').on('click', function() {
+	updateHardware();
 });

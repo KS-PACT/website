@@ -267,28 +267,18 @@ app.get('/software', function(req, res){
 });
 
 app.post('/software', function(req, res){
-	if(req.body.action == "remove") {
-		db.any("delete from softwareresource where id = $1", [req.body.id])
-    .then(data => {
-			res.json({'status': 'Success'});
-    });
-	}
-	else {
-		res.json({'status': 'Something went wrong'});
-	}
-});
-
-app.get('/software_add', checkAdmin, function(req, res){
-	res.render('software_add');
-});
-
-app.post('/software_add', checkAdmin, function(req, res){
 	if(req.body.action == "add") {
 		db.any("insert into softwareresource (name, description, link, color, picture) values ($1, $2, $3, $4, NULL)",
 			[req.body.name,
 			req.body.description,
 			req.body.link,
 			req.body.color])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "remove") {
+		db.any("delete from softwareresource where id = $1", [req.body.id])
     .then(data => {
 			res.json({'status': 'Success'});
     });

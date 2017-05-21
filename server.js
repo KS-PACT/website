@@ -188,8 +188,6 @@ app.get('/hardware', function(req, res){
 });
 
 app.post('/hardware', function(req, res){
-	console.log("Got to server");
-	console.log(req.body.action);
 	if(req.body.action == "add") {
 		db.any("insert into hardwareresource (serial_num, name, description) values ($1, $2, $3)",
 			[req.body.serial_num,
@@ -202,7 +200,6 @@ app.post('/hardware', function(req, res){
 	else if(req.body.action == "get info") {
 		db.any("select * from hardwareresource where id = $1", [req.body.id])
     .then(data => {
-			console.log(data);
 			res.json({'status': 'Success', 'info': data});
     });
 	}

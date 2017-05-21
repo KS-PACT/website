@@ -189,33 +189,33 @@ app.get('/hardware', function(req, res){
 
 app.post('/hardware', function(req, res){
 	console.log("Got to server");
-	if(req.body.action == "remove") {
-		db.any("delete from hardwareresource where id = $1", [req.body.id])
-    .then(data => {
-			res.json({'status': 'Success'});
-    });
-	}
-	else {
-		res.json({'status': 'Something went wrong'});
-	}
-});
-
-app.get('/hardware_add', checkAdmin, function(req, res){
-	res.render('hardware_add');
-});
-
-app.post('/hardware_add', checkAdmin, function(req, res){
+	console.log(req.body.action);
 	if(req.body.action == "add") {
-		console.log("Add action called");
-		console.log("Serial Number: ", req.body.serial_num);
-		console.log("Name: ", req.body.name);
-		console.log("Description: ", req.body.description);
 		db.any("insert into hardwareresource (serial_num, name, description) values ($1, $2, $3)",
 			[req.body.serial_num,
 			req.body.name,
 			req.body.description])
     .then(data => {
-			console.log("Successful insertion");
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "get info") {
+		db.any("select * from hardwareresource where id = $1", [req.body.id])
+    .then(data => {
+			console.log(data);
+			res.json({'status': 'Success', 'info': data});
+    });
+	}
+	else if(req.body.action == "remove") {
+		db.any("delete from hardwareresource where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "update") {
+		db.any("update hardwareresource set serial_num = $2, name = $3, description = $4 where id = $1",
+			[req.session.user_id, req.body.serial_num, req.body.name, req.body.description])
+    .then(data => {
 			res.json({'status': 'Success'});
     });
 	}
@@ -256,13 +256,6 @@ app.get('/hardware_request', checkMember, function(req, res){
   db.any("select * from hardwareresource")
     .then(data => {
       res.render('hardware_request', {data: data});
-    });
-});
-
-app.get('/hardware_edit', checkAdmin, function(req, res){
-  db.any("select * from hardwareresource")
-    .then(data => {
-      res.render('hardware_edit', {data: data});
     });
 });
 

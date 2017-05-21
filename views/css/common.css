@@ -75,6 +75,10 @@ h1 {
 	margin-bottom: 10px;
 }
 
+.add-hardware-card, .add-software-card, .add-curriculum-card {
+	height: 365px;
+}
+
 /* Main card */
 .main-card {
 	background-color: white;

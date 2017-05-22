@@ -1,3 +1,5 @@
+var cur_hardware_id = -1;
+
 // Get user information from server
 function getHardwareInfo(id) {
 	$.ajax({
@@ -70,6 +72,7 @@ function updateHardware() {
 		type: 'post',
 		url: '/hardware',
 		data: { 'action': 'update',
+						'id': cur_hardware_id,
 						'serial_num': $('#editSerialNum').val(),
 						'name': $('#editName').val(),
 						'description': $('#editDescription').val() },
@@ -109,6 +112,8 @@ bootstrap_alert.error = function(message) {
 
 // Handle on click event functions
 $('.edit-hardware-card').on('click', function() {
+	cur_hardware_id = $(this).data("id");
+	
 	getHardwareInfo($(this).data("id"));
 	
 	disableEditModalFields();

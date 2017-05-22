@@ -211,7 +211,7 @@ app.post('/hardware', function(req, res){
 	}
 	else if(req.body.action == "update") {
 		db.any("update hardwareresource set serial_num = $2, name = $3, description = $4 where id = $1",
-			[req.session.user_id, req.body.serial_num, req.body.name, req.body.description])
+			[req.body.id, req.body.serial_num, req.body.name, req.body.description])
     .then(data => {
 			res.json({'status': 'Success'});
     });
@@ -287,7 +287,6 @@ app.post('/software', function(req, res){
     });
 	}
 	else if(req.body.action == "update") {
-		console.log("Software Item ID: " + req.body.id);
 		db.any("update softwareresource set name = $2, description = $3, link = $4 where id = $1",
 			[req.body.id, req.body.name, req.body.description, req.body.link])
     .then(data => {

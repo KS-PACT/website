@@ -10,7 +10,7 @@
 			<div id = "alert_placeholder"></div>
 		</div>
     <% for(var i=0; i<data.length; i++) { %>
-			<div class="w3-card-4" onclick="location.href='<%= data[i].link %>';" >
+			<div class="w3-card-4 edit-curriculum-card" data-id="<%= data[i].id %>">
 				<% if(!data[i].picture){ %>
 					<div class="card-image opt-image" style="background-color:<%= data[i].color %>">
 					</div>
@@ -39,6 +39,8 @@
 				</div>
 			</div>
 		<% } %>
+		
+		<%- include curriculum_edit_modal.ejs %>
 		
 		<%- include curriculum_add_modal.ejs %>
 		

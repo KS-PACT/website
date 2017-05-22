@@ -306,35 +306,31 @@ app.get('/curriculum', function(req, res){
 });
 
 app.post('/curriculum', function(req, res){
-	if(req.body.action == "remove") {
-		db.any("delete from curriculumutil where id = $1", [req.body.id])
-    .then(data => {
-			res.json({'status': 'Success'});
-    });
-	}
-	else {
-		res.json({'status': 'Something went wrong'});
-	}
-});
-
-app.get('/curriculum_edit', function(req, res){
-  db.any("select * from curriculumutil")
-    .then(data => {
-      res.render('curriculum_edit', {data: data});
-    });
-});
-
-app.get('/curriculum_add', checkAdmin, function(req, res){
-  res.render('curriculum_add');
-});
-
-app.post('/curriculum_add', checkAdmin, function(req, res){
 	if(req.body.action == "add") {
 		db.any("insert into curriculumutil (name, description, link, color, picture) values ($1, $2, $3, $4, NULL)",
 			[req.body.name,
 			req.body.description,
 			req.body.link,
 			req.body.color])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "get info") {
+		db.any("select * from curriculumutil where id = $1", [req.body.id])
+    .then(data => {
+      res.json({'status': 'Success', 'info': data});
+    });
+	}
+	else if(req.body.action == "remove") {
+		db.any("delete from curriculumutil where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "update") {
+		db.any("update curriculumutil set name = $2, description = $3, link = $4 where id = $1",
+			[req.body.id, req.body.name, req.body.description, req.body.link])
     .then(data => {
 			res.json({'status': 'Success'});
     });

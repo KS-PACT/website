@@ -7,7 +7,7 @@
 				<div id = "alert_placeholder"></div>
 			</div>
 			<% for(var i=0; i<data.length; i++) { %>
-				<div class="w3-card-4">
+				<div class="w3-card-4 view-member-card" data-id="<%= data[i].id %>">
 					<!-- Need to add logic to replace the default image if actual image exists. <%= data[i].picture %> -->
 					<div class="card-image">
 						<img src="images/defaults/profile_default.png" alt="Profile">
@@ -15,9 +15,6 @@
 					<div class="w3-container w3-left">
 						<h3><%= data[i].first_name %> <%= data[i].last_name %></h3>
 						<p><%= data[i].school %></p>
-            <button class="btn btn-primary get-info-btn" type="button" data-id="<%= data[i].id %>">
-							Get Info
-						</button>
 						<% if((priv == "Admin") && (data[i].privilege != "Admin")){ %>
 							<button class="btn btn-primary promote-btn" type="button" data-id="<%= data[i].id %>">
 								Promote to Admin
@@ -27,6 +24,8 @@
 				</div>
 			<% } %>
 		</div>
+		
+		<%- include members_view_modal.ejs %>
 		
 		<script src="js/members.js"></script>
   </body>

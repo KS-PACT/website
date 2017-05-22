@@ -1,13 +1,22 @@
 // Get user information from server
-function showUserProfile(id) {
+function getUserInfo(id) {
 	$.ajax({
 		type: 'post',
 		url: '/members',
-		data: { 'action': 'get profile', 'id': id },
+		data: { 'action': 'get info', 'id': id },
 		dataType: "json",
 		success: function (data) {
-			console.log(data.status);
-			console.log(data.member_info);
+			$("#viewFirstName").val(data.info[0].first_name);
+			$("#viewLastName").val(data.info[0].last_name);
+			$("#viewUsername").val(data.info[0].username);
+			$("#viewEmail").val(data.info[0].email);
+			$("#viewSchool").val(data.info[0].school);
+			$("#viewBio").val(data.info[0].bio);
+			if(!data.info[0].picture) {
+				$("#viewPicture").val(data.info[0].picture);
+			}
+			$("#viewGradeLevel").val(data.info[0].grade_level);
+			$("#viewPriv").val(data.info[0].privilege);
 		},
 		error: function (xhr, status, err) {
 			console.error('text status '+status+', err '+err);
@@ -36,6 +45,19 @@ function promoteUserToAdmin(id) {
 	});
 }
 
+// Disable all fields on edit modal
+function disableEditModalFields() {
+	$("#viewFirstName").prop('disabled', true);
+	$("#viewLastName").prop('disabled', true);
+	$("#viewUsername").prop('disabled', true);
+	$("#viewEmail").prop('disabled', true);
+	$("#viewSchool").prop('disabled', true);
+	$("#viewBio").prop('disabled', true);
+	$("#viewPicture").prop('disabled', true);
+	$("#viewGradeLevel").prop('disabled', true);
+	$("#viewPriv").prop('disabled', true);
+}
+
 // Handle notifications
 bootstrap_alert = function() {}
 bootstrap_alert.success = function(message) {
@@ -46,11 +68,19 @@ bootstrap_alert.error = function(message) {
 }
 
 // Handle on click events for buttons
-$('.get-info-btn').on('click', function() {
-	showUserProfile($(this).data("id"));
+$('.view-member-card').on('click', function() {
+	getUserInfo($(this).data("id"));
+	
+	disableEditModalFields();
+	
+	$('#viewMemberModal').modal('show');
 });
 
 // Handle on click events for buttons
-$('.promote-btn').on('click', function() {
+$('.promote-btn').on('click', function() {4
+	// Ignore overarching action
+	event.cancelBubble = true;
+	if(event.stopPropagation) event.stopPropagation();
+
 	promoteUserToAdmin($(this).data("id"));
 });

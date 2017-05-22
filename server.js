@@ -112,11 +112,11 @@ app.get('/members', function(req, res){
 });
 
 app.post('/members', function(req, res){
-	if(req.body.action == "get profile") {
+	if(req.body.action == "get info") {
 		db.any("select * from webuser where id = $1", [req.body.id])
     .then(data => {
 			console.log(data);
-			res.json({'status': 'Success', 'member_info': data});
+			res.json({'status': 'Success', 'info': data});
     });
 	}
 	else if(req.body.action == "promote") {

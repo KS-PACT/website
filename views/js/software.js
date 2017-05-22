@@ -1,3 +1,5 @@
+var cur_software_id = -1;
+
 // Add software element to database
 function addSoftware() {
 	var color = '#'+Math.floor(Math.random()*16777215).toString(16);
@@ -68,6 +70,7 @@ function updateSoftware() {
 		type: 'post',
 		url: '/software',
 		data: { 'action': 'update',
+						'id': cur_software_id,
 						'name': $('#editName').val(),
 						'description': $('#editDescription').val(),
 						'link': $('#editLink').val() },
@@ -127,9 +130,27 @@ $('.link-btn').on('click', function() {
 });
 
 $('.edit-software-card').on('click', function() {
+	cur_software_id = $(this).data("id");
+	
 	getSoftwareInfo($(this).data("id"));
 	
 	disableEditModalFields();
 	
 	$('#editSoftwareModal').modal('show');
+});
+
+$('.update-btn').on('click', function() {
+	enableEditModalFields();
+	
+	$('.update-btn').hide();
+	$('.reset-btn').show();
+	$('.save-btn').show();
+});
+
+$('.reset-btn').on('click', function() {
+	location.reload();
+});
+
+$('.save-btn').on('click', function() {
+	updateSoftware();
 });

@@ -286,6 +286,14 @@ app.post('/software', function(req, res){
 			res.json({'status': 'Success'});
     });
 	}
+	else if(req.body.action == "update") {
+		console.log("Software Item ID: " + req.body.id);
+		db.any("update softwareresource set name = $2, description = $3, link = $4 where id = $1",
+			[req.body.id, req.body.name, req.body.description, req.body.link])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
 	else {
 		res.json({'status': 'Something went wrong'});
 	}

@@ -22,13 +22,18 @@
 					<h3><%= data[i].name %></h3>
 					<p><%= data[i].serial_num %></p>
 				</div>
-				<% if(priv == 'Admin'){ %>
-					<div class="decision-buttons">
+				<div class="decision-buttons">
+					<% if((priv == 'Admin') || (priv == 'Member')){ %>
+						<button class="btn btn-success request-btn" type="button" data-id="<%= data[i].id %>">
+							Request
+						</button>
+					<% } %>
+					<% if(priv == 'Admin'){ %>
 						<button class="btn btn-danger remove-btn" type="button" data-id="<%= data[i].id %>">
 							Remove
 						</button>
-					</div>
-				<% } %>
+					<% } %>
+				</div>
 			</div>
     <% } %>
 		
@@ -40,6 +45,8 @@
 				</div>
 			</div>
 		<% } %>
+		
+		<%- include modals/hardware_request_modal.ejs %>
 		
 		<%- include modals/hardware_edit_modal.ejs %>
 		

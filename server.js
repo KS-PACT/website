@@ -5,6 +5,7 @@ const express = require('express');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var dateformat = require('dateformat');
 
 // Constants
 const PORT = 8080;
@@ -205,6 +206,13 @@ app.post('/hardware', function(req, res){
 	}
 	else if(req.body.action == "remove") {
 		db.any("delete from hardwareresource where id = $1", [req.body.id])
+    .then(data => {
+			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "request") {
+		db.any("insert into resourcerequest (user_id, item_id, checked_out, return, status) values ($1, $2, $3, $4, 'Processing')",
+			[req.session.user_id, req.body.id, dateformat(req.body.start, 'yyyy-mm-dd hh:MM:ss'), dateformat(req.body.end, 'yyyy-mm-dd hh:MM:ss')])
     .then(data => {
 			res.json({'status': 'Success'});
     });

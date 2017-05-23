@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>                       
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="requestHardwareModal" role="dialog">
+	<div class="modal-dialog">
+	
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Hardware</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group row">
+						<label for="requestStart" class="col-sm-2 col-form-label">Start</label>
+						<div class='col-md-10'>
+							<div class="form-group">
+								<div class='input-group date' id='datetimepicker6'>
+									<input type='text' class="form-control" id="requestStart" />
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="requestEnd" class="col-sm-2 col-form-label">End</label>
+						<div class='col-md-10'>
+							<div class="form-group">
+								<div class='input-group date' id='datetimepicker7'>
+									<input type='text' class="form-control" id="requestEnd" />
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-primary" type="button" id="request-submit-btn" data-dismiss="modal">
+						Request
+					</button>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<script src="../js/hardware_request.js"></script>

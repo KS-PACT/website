@@ -1,3 +1,5 @@
+var cur_hardware_id = -1;
+
 // Remove hardware element from database
 function removeHardware(id) {
 	$.ajax({

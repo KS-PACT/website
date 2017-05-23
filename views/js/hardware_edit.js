@@ -1,5 +1,3 @@
-var cur_hardware_id = -1;
-
 // Get user information from server
 function getHardwareInfo(id) {
 	$.ajax({

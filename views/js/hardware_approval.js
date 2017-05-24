@@ -81,6 +81,10 @@ $('.hardware-approval-card').on('click', function() {
 });
 
 $('.approve-btn').on('click', function() {
+	// Ignore overarching action
+	event.cancelBubble = true;
+	if(event.stopPropagation) event.stopPropagation();
+	
 	if(cur_hardware_id == -1) {
 		sendUserRequestAccept($(this).data("id"));
 	} else {
@@ -90,6 +94,10 @@ $('.approve-btn').on('click', function() {
 });
 
 $('.decline-btn').on('click', function() {
+	// Ignore overarching action
+	event.cancelBubble = true;
+	if(event.stopPropagation) event.stopPropagation();
+	
 	if(cur_hardware_id == -1) {
 		sendUserRequestDecline($(this).data("id"));
 	} else {

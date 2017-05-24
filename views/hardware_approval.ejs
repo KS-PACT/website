@@ -9,9 +9,12 @@
   </head>
   <body>
     <%- include header.ejs %>
+		<div class="container">
+			<div id = "alert_placeholder"></div>
+		</div>
 		<div class="content">
 			<% for(var i=0; i<data.length; i++) { %>
-				<div class="w3-card-4">
+				<div class="w3-card-4 hardware-approval-card"  data-id="<%= data[i].id %>">
 					<% if(!data[i].picture){ %>
 						<div class="card-image opt-image" style="background-color:<%= data[i].color %>">
 						</div>
@@ -24,14 +27,16 @@
 						<h3><%= data[i].name %></h3>
 						<p><%= data[i].serial_num %></p>
 						<div class="decision-buttons">
-							<button type="button" class="btn btn-success approve" data-id="<%= data[i].id %>">Accept</button>
-							<button type="button" class="btn btn-danger decline" data-id="<%= data[i].id %>">Decline</button>
+							<button type="button" class="btn btn-success approve-btn" data-id="<%= data[i].id %>">Accept</button>
+							<button type="button" class="btn btn-danger decline-btn" data-id="<%= data[i].id %>">Decline</button>
 						</div>
 					</div>
 				</div>
 			<% } %>
 		</div>
 
+		<%- include modals/hardware_approval_modal.ejs %>
+		
 		<script src="js/hardware_approval.js"></script>
   </body>
 </html>

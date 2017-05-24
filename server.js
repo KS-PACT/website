@@ -212,7 +212,7 @@ app.post('/hardware', function(req, res){
 	}
 	else if(req.body.action == "request") {
 		db.any("insert into resourcerequest (user_id, item_id, checked_out, return, status) values ($1, $2, $3, $4, 'Processing')",
-			[req.session.user_id, req.body.id, dateformat(req.body.start, 'yyyy-mm-dd hh:MM:ss'), dateformat(req.body.end, 'yyyy-mm-dd hh:MM:ss')])
+			[req.session.user_id, req.body.id, new Date(req.body.start), new Date(req.body.end)])
     .then(data => {
 			res.json({'status': 'Success'});
     });
@@ -239,17 +239,24 @@ app.get('/hardware_approval', checkAdmin, function(req, res){
 app.post('/hardware_approval', checkAdmin, function(req, res){
 	console.log(req.body.action);
   if(req.body.action == "approve") {
-		console.log("Approve user request");
 		db.any("update resourcerequest set status = 'Confirmed' where id = $1", [req.body.id])
     .then(data => {
 			res.json({'status': 'Success'});
     });
 	}
 	else if(req.body.action == "decline") {
-		console.log("Decline user request");
 		db.any("update webuser set status = 'Closed' where id = $1", [req.body.id])
     .then(data => {
 			res.json({'status': 'Success'});
+    });
+	}
+	else if(req.body.action == "get info") {
+		db.any("select item_name, item_serial_num, requestor_name, checked_out, return from Hardware_Request_Info_View where id = $1", [req.body.id])
+    .then(data => {
+			data[0].checked_out = dateformat(data[0].checked_out, 'mm/dd/yyyy hh:MM TT');
+			data[0].return = dateformat(data[0].return, 'mm/dd/yyyy hh:MM TT');
+
+			res.json({'status': 'Success', 'info': data});
     });
 	}
 	else {

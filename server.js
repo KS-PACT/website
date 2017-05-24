@@ -245,7 +245,7 @@ app.post('/hardware_approval', checkAdmin, function(req, res){
     });
 	}
 	else if(req.body.action == "decline") {
-		db.any("update webuser set status = 'Closed' where id = $1", [req.body.id])
+		db.any("update resourcerequest set status = 'Closed' where id = $1", [req.body.id])
     .then(data => {
 			res.json({'status': 'Success'});
     });

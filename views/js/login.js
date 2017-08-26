@@ -62,7 +62,7 @@ function sendSignUpRequest() {
 		'school': $("#signUpSchool").val(),
 		'bio': $("#signUpBio").val(),
 		'picture': $("#signUpPic").val(),
-		'grade': $("#signUpGrade").val()
+		'grade': '{ ' + $("#signUpGrade").val() + ' }'
 		};
 
 	$.ajax({

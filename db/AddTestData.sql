@@ -3,12 +3,12 @@ INSERT INTO WebUser (
 	first_name,
 	last_name,
 	username,
-  password,
+	password,
 	email,
 	school,
-  bio,
-  picture,
-  grade_level,
+	bio,
+	picture,
+	grade_level,
 	privilege,
 	status) VALUES (
 	'Josh',
@@ -19,7 +19,7 @@ INSERT INTO WebUser (
 	'Kansas State University',
 	NULL,
 	'blah',
-	'3rd',
+	'{ 3rd }',
 	'Admin',
 	'Confirmed'
 	);
@@ -27,12 +27,12 @@ INSERT INTO WebUser (
 	first_name,
 	last_name,
 	username,
-  password,
+	password,
 	email,
 	school,
-  bio,
-  picture,
-  grade_level,
+	bio,
+	picture,
+	grade_level,
 	privilege,
 	status) VALUES (
 	'Nathan',
@@ -43,7 +43,7 @@ INSERT INTO WebUser (
 	'K-State',
 	NULL,
 	'Hello World',
-	'5th',
+	'{ 5th, 6th }',
 	'Member',
 	'Confirmed'
 	);
@@ -51,12 +51,12 @@ INSERT INTO WebUser (
 	first_name,
 	last_name,
 	username,
-  password,
+	password,
 	email,
 	school,
-  bio,
-  picture,
-  grade_level,
+	bio,
+	picture,
+	grade_level,
 	privilege,
 	status) VALUES (
 	'Blahahahahahahahahahahahahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
@@ -67,7 +67,7 @@ INSERT INTO WebUser (
 	'Kansas Missouri Mississippi Colorado Hawaii Alaska California Maine Nebraska Arizona',
 	NULL,
 	'All of the wordssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
-	'College Prep',
+	'{ 1st, College Prep }',
 	'Admin',
 	'Confirmed'
 	);

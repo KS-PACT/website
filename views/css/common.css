@@ -12,6 +12,10 @@ h1 {
 	color: #512888;
 }
 
+fieldset {
+	padding-left: 25px;
+}
+
 /* -- Cards -- */
 /* Small cards */
 .w3-card-4 {

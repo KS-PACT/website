@@ -92,7 +92,7 @@ app.post('/login', function(req, res){
 			req.body.bio,
 			req.body.picture,
 			req.body.grade])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
     });
 	}

@@ -38,6 +38,72 @@ function sendLoginRequest() {
 	});
 }
 
+function getGradesList() {
+	var gradesList = [];
+
+	if($('#Kindergarden').is(':checked')) {
+		gradesList.push('Kindergarden');
+	}
+
+	if($('#1st').is(':checked')) {
+		gradesList.push('1st');
+	}
+
+	if($('#2nd').is(':checked')) {
+		gradesList.push('2nd');
+	}
+
+	if($('#3rd').is(':checked')) {
+		gradesList.push('3rd');
+	}
+
+	if($('#4th').is(':checked')) {
+		gradesList.push('4th');
+	}
+
+	if($('#5th').is(':checked')) {
+		gradesList.push('5th');
+	}
+
+	if($('#6th').is(':checked')) {
+		gradesList.push('6th');
+	}
+
+	if($('#7th').is(':checked')) {
+		gradesList.push('7th');
+	}
+
+	if($('#8th').is(':checked')) {
+		gradesList.push('8th');
+	}
+
+	if($('#9th').is(':checked')) {
+		gradesList.push('9th');
+	}
+
+	if($('#10th').is(':checked')) {
+		gradesList.push('10th');
+	}
+
+	if($('#11th').is(':checked')) {
+		gradesList.push('11th');
+	}
+
+	if($('#12th').is(':checked')) {
+		gradesList.push('12th');
+	}
+
+	if($('#CollegePrep').is(':checked')) {
+		gradesList.push('CollegePrep');
+	}
+
+	if($('#AP').is(':checked')) {
+		gradesList.push('AP');
+	}
+
+	return gradesList;
+}
+
 function sendSignUpRequest() {
 	// Make sure that the passwords are the same
 	if($("#signUpPassword").val() != $("#signUpConfirmPassword").val()) {
@@ -52,6 +118,9 @@ function sendSignUpRequest() {
 		console.log("Sign up password does not consist of javascript");
 	}
 
+	var startArray = '{';
+	var endArray = '}';
+
 	var signUpRequestData = {
 		'action': 'signup',
 		'first_name': $("#signUpFirstName").val(),
@@ -62,7 +131,7 @@ function sendSignUpRequest() {
 		'school': $("#signUpSchool").val(),
 		'bio': $("#signUpBio").val(),
 		'picture': $("#signUpPic").val(),
-		'grade': '{ ' + $("#signUpGrade").val() + ' }'
+		'grade': startArray.concat(getGradesList().join(", "), endArray)
 		};
 
 	$.ajax({

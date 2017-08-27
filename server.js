@@ -94,7 +94,10 @@ app.post('/login', function(req, res){
 			req.body.grade])
 		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else {
 		res.json({'status': 'Invalid action was requested'});

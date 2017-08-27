@@ -252,9 +252,12 @@ app.post('/hardware', function(req, res){
 	else if(req.body.action == "update") {
 		db.any("update hardwareresource set serial_num = $2, name = $3, description = $4 where id = $1",
 			[req.body.id, req.body.serial_num, req.body.name, req.body.description])
-    .then(data => {
-			res.json({'status': 'Success'});
-    });
+		.then(data => {
+				res.json({'status': 'Success'});
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else {
 		res.json({'status': 'Invalid action was requested'});

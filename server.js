@@ -127,8 +127,12 @@ app.post('/members', function(req, res){
 	}
 	else if(req.body.action == "promote") {
 		db.any("update webuser set privilege = 'Admin' where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
+		})
+		.catch(error => {
+			res.json({'status': 'Could not find user table'});
+		});
     });
 	}
 	else {

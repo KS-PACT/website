@@ -373,14 +373,14 @@ app.post('/software', function(req, res){
 		});
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid action was requested'});
 	}
 });
 
 app.get('/curriculum', function(req, res){
-  db.any("select * from curriculumutil")
+	db.any("select * from curriculumutil")
     .then(data => {
-      res.render('curriculum', {data: data, 'priv': req.session.priv});
+		res.render('curriculum', {data: data, 'priv': req.session.priv});
     });
 });
 
@@ -432,16 +432,22 @@ app.post('/curriculum', function(req, res){
 });
 
 app.get('/forum', function(req, res){
-  db.any("select * from forums join comment on forums.id = comment.forum_id")
+	db.any("select * from forums join comment on forums.id = comment.forum_id")
     .then(data => {
-      res.render('forum', {data: data});
+		res.render('forum', {data: data});
+    })
+	.catch(error => {
+		res.render('forum', {data: []});
     });
 });
 
 app.get('/forum_entry', function(req, res){
-  db.any("select * from forums join comment on forums.id = comment.forum_id")
+	db.any("select * from forums join comment on forums.id = comment.forum_id")
     .then(data => {
-      res.render('forum_entry', {data: data});
+		res.render('forum_entry', {data: data});
+    })
+	.catch(error => {
+		res.render('forum_entry', {data: []});
     });
 });
 
@@ -450,30 +456,32 @@ app.get('/about', function(req, res){
 });
 
 app.get('/profile', checkMember, function(req, res){
-  db.any("select * from webuser where id = $1", [req.session.user_id])
+	db.any("select * from webuser where id = $1", [req.session.user_id])
     .then(data => {
-			if(data.length == 1) {
-				console.log(data[0]);
-				res.render('profile', {data: data});
-			}
-			else {
-				res.render('profile', {data: []});
-			}
+		if(data.length == 1) {
+			res.render('profile', {data: data});
+		}
+		else {
+			res.render('profile', {data: []});
+		}
+    })
+	.catch(error => {
+		res.render('profile', {data: []});
     });
 });
 
 app.post('/profile', checkMember, function(req, res){
-	console.log("Show all the user info");
-	console.log(req.body);
 	if(req.body.action == "update") {
 		db.any("update webuser set first_name = $2, last_name = $3, email = $4, username = $5, school = $6, bio = $7, grade_level = $8, picture = $9 where id = $1",
 			[req.session.user_id, req.body.first_name, req.body.last_name, req.body.email, req.body.username, req.body.school, req.body.bio, req.body.grade, req.body.picture])
-    .then(data => {
-			console.log("DB has been updated");
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(data => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid action was requested'});
 	}
 });

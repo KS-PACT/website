@@ -214,9 +214,12 @@ app.post('/hardware', function(req, res){
 			[req.body.serial_num,
 			req.body.name,
 			req.body.description])
-    .then(data => {
-			res.json({'status': 'Success'});
-    });
+		.then(data => {
+				res.json({'status': 'Success'});
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "get info") {
 		db.any("select * from hardwareresource where id = $1", [req.body.id])

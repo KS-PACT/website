@@ -321,9 +321,12 @@ app.get('/hardware_request', checkMember, function(req, res){
 });
 
 app.get('/software', function(req, res){
-  db.any("select * from softwareresource")
+	db.any("select * from softwareresource")
     .then(data => {
-      res.render('software', {data: data, 'priv': req.session.priv});
+		res.render('software', {data: data, 'priv': req.session.priv});
+    })
+	.catch(error => {
+		res.render('software', {data: [], 'priv': req.session.priv});
     });
 });
 
@@ -334,28 +337,40 @@ app.post('/software', function(req, res){
 			req.body.description,
 			req.body.link,
 			req.body.color])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "get info") {
 		db.any("select * from softwareresource where id = $1", [req.body.id])
-    .then(data => {
-      res.json({'status': 'Success', 'info': data});
-    });
+		.then(data => {
+			res.json({'status': 'Success', 'info': data});
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query', 'info': []});
+		});
 	}
 	else if(req.body.action == "remove") {
 		db.any("delete from softwareresource where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "update") {
 		db.any("update softwareresource set name = $2, description = $3, link = $4 where id = $1",
 			[req.body.id, req.body.name, req.body.description, req.body.link])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else {
 		res.json({'status': 'Something went wrong'});

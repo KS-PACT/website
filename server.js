@@ -223,9 +223,12 @@ app.post('/hardware', function(req, res){
 	}
 	else if(req.body.action == "get info") {
 		db.any("select * from hardwareresource where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success', 'info': data});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query', 'info': []});
+		});
 	}
 	else if(req.body.action == "remove") {
 		db.any("delete from hardwareresource where id = $1", [req.body.id])

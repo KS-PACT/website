@@ -90,6 +90,10 @@ fieldset {
 	padding: 20px;
 }
 
+.main-card p {
+	white-space: normal;
+}
+
 .proceed_options {
 	text-align: center;
 	margin: 20px;

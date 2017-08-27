@@ -381,6 +381,9 @@ app.get('/curriculum', function(req, res){
 	db.any("select * from curriculumutil")
     .then(data => {
 		res.render('curriculum', {data: data, 'priv': req.session.priv});
+    })
+	.catch(error => {
+		res.render('curriculum', {data: [], 'priv': req.session.priv});
     });
 });
 

@@ -118,10 +118,12 @@ app.get('/members', function(req, res){
 app.post('/members', function(req, res){
 	if(req.body.action == "get info") {
 		db.any("select * from webuser where id = $1", [req.body.id])
-    .then(data => {
-			console.log(data);
+		.then(data => {
 			res.json({'status': 'Success', 'info': data});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Could not find user table', 'info': []});
+		});
 	}
 	else if(req.body.action == "promote") {
 		db.any("update webuser set privilege = 'Admin' where id = $1", [req.body.id])

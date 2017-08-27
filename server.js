@@ -265,34 +265,45 @@ app.post('/hardware', function(req, res){
 });
 
 app.get('/hardware_approval', checkAdmin, function(req, res){
-  db.any("select * from hardware_processing_view")
-    .then(data => {
-      res.render('hardware_approval', {data: data});
-    });
+	db.any("select * from hardware_processing_view")
+	.then(data => {
+		res.render('hardware_approval', {data: data});
+    })
+	.catch(error => {
+		res.render('hardware_approval', {data: []});
+	});
 });
 
 app.post('/hardware_approval', checkAdmin, function(req, res){
-	console.log(req.body.action);
-  if(req.body.action == "approve") {
+	if(req.body.action == "approve") {
 		db.any("update resourcerequest set status = 'Confirmed' where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "decline") {
 		db.any("update resourcerequest set status = 'Closed' where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "get info") {
 		db.any("select item_name, item_serial_num, requestor_name, checked_out, return from Hardware_Request_Info_View where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			data[0].checked_out = dateformat(data[0].checked_out, 'mm/dd/yyyy hh:MM TT');
 			data[0].return = dateformat(data[0].return, 'mm/dd/yyyy hh:MM TT');
 
 			res.json({'status': 'Success', 'info': data});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query', 'info': []});
+		});
 	}
 	else {
 		res.json({'status': 'Invalid action was requested'});

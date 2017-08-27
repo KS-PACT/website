@@ -6,6 +6,7 @@ var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var dateformat = require('dateformat');
+var pgp = require('pg-promise')();
 
 // Constants
 const PORT = 8080;
@@ -30,7 +31,6 @@ app.listen(PORT, function() {
 });
 
 // Create connection to database
-var pgp = require('pg-promise')();
 var cn = {
   host: 'localhost',
   port: 5432,

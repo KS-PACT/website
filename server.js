@@ -175,20 +175,23 @@ app.get('/member_approval', checkAdmin, function(req, res){
 });
 
 app.post('/member_approval', checkAdmin, function(req, res){
-	console.log(req.body.action);
-  if(req.body.action == "approve") {
-		console.log("Approve user request");
+	if(req.body.action == "approve") {
 		db.any("update webuser set status = 'Confirmed' where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "decline") {
-		console.log("Decline user request");
 		db.any("update webuser set status = 'Closed' where id = $1", [req.body.id])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else {
 		res.json({'status': 'Invalid action was requested'});

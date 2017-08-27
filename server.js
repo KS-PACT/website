@@ -78,7 +78,7 @@ app.post('/login', function(req, res){
 			}
 		})
 		.catch(error => {
-			res.json({'status': 'Could not find user table'});
+			res.json({'status': 'Something went wrong with the query'});
 		});
 	}
 	else if(req.body.action == "signup") {
@@ -122,7 +122,7 @@ app.post('/members', function(req, res){
 			res.json({'status': 'Success', 'info': data});
 		})
 		.catch(error => {
-			res.json({'status': 'Could not find user table', 'info': []});
+			res.json({'status': 'Something went wrong with the query', 'info': []});
 		});
 	}
 	else if(req.body.action == "promote") {
@@ -131,7 +131,7 @@ app.post('/members', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Could not find user table'});
+			res.json({'status': 'Something went wrong with the query'});
 		});
 	}
 	else {

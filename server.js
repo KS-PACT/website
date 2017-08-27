@@ -242,9 +242,12 @@ app.post('/hardware', function(req, res){
 	else if(req.body.action == "request") {
 		db.any("insert into resourcerequest (user_id, item_id, checked_out, return, status) values ($1, $2, $3, $4, 'Processing')",
 			[req.session.user_id, req.body.id, new Date(req.body.start), new Date(req.body.end)])
-    .then(data => {
+		.then(data => {
 			res.json({'status': 'Success'});
-    });
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "update") {
 		db.any("update hardwareresource set serial_num = $2, name = $3, description = $4 where id = $1",

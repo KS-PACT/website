@@ -311,9 +311,12 @@ app.post('/hardware_approval', checkAdmin, function(req, res){
 });
 
 app.get('/hardware_request', checkMember, function(req, res){
-  db.any("select * from hardwareresource")
-    .then(data => {
-      res.render('hardware_request', {data: data});
+	db.any("select * from hardwareresource")
+	.then(data => {
+		res.render('hardware_request', {data: data});
+    })
+	.catch(error => {
+		res.render('hardware_request', {data: []});
     });
 });
 

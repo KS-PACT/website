@@ -199,10 +199,13 @@ app.post('/member_approval', checkAdmin, function(req, res){
 });
 
 app.get('/hardware', function(req, res){
-  db.any("select * from hardwareresource")
-    .then(data => {
-      res.render('hardware', {data: data, 'priv': req.session.priv});
-    });
+	db.any("select * from hardwareresource")
+	.then(data => {
+		res.render('hardware', {data: data, 'priv': req.session.priv});
+    })
+	.catch(error => {
+		res.render('hardware', {data: [], 'priv': req.session.priv});
+	});
 });
 
 app.post('/hardware', function(req, res){

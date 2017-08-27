@@ -133,7 +133,6 @@ app.post('/members', function(req, res){
 		.catch(error => {
 			res.json({'status': 'Could not find user table'});
 		});
-    });
 	}
 	else {
 		res.json({'status': 'Something went wrong'});
@@ -165,8 +164,11 @@ var checkMember = function(req, res, next) {
 app.get('/member_approval', checkAdmin, function(req, res){
   db.any("select * from webuser where status = 'Processing'")
     .then(data => {
-			res.render('member_approval', {data: data});
-    });
+		res.render('member_approval', {data: data});
+    })
+	.catch(error => {
+		res.render('member_approval', {data: []});
+	});
 });
 
 app.post('/member_approval', checkAdmin, function(req, res){

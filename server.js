@@ -232,9 +232,12 @@ app.post('/hardware', function(req, res){
 	}
 	else if(req.body.action == "remove") {
 		db.any("delete from hardwareresource where id = $1", [req.body.id])
-    .then(data => {
-			res.json({'status': 'Success'});
-    });
+		.then(data => {
+				res.json({'status': 'Success'});
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
 	}
 	else if(req.body.action == "request") {
 		db.any("insert into resourcerequest (user_id, item_id, checked_out, return, status) values ($1, $2, $3, $4, 'Processing')",

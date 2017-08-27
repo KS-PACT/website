@@ -97,7 +97,7 @@ app.post('/login', function(req, res){
     });
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid action was requested'});
 	}
 });
 
@@ -135,7 +135,7 @@ app.post('/members', function(req, res){
 		});
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid action was requested'});
 	}
 });
 
@@ -188,7 +188,7 @@ app.post('/member_approval', checkAdmin, function(req, res){
     });
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid action was requested'});
 	}
 });
 
@@ -236,7 +236,7 @@ app.post('/hardware', function(req, res){
     });
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid action was requested'});
 	}
 });
 
@@ -271,7 +271,7 @@ app.post('/hardware_approval', checkAdmin, function(req, res){
     });
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid action was requested'});
 	}
 });
 

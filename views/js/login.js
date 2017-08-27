@@ -42,7 +42,7 @@ function getGradesList() {
 	var gradesList = [];
 
 	if($('#Kindergarden').is(':checked')) {
-		gradesList.push('Kindergarden');
+		gradesList.push('K');
 	}
 
 	if($('#1st').is(':checked')) {
@@ -94,7 +94,7 @@ function getGradesList() {
 	}
 
 	if($('#CollegePrep').is(':checked')) {
-		gradesList.push('CollegePrep');
+		gradesList.push('College Prep');
 	}
 
 	if($('#AP').is(':checked')) {

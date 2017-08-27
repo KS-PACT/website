@@ -42,91 +42,94 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="inputGrade" class="col-sm-2 col-form-label">Grade</label>
-						<div class="col-sm-10">
-							<select class="custom-select" id="inputGrade" disabled>
-								<% if(data[0].grade_level == '{Not Specified}') { %>
-									<option value='Not Specified' selected>Not Specified</option>
-								<% } else { %>
-									<option value='Not Specified'>Not Specified</option>
-								<% } %>
-								<% if(data[0].grade_level == '{K}') { %>
-									<option value='K' selected>Kindergarten</option>
-								<% } else { %>
-									<option value='K'>Kindergarten</option>
-								<% } %>
-								<% if(data[0].grade_level == '{1st}') { %>
-									<option value='1st' selected>1st</option>
-								<% } else { %>
-									<option value='1st'>1st</option>
-								<% } %>
-								<% if(data[0].grade_level == '{2nd}') { %>
-									<option value='2nd' selected>2nd</option>
-								<% } else { %>
-									<option value='2nd'>2nd</option>
-								<% } %>
-								<% if(data[0].grade_level == '{3rd}') { %>
-									<option value='3rd' selected>3rd</option>
-								<% } else { %>
-									<option value='3rd'>3rd</option>
-								<% } %>
-								<% if(data[0].grade_level == '{4th}') { %>
-									<option value='4th' selected>4th</option>
-								<% } else { %>
-									<option value='4th'>4th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{5th}') { %>
-									<option value='5th' selected>5th</option>
-								<% } else { %>
-									<option value='5th'>5th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{6th}') { %>
-									<option value='6th' selected>6th</option>
-								<% } else { %>
-									<option value='6th'>6th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{7th}') { %>
-									<option value='7th' selected>7th</option>
-								<% } else { %>
-									<option value='7th'>7th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{8th}') { %>
-									<option value='8th' selected>8th</option>
-								<% } else { %>
-									<option value='8th'>8th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{9th}') { %>
-									<option value='9th' selected>9th</option>
-								<% } else { %>
-									<option value='9th'>9th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{10th}') { %>
-									<option value='10th' selected>10th</option>
-								<% } else { %>
-									<option value='10th'>10th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{11th}') { %>
-									<option value='11th' selected>11th</option>
-								<% } else { %>
-									<option value='11th'>11th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{12th}') { %>
-									<option value='12th' selected>12th</option>
-								<% } else { %>
-									<option value='12th'>12th</option>
-								<% } %>
-								<% if(data[0].grade_level == '{College Prep}') { %>
-									<option value='College Prep' selected>College Prep</option>
-								<% } else { %>
-									<option value='College Prep'>College Prep</option>
-								<% } %>
-								<% if(data[0].grade_level == '{AP}') { %>
-									<option value='AP' selected>AP</option>
-								<% } else { %>
-									<option value='AP'>AP</option>
-								<% } %>
-							</select>
-						</div>
+						<label for="profileGrade" class="col-sm-2 col-form-label">Grade</label><br />
+						<fieldset id="inputGrade">
+							<table style="width:100%">
+								<tr>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('K'))) { %>
+										<td><input type="checkbox" id="Kindergarden" value='Kindergarden' checked />Kindergarden</td>
+									<% } else { %>
+										<td><input type="checkbox" id="Kindergarden" value='Kindergarden' />Kindergarden</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('1st'))) { %>
+										<td><input type="checkbox" id="1st" value='1st' checked />1st</td>
+									<% } else { %>
+										<td><input type="checkbox" id="1st" value='1st' />1st</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('2nd'))) { %>
+										<td><input type="checkbox" id="2nd" value='2nd' checked />2nd</td>
+									<% } else { %>
+										<td><input type="checkbox" id="2nd" value='2nd' />2nd</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('3rd'))) { %>
+										<td><input type="checkbox" id="3rd" value='3rd' checked />3rd</td>
+									<% } else { %>
+										<td><input type="checkbox" id="3rd" value='3rd' />3rd</td>
+									<% } %>
+								</tr>
+								<tr>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('4th'))) { %>
+										<td><input type="checkbox" id="4th" value='4th' checked />4th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="4th" value='4th' />4th</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('5th'))) { %>
+										<td><input type="checkbox" id="5th" value='5th' checked />5th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="5th" value='5th' />5th</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('6th'))) { %>
+										<td><input type="checkbox" id="6th" value='6th' checked />6th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="6th" value='6th' />6th</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('7th'))) { %>
+										<td><input type="checkbox" id="7th" value='7th' checked />7th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="7th" value='7th' />7th</td>
+									<% } %>
+								</tr>
+								<tr>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('8th'))) { %>
+										<td><input type="checkbox" id="8th" value='8th' checked />8th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="8th" value='8th' />8th</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('9th'))) { %>
+										<td><input type="checkbox" id="9th" value='9th' checked />9th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="9th" value='9th' />9th</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('10th'))) { %>
+										<td><input type="checkbox" id="10th" value='10th' checked />10th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="10th" value='10th' />10th</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('11th'))) { %>
+										<td><input type="checkbox" id="11th" value='11th' checked />11th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="11th" value='11th' />11th</td>
+									<% } %>
+								</tr>
+								<tr>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('12th'))) { %>
+										<td><input type="checkbox" id="12th" value='12th' checked />12th</td>
+									<% } else { %>
+										<td><input type="checkbox" id="12th" value='12th' />12th</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('College Prep'))) { %>
+										<td><input type="checkbox" id="CollegePrep" value='College Prep' checked />College Prep</td>
+									<% } else { %>
+										<td><input type="checkbox" id="CollegePrep" value='College Prep' />College Prep</td>
+									<% } %>
+									<% if((data[0].grade_level != null) && (data[0].grade_level.match('AP'))) { %>
+										<td><input type="checkbox" id="AP" value='AP' checked />AP</td>
+									<% } else { %>
+										<td><input type="checkbox" id="AP" value='AP' />AP</td>
+									<% } %>
+								</tr>
+							</table>
+						<fieldset>
 					</div>
 					<div class="form-group row">
 						<label for="inputPic" class="col-sm-2 col-form-label">Profile Picture</label>

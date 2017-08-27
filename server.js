@@ -377,6 +377,7 @@ app.get('/profile', checkMember, function(req, res){
   db.any("select * from webuser where id = $1", [req.session.user_id])
     .then(data => {
 			if(data.length == 1) {
+				console.log(data[0]);
 				res.render('profile', {data: data});
 			}
 			else {

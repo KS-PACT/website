@@ -1,5 +1,21 @@
 var cur_hardware_id = -1;
 
+function filterHardware() {
+    var input = document.getElementById('searchField');
+    var filter = input.value.toUpperCase();
+
+	$( ".edit-hardware-card" ).each(function() {
+		var cardContent = $( this ).context;
+		var cardName = cardContent.getElementsByTagName("h3")[0].innerHTML;
+
+		if (cardName.toUpperCase().indexOf(filter) > -1) {
+            cardContent.style.display = "";
+        } else {
+            cardContent.style.display = "none";
+        }
+	});
+}
+
 // Remove hardware element from database
 function removeHardware(id) {
 	$.ajax({

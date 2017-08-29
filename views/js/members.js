@@ -1,3 +1,19 @@
+function filterMembers() {
+    var input = document.getElementById('searchField');
+    var filter = input.value.toUpperCase();
+
+	$( ".view-member-card" ).each(function() {
+		var cardContent = $( this ).context;
+		var cardName = cardContent.getElementsByTagName("h3")[0].innerHTML;
+
+		if (cardName.toUpperCase().indexOf(filter) > -1) {
+            cardContent.style.display = "";
+        } else {
+            cardContent.style.display = "none";
+        }
+	});
+}
+
 // Send user promote message
 function promoteUserToAdmin(id) {
 	$.ajax({

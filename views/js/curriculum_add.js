@@ -27,7 +27,7 @@ function addCurriculumUtil() {
 }
 
 // Handle on click event functions
-$('.add-curriculum-card').on('click', function() {
+$('.add-curriculum').on('click', function() {
 	$('#addCurriculumModal').modal('show');
 });
 

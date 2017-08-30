@@ -8,9 +8,14 @@
     <%- include header.ejs %>
 		<div class="container">
 			<div id = "alert_placeholder"></div>
-			<input type="text" id="searchField" onkeyup="filterCurriculums()" placeholder="Search for names...">
+			<div id="interaction_bar">
+				<input type="text" id="searchField" onkeyup="filterCurriculums()" placeholder="Search for names...">
+				<% if(priv == 'Admin'){ %>
+					<button type="button" class="btn btn-success add-new add-curriculum">Add New Curriculum</button>
+				<% } %>
+			</div>
 		</div>
-    <% for(var i=0; i<data.length; i++) { %>
+		<% for(var i=0; i<data.length; i++) { %>
 			<div class="w3-card-4 edit-curriculum-card" data-id="<%= data[i].id %>">
 				<% if(!data[i].picture){ %>
 					<div class="card-image opt-image" style="background-color:<%= data[i].color %>">
@@ -30,14 +35,6 @@
 						</button>
 					</div>
 				<% } %>
-			</div>
-    <% } %>
-		
-		<% if(priv == 'Admin'){ %>
-			<div class="w3-card-4 add-curriculum-card">
-				<div class="card-image">
-					<img src="images/defaults/add_button.png" />
-				</div>
 			</div>
 		<% } %>
 		

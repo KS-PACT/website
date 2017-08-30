@@ -22,7 +22,7 @@ function addSoftware() {
 	});
 }
 
-$('.add-software-card').on('click', function() {
+$('.add-software').on('click', function() {
 	$('#addSoftwareModal').modal('show');
 });
 

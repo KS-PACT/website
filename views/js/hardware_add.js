@@ -24,7 +24,7 @@ function addHardware() {
 	});
 }
 
-$('.add-hardware-card').on('click', function() {
+$('.add-hardware').on('click', function() {
 	$('#addHardwareModal').modal('show');
 });
 

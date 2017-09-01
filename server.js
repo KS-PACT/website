@@ -54,11 +54,11 @@ app.get('/', function (req, res) {
 });
 
 app.get('/home', function (req, res) {
-  res.render('home');
+  res.render('home', {'priv': req.session.priv });
 });
 
 app.get('/login', function (req, res) {
-  res.render('login');
+  res.render('login', {'priv': req.session.priv });
 });
 
 app.post('/login', function(req, res){
@@ -437,35 +437,35 @@ app.post('/curriculum', function(req, res){
 app.get('/forum', function(req, res){
 	db.any("select * from forums join comment on forums.id = comment.forum_id")
     .then(data => {
-		res.render('forum', {data: data});
+		res.render('forum', {data: data, 'priv': req.session.priv});
     })
 	.catch(error => {
-		res.render('forum', {data: []});
+		res.render('forum', {data: [], 'priv': req.session.priv});
     });
 });
 
 app.get('/forum_entry', function(req, res){
 	db.any("select * from forums join comment on forums.id = comment.forum_id")
     .then(data => {
-		res.render('forum_entry', {data: data});
+		res.render('forum_entry', {data: data, 'priv': req.session.priv});
     })
 	.catch(error => {
-		res.render('forum_entry', {data: []});
+		res.render('forum_entry', {data: [], 'priv': req.session.priv});
     });
 });
 
 app.get('/about', function(req, res){
-	res.render('about');
+	res.render('about', {'priv': req.session.priv });
 });
 
 app.get('/profile', checkMember, function(req, res){
 	db.any("select * from webuser where id = $1", [req.session.user_id])
     .then(data => {
 		if(data.length == 1) {
-			res.render('profile', {data: data});
+			res.render('profile', {data: data, 'priv': req.session.priv});
 		}
 		else {
-			res.render('profile', {data: []});
+			res.render('profile', {data: [], 'priv': req.session.priv});
 		}
     })
 	.catch(error => {

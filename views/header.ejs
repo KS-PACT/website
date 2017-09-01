@@ -19,7 +19,9 @@
 					     <ul class="dropdown-menu">
 						      <li><a href="members">Members</a></li>
 						      <li><a href="forum">Forum</a></li>
-						      <li><a href="member_approval">Member Approval (admins)</a></li>
+							  <% if(priv == 'Admin'){ %>
+								<li><a href="member_approval">Member Approval</a></li>
+							  <% } %>
 					     </ul>
 				    </li>
 				    <li class="dropdown">

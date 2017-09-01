@@ -167,10 +167,10 @@ var checkMember = function(req, res, next) {
 app.get('/member_approval', checkAdmin, function(req, res){
   db.any("select * from webuser where status = 'Processing'")
     .then(data => {
-		res.render('member_approval', {data: data});
+		res.render('member_approval', {data: data, 'priv': req.session.priv});
     })
 	.catch(error => {
-		res.render('member_approval', {data: []});
+		res.render('member_approval', {data: [], 'priv': req.session.priv});
 	});
 });
 
@@ -267,10 +267,10 @@ app.post('/hardware', function(req, res){
 app.get('/hardware_approval', checkAdmin, function(req, res){
 	db.any("select * from hardware_processing_view")
 	.then(data => {
-		res.render('hardware_approval', {data: data});
+		res.render('hardware_approval', {data: data, 'priv': req.session.priv});
     })
 	.catch(error => {
-		res.render('hardware_approval', {data: []});
+		res.render('hardware_approval', {data: [], 'priv': req.session.priv});
 	});
 });
 
@@ -313,10 +313,10 @@ app.post('/hardware_approval', checkAdmin, function(req, res){
 app.get('/hardware_request', checkMember, function(req, res){
 	db.any("select * from hardwareresource")
 	.then(data => {
-		res.render('hardware_request', {data: data});
+		res.render('hardware_request', {data: data, 'priv': req.session.priv});
     })
 	.catch(error => {
-		res.render('hardware_request', {data: []});
+		res.render('hardware_request', {data: [], 'priv': req.session.priv});
     });
 });
 

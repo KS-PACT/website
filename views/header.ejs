@@ -29,7 +29,9 @@
 					     <ul class= "dropdown-menu">
 						      <li><a href="hardware">Hardware</a></li>
 						      <li><a href="hardware_request">Make a Request</a></li>
-						      <li><a href="hardware_approval">Request Approval (admins)</a></li>
+							  <% if(priv == 'Admin'){ %>
+								<li><a href="hardware_approval">Request Approval</a></li>
+							  <% } %>
 						      <li><a href="inventory_edit">Inventory Edit (admins)</a></li>
 					     </ul>
 				    </li>

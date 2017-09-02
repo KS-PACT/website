@@ -104,6 +104,12 @@ app.post('/login', function(req, res){
 	}
 });
 
+app.get('/signout', function (req, res) {
+	req.session.user_id = '';
+	req.session.priv = '';
+	res.render('home', {'priv': req.session.priv });
+});
+
 // Create different JS files for each page and then
 // use browserify or webpack to put them together in the end
 // This is for people whose computers aren't the best

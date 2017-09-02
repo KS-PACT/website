@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" id="myHardwareRequestsModal" role="dialog">
+	<div class="modal-dialog">
+	
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Hardware</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group row">
+						<label for="myRequestHardwareName" class="col-sm-2 col-form-label">Hardware Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="myRequestHardwareName" placeholder="Hardware Name" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="myRequestSerialNum" class="col-sm-2 col-form-label">Serial Number</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="myRequestSerialNum" placeholder="Serial Number" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="curRequestStart" class="col-sm-2 col-form-label">Start</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="curRequestStart" placeholder="Start" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="curRequestEnd" class="col-sm-2 col-form-label">End</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="curRequestEnd" placeholder="End" required>
+						</div>
+					</div>
+					<div class="decision-buttons">
+						<button type="button" class="btn btn-danger cancel-btn" data-dismiss="modal">
+							Cancel
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<script src="../js/my_hardware_requests_modal.js"></script>

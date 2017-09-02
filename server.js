@@ -498,3 +498,43 @@ app.post('/profile', checkMember, function(req, res){
 app.get('/dashboard', checkMember, function (req, res) {
 	res.render('dashboard', {'priv': req.session.priv });
 });
+
+app.get('/my_hardware_requests', checkAdmin, function(req, res){
+	console.log("Start my hardware requests page");
+	db.any("select * from hardware_processing_view where user_id = $1", [req.session.user_id])
+	.then(data => {
+		console.log("Got data");
+		res.render('my_hardware_requests', {data: data, 'priv': req.session.priv});
+	})
+	.catch(error => {
+		res.render('my_hardware_requests', {data: [], 'priv': req.session.priv});
+	});
+});
+
+app.post('/my_hardware_requests', checkAdmin, function(req, res){
+	console.log(req.body.action);
+	if(req.body.action == "cancel") {
+		db.any("update resourcerequest set status = 'Closed' where id = $1", [req.body.id])
+		.then(data => {
+			res.json({'status': 'Success'});
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
+	}
+	else if(req.body.action == "get info") {
+		db.any("select item_name, item_serial_num, requestor_name, checked_out, return from Hardware_Request_Info_View where id = $1", [req.body.id])
+		.then(data => {
+			data[0].checked_out = dateformat(data[0].checked_out, 'mm/dd/yyyy hh:MM TT');
+			data[0].return = dateformat(data[0].return, 'mm/dd/yyyy hh:MM TT');
+
+			res.json({'status': 'Success', 'info': data});
+		})
+		.catch(error => {
+			res.json({'status': 'Something went wrong with the query'});
+		});
+	}
+	else {
+		res.json({'status': 'Something went wrong'});
+	}
+});

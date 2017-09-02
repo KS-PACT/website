@@ -499,7 +499,7 @@ app.get('/dashboard', checkMember, function (req, res) {
 	res.render('dashboard', {'priv': req.session.priv });
 });
 
-app.get('/my_hardware_requests', checkAdmin, function(req, res){
+app.get('/my_hardware_requests', checkMember, function(req, res){
 	console.log("Start my hardware requests page");
 	db.any("select * from hardware_processing_view where user_id = $1", [req.session.user_id])
 	.then(data => {
@@ -511,7 +511,7 @@ app.get('/my_hardware_requests', checkAdmin, function(req, res){
 	});
 });
 
-app.post('/my_hardware_requests', checkAdmin, function(req, res){
+app.post('/my_hardware_requests', checkMember, function(req, res){
 	console.log(req.body.action);
 	if(req.body.action == "cancel") {
 		db.any("update resourcerequest set status = 'Closed' where id = $1", [req.body.id])

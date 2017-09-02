@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<title>My Stuff</title>
+		<link rel="stylesheet" type="text/css" href="/css/common.css" />
+	</head>
+	<body>
+		<%- include header.ejs %>
+		<div class="container">
+			<div id = "alert_placeholder"></div>
+		</div>
+			
+		<div class="w3-card-4" onclick="window.location.href='/profile';">
+			<div class="card-image opt-image">
+				<img src="images/dashboard/profile_card.png" />
+			</div>
+			<div class="w3-container w3-left">
+				<h3>Profile</h3>
+			</div>
+		</div>
+		<div class="w3-card-4 uncompleted-funct">
+			<div class="card-image opt-image">
+				<img src="images/dashboard/hardware_requests_card.png" />
+			</div>
+			<div class="w3-container w3-left">
+				<h3>My Hardware Requests</h3>
+			</div>
+		</div>
+		<div class="w3-card-4 uncompleted-funct">
+			<div class="card-image opt-image">
+				<img src="images/dashboard/trophy_card.png" />
+			</div>
+			<div class="w3-container w3-left">
+				<h3>Achievements</h3>
+			</div>
+		</div>
+
+		<script src="js/dashboard.js"></script>
+	</body>
+</html>

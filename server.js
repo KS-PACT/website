@@ -494,3 +494,7 @@ app.post('/profile', checkMember, function(req, res){
 		res.json({'status': 'Invalid action was requested'});
 	}
 });
+
+app.get('/dashboard', checkMember, function (req, res) {
+	res.render('dashboard', {'priv': req.session.priv });
+});

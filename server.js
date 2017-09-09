@@ -93,7 +93,24 @@ app.post('/login', function(req, res){
 			req.body.picture,
 			req.body.grade])
 		.then(data => {
-			res.json({'status': 'Success'});
+			db.any("select * from webuser where (username = $1 or email = $1) and password = $2",
+				[req.body.username, req.body.password])
+			.then(login_data => {
+				if(login_data.length == 0) {
+					res.json({'status': 'Username or password is not valid'});
+				}
+				else if (login_data.length > 1) {
+					res.json({'status': 'More than one user exists with that account'});
+				}
+				else {
+					req.session.user_id = login_data[0].id;
+					req.session.priv = login_data[0].privilege;
+					res.json({'status': 'Success'});
+				}
+			})
+			.catch(error => {
+				res.json({'status': 'Something went wrong with the query'});
+			});
 		})
 		.catch(error => {
 			res.json({'status': 'Something went wrong with the query'});

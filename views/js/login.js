@@ -140,9 +140,8 @@ function sendSignUpRequest() {
 		dataType: "json",
 		success: function (data) {
 			if(data.status == "Success") {
-				bootstrap_alert.success('You have signed up successfully.');
-			}
-			else {
+				window.location.href = "/dashboard";
+			} else {
 				bootstrap_alert.error(data.status);
 			}
 			clearSignUpData();

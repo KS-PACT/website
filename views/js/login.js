@@ -24,9 +24,8 @@ function sendLoginRequest() {
 		dataType: "json",
 		success: function (data) {
 			if(data.status == "Success") {
-				bootstrap_alert.success('You logged in correctly.');
-			}
-			else {
+				window.location.href = "/dashboard";
+			} else {
 				bootstrap_alert.error(data.status);
 			}
 			clearLoginData();

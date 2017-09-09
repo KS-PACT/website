@@ -177,7 +177,7 @@ var checkAdmin = function(req, res, next) {
 }
 
 var checkMember = function(req, res, next) {
-	console.log("Start admin check");
+	console.log("Start member or higher check");
 	console.log(req.session.priv);
 	if(req.session.priv == 'Member' || req.session.priv == 'Admin') {
 		next();

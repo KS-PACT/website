@@ -441,23 +441,11 @@ app.post('/curriculum', function(req, res){
 });
 
 app.get('/forum', function(req, res){
-	db.any("select * from forums join comment on forums.id = comment.forum_id")
-    .then(data => {
-		res.render('forum', {data: data, 'priv': req.session.priv});
-    })
-	.catch(error => {
-		res.render('forum', {data: [], 'priv': req.session.priv});
-    });
+	res.redirect('/home');
 });
 
 app.get('/forum_entry', function(req, res){
-	db.any("select * from forums join comment on forums.id = comment.forum_id")
-    .then(data => {
-		res.render('forum_entry', {data: data, 'priv': req.session.priv});
-    })
-	.catch(error => {
-		res.render('forum_entry', {data: [], 'priv': req.session.priv});
-    });
+	res.redirect('/home');
 });
 
 app.get('/about', function(req, res){

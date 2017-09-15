@@ -18,7 +18,8 @@ CREATE TYPE GRADE_ENUM AS ENUM (
 
 CREATE TYPE PRIVILEGE_ENUM AS ENUM (
 	'Admin',
-	'Member');
+	'Member',
+	'Pending Member');
 
 CREATE TYPE REQUEST_STATUS_ENUM AS ENUM (
 	'Processing',

@@ -82,7 +82,7 @@ app.post('/login', function(req, res){
 		});
 	}
 	else if(req.body.action == "signup") {
-		db.any("insert into webuser (first_name, last_name, email, username, password, school, bio, picture, grade_level, privilege, status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'Member', 'Processing')",
+		db.any("insert into webuser (first_name, last_name, email, username, password, school, bio, picture, grade_level, privilege, status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'Pending Member', 'Processing')",
 			[req.body.first_name,
 			req.body.last_name,
 			req.body.email,

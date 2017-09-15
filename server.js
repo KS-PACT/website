@@ -78,7 +78,7 @@ app.post('/login', function(req, res){
 			}
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong when trying to login'});
 		});
 	}
 	else if(req.body.action == "signup") {
@@ -109,15 +109,15 @@ app.post('/login', function(req, res){
 				}
 			})
 			.catch(error => {
-				res.json({'status': 'Something went wrong with the query'});
+				res.json({'status': 'Something went wrong when trying to login'});
 			});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong trying to sign up'});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid login action was requested'});
 	}
 });
 
@@ -148,7 +148,7 @@ app.post('/members', function(req, res){
 			res.json({'status': 'Success', 'info': data});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query', 'info': []});
+			res.json({'status': 'Something went wrong getting the details for the user', 'info': []});
 		});
 	}
 	else if(req.body.action == "promote") {
@@ -157,11 +157,11 @@ app.post('/members', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong when promoting the user'});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid member action was requested'});
 	}
 });
 
@@ -170,8 +170,7 @@ var checkAdmin = function(req, res, next) {
 	console.log(req.session.priv);
 	if(req.session.priv == 'Admin') {
 		next();
-	}
-	else {
+	} else {
 		res.redirect('/home');
 	}
 }
@@ -181,14 +180,13 @@ var checkMember = function(req, res, next) {
 	console.log(req.session.priv);
 	if(req.session.priv == 'Member' || req.session.priv == 'Admin') {
 		next();
-	}
-	else {
+	} else {
 		res.redirect('/home');
 	}
 }
 
 app.get('/member_approval', checkAdmin, function(req, res){
-  db.any("select * from webuser where status = 'Processing'")
+	db.any("select * from webuser where status = 'Processing'")
     .then(data => {
 		res.render('member_approval', {data: data, 'priv': req.session.priv});
     })
@@ -204,7 +202,7 @@ app.post('/member_approval', checkAdmin, function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong when trying to approve membership'});
 		});
 	}
 	else if(req.body.action == "decline") {
@@ -213,11 +211,11 @@ app.post('/member_approval', checkAdmin, function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong when trying to decline membership'});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid member_approval action was requested'});
 	}
 });
 
@@ -250,7 +248,7 @@ app.post('/hardware', function(req, res){
 			res.json({'status': 'Success', 'info': data});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query', 'info': []});
+			res.json({'status': 'Something went wrong trying to get the hardware info', 'info': []});
 		});
 	}
 	else if(req.body.action == "remove") {
@@ -259,7 +257,7 @@ app.post('/hardware', function(req, res){
 				res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong trying to remove the hardware'});
 		});
 	}
 	else if(req.body.action == "request") {
@@ -269,7 +267,7 @@ app.post('/hardware', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong when trying to request the hardware'});
 		});
 	}
 	else if(req.body.action == "update") {
@@ -279,11 +277,11 @@ app.post('/hardware', function(req, res){
 				res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong when trying to update the hardware item'});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid hardware action was requested'});
 	}
 });
 
@@ -304,7 +302,7 @@ app.post('/hardware_approval', checkAdmin, function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with approving the hardware request'});
 		});
 	}
 	else if(req.body.action == "decline") {
@@ -313,7 +311,7 @@ app.post('/hardware_approval', checkAdmin, function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with declining the hardware request'});
 		});
 	}
 	else if(req.body.action == "get info") {
@@ -325,11 +323,11 @@ app.post('/hardware_approval', checkAdmin, function(req, res){
 			res.json({'status': 'Success', 'info': data});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query', 'info': []});
+			res.json({'status': 'Something went wrong with getting the info for the hardware request', 'info': []});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid hardware_approval action was requested'});
 	}
 });
 
@@ -364,7 +362,7 @@ app.post('/software', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with adding the new piece of software'});
 		});
 	}
 	else if(req.body.action == "get info") {
@@ -373,7 +371,7 @@ app.post('/software', function(req, res){
 			res.json({'status': 'Success', 'info': data});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query', 'info': []});
+			res.json({'status': 'Something went wrong with getting the details for the software item', 'info': []});
 		});
 	}
 	else if(req.body.action == "remove") {
@@ -382,7 +380,7 @@ app.post('/software', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with removing the software item'});
 		});
 	}
 	else if(req.body.action == "update") {
@@ -392,11 +390,11 @@ app.post('/software', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with updating the software item'});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid software action was requested'});
 	}
 });
 
@@ -421,7 +419,7 @@ app.post('/curriculum', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with adding a new curriculum item'});
 		});
 	}
 	else if(req.body.action == "get info") {
@@ -430,7 +428,7 @@ app.post('/curriculum', function(req, res){
 		  res.json({'status': 'Success', 'info': data});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query', 'info': []});
+			res.json({'status': 'Something went wrong with getting the information for the curriculum item', 'info': []});
 		});
 	}
 	else if(req.body.action == "remove") {
@@ -439,7 +437,7 @@ app.post('/curriculum', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with removing the curriculum item'});
 		});
 	}
 	else if(req.body.action == "update") {
@@ -449,11 +447,11 @@ app.post('/curriculum', function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with updating the curriculum item'});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid curriculum action was requested'});
 	}
 });
 
@@ -492,11 +490,11 @@ app.post('/profile', checkMember, function(req, res){
 			res.json({'status': 'Success'});
 		})
 		.catch(data => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with updating the profile'});
 		});
 	}
 	else {
-		res.json({'status': 'Invalid action was requested'});
+		res.json({'status': 'Invalid profile action was requested'});
 	}
 });
 
@@ -517,14 +515,13 @@ app.get('/my_hardware_requests', checkMember, function(req, res){
 });
 
 app.post('/my_hardware_requests', checkMember, function(req, res){
-	console.log(req.body.action);
 	if(req.body.action == "cancel") {
 		db.any("update resourcerequest set status = 'Closed' where id = $1", [req.body.id])
 		.then(data => {
 			res.json({'status': 'Success'});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with canceling of the hardware request'});
 		});
 	}
 	else if(req.body.action == "get info") {
@@ -536,10 +533,10 @@ app.post('/my_hardware_requests', checkMember, function(req, res){
 			res.json({'status': 'Success', 'info': data});
 		})
 		.catch(error => {
-			res.json({'status': 'Something went wrong with the query'});
+			res.json({'status': 'Something went wrong with getting the info for the hardware request'});
 		});
 	}
 	else {
-		res.json({'status': 'Something went wrong'});
+		res.json({'status': 'Invalid my_hardware_requests action was requested'});
 	}
 });

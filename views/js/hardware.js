@@ -7,8 +7,10 @@ function filterHardware() {
 	$( ".edit-hardware-card" ).each(function() {
 		var cardContent = $( this ).context;
 		var cardName = cardContent.getElementsByTagName("h3")[0].innerHTML;
+		var cardDescription = cardContent.getElementsByTagName("p")[0].innerHTML;
 
-		if (cardName.toUpperCase().indexOf(filter) > -1) {
+		if ((cardName.toUpperCase().indexOf(filter) > -1) ||
+			(cardDescription.toUpperCase().indexOf(filter) > -1)) {
             cardContent.style.display = "";
         } else {
             cardContent.style.display = "none";

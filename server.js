@@ -124,7 +124,7 @@ app.post('/login', function(req, res){
 app.get('/signout', function (req, res) {
 	req.session.user_id = '';
 	req.session.priv = '';
-	res.render('home', {'priv': req.session.priv });
+	res.redirect('/home');
 });
 
 // Create different JS files for each page and then

@@ -82,3 +82,7 @@ $('.reset-btn').on('click', function() {
 $('.save-btn').on('click', function() {
 	updateCurriculum();
 });
+
+$(".modal").on("hidden.bs.modal", function () {
+    location.reload();
+});

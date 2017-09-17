@@ -25,6 +25,9 @@ fieldset {
 	display:inline-block;
 	margin: 10px;
 	max-height: 365px;
+	border-style: solid;
+ 	border-width: 1.5px;
+ 	border-color: #E8E5BB;
 }
 
 .w3-card-4:hover {

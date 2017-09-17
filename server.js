@@ -49,6 +49,25 @@ db.connect()
         console.log("ERROR:", error.message || error);
 });
 
+Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf())
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
+function getDates(startDate, stopDate) {
+	var dateArray = new Array();
+	var currentDate = startDate;
+	console.log("Start Date: " + startDate);
+	while (currentDate <= stopDate) {
+		console.log("Current Date: " + currentDate);
+		dateArray.push(currentDate)
+		currentDate = currentDate.addDays(1);
+	}
+
+	return dateArray;
+} 
+
 app.get('/', function (req, res) {
   res.redirect('/home');
 });
@@ -249,6 +268,21 @@ app.post('/hardware', function(req, res){
 		})
 		.catch(error => {
 			res.json({'status': 'Something went wrong trying to get the hardware info', 'info': []});
+		});
+	}
+	else if(req.body.action == "get disabled dates") {
+		db.any("select * from resourcerequest where item_id = $1", [req.body.item_id])
+		.then(data => {
+			var temp = [];
+			for(var i = 0; i < data.length; i++){
+				var dateArray = getDates(data[i].checked_out, data[i].return);
+				for (var j = 0; j < dateArray.length; j++ ) {
+					console.log(dateArray[j]);
+					temp.push(dateArray[j]);
+				}
+			}
+			
+			res.json({'status': 'Success', 'info': temp});
 		});
 	}
 	else if(req.body.action == "remove") {

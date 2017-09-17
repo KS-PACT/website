@@ -28,6 +28,46 @@
 							<input type="text" class="form-control" id="addLink" placeholder="Link" required>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label for="addRepDecision" class="col-sm-2 col-form-label">Representation Type</label>
+						<div class="col-sm-10">
+							<select class="custom-select" id="addRepDecision">
+								<option value='Generated Color'>Randomly generated color</option>
+								<option value='Selected Color'>Specific color</option>
+								<option value='Picture'>Picture</option>
+							</select>
+						</div>
+					</div>
+					<form class="generated-color-row" style="display:none">
+						<div class="form-group row">
+							<label for="addGeneratedColor" class="col-sm-2 col-form-label">Generated Color</label>
+							<div class="col-sm-5">
+								<div class="generated-color-div"></div>
+							</div>
+							<div class="col-sm-5">
+								<button type="button" class="btn btn-primary generate-color-btn">Generate Color</button>
+							</div>
+						</div>
+					</form>
+					<form class="selected-color-row" style="display:none">
+						<div class="form-group row">
+							<label for="addSelectedColor" class="col-sm-2 col-form-label">Select Color</label>
+							<div class="col-sm-10">
+								<input id="colorpicker">
+							</div>
+						</div>
+					</form>
+					<form class="picture-row" style="display:none">
+						<div class="form-group row">
+							<label for="addPic" class="col-sm-2 col-form-label">Select Picture</label>
+							<div class="col-sm-10">
+								<label class="custom-file">
+									<input type="file" id="addPic" class="custom-file-input">
+									<span class="custom-file-control"></span>
+								</label>
+							</div>
+						</div>
+					</form>
 					<button class="btn btn-primary add-submit-btn" type="button" data-dismiss="modal">
 						Submit
 					</button>

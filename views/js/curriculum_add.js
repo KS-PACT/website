@@ -26,6 +26,31 @@ function addCurriculumUtil() {
 	});
 }
 
+var color = "#f00";
+
+$("#colorpicker").spectrum({ //spectrum config
+	color: "#f00",
+	showPalette: true,
+	showInput: true,
+	showAlpha: true,
+	chooseText: "Pick",
+	cancelText: "X",
+	togglePaletteOnly: true,
+	showPaletteOnly: true,
+	togglePaletteMoreText: "More Colors...",
+	togglePaletteLessText: "Less Colors...",
+	palette: [
+		//color palettes for Spectrum
+	],
+	change: function(colorSelected) {
+			color = colorSelected.toHexString();
+	}
+});
+
+$('.pixel').click(function(){
+	$(this).css('background-color' , color);
+});
+
 // Handle on click event functions
 $('.add-curriculum').on('click', function() {
 	$('#addCurriculumModal').modal('show');
@@ -33,4 +58,20 @@ $('.add-curriculum').on('click', function() {
 
 $('.add-submit-btn').on('click', function() {
 	addCurriculumUtil();
+});
+
+$('#addRepDecision').on('click', function() {
+	if($('#addRepDecision').val() == 'Generated Color') {
+		$('.generated-color-row').show();
+		$('.selected-color-row').hide();
+		$('.picture-row').hide();
+	} else if ($('#addRepDecision').val() == 'Selected Color') {
+		$('.generated-color-row').hide();
+		$('.selected-color-row').show();
+		$('.picture-row').hide();
+	} else {
+		$('.generated-color-row').hide();
+		$('.selected-color-row').hide();
+		$('.picture-row').show();
+	}
 });

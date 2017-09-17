@@ -31,6 +31,11 @@ CREATE TYPE USER_STATUS_ENUM AS ENUM (
 	'Confirmed',
 	'Closed');
 
+CREATE TABLE Title (
+	id serial PRIMARY KEY,
+	name varchar NOT NULL
+);
+
 CREATE TABLE WebUser (
 	id serial PRIMARY KEY,
 	first_name varchar NOT NULL,
@@ -42,11 +47,12 @@ CREATE TABLE WebUser (
 	bio varchar,
 	picture varchar NOT NULL,
 	grade_level GRADE_ENUM ARRAY,
+	title int REFERENCES Title(id),
 	privilege PRIVILEGE_ENUM NOT NULL,
 	status USER_STATUS_ENUM NOT NULL
 );
 
-CREATE TABLE Forums (
+CREATE TABLE Forum (
 	id serial PRIMARY KEY,
 	user_id int REFERENCES webUser(id) NOT NULL,
 	date_time timestamp NOT NULL,
@@ -56,7 +62,7 @@ CREATE TABLE Forums (
 
 CREATE TABLE Comment (
 	id serial PRIMARY KEY,
-	forum_id int REFERENCES Forums(id) NOT NULL,
+	forum_id int REFERENCES Forum(id) NOT NULL,
 	comment_id int REFERENCES Comment(id),
 	user_id int REFERENCES webUser(id) NOT NULL,
 	date_time timestamp NOT NULL,

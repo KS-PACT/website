@@ -5,7 +5,7 @@ CREATE VIEW Hardware_Item_View AS
 		ON h.id = r.item_id;
 		
 CREATE VIEW Hardware_Processing_View AS
-	SELECT h.serial_num, h.name, h.description, h.color, h.picture, r.id, r.user_id, r.item_id, r.checked_out, r.return
+	SELECT h.serial_num, h.name, h.description, h.rep_decision, h.generated_color, h.selected_color, h.picture, r.id, r.user_id, r.item_id, r.checked_out, r.return
 	FROM HardwareResource h
 	JOIN ResourceRequest r
 		ON h.id = r.item_id

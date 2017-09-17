@@ -34,3 +34,19 @@ $('.add-curriculum').on('click', function() {
 $('.add-submit-btn').on('click', function() {
 	addCurriculumUtil();
 });
+
+$('#addRepDecision').on('click', function() {
+	if($('#addRepDecision').val() == 'Generated Color') {
+		$('.generated-color-row').show();
+		$('.selected-color-row').hide();
+		$('.picture-row').hide();
+	} else if ($('#addRepDecision').val() == 'Selected Color') {
+		$('.generated-color-row').hide();
+		$('.selected-color-row').show();
+		$('.picture-row').hide();
+	} else {
+		$('.generated-color-row').hide();
+		$('.selected-color-row').hide();
+		$('.picture-row').show();
+	}
+});

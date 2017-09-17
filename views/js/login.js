@@ -200,3 +200,15 @@ $('#login-btn').on('click', function() {
 $('#signup-btn').on('click', function() {
 	sendSignUpRequest();
 });
+
+$("#signUpRole").on('change', function() {
+	console.log("Changed signup role member field");
+	console.log($(this).context.value);
+    if ($(this).context.value == 'Teacher'){
+		console.log("Show the grade set");
+        $('#signUpGrade').show();
+    } else {
+		console.log("Hide the grade set");
+        $('#signUpGrade').hide();
+    }
+});

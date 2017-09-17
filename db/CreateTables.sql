@@ -31,6 +31,11 @@ CREATE TYPE USER_STATUS_ENUM AS ENUM (
 	'Confirmed',
 	'Closed');
 
+CREATE TYPE MEMBER_ROLE_ENUM AS ENUM (
+	'University Staff',
+	'Volunteer',
+	'Teacher');
+
 CREATE TABLE WebUser (
 	id serial PRIMARY KEY,
 	first_name varchar NOT NULL,
@@ -41,6 +46,7 @@ CREATE TABLE WebUser (
 	school varchar NOT NULL,
 	bio varchar,
 	picture varchar NOT NULL,
+	role MEMBER_ROLE_ENUM NOT NULL,
 	grade_level GRADE_ENUM ARRAY,
 	privilege PRIVILEGE_ENUM NOT NULL,
 	status USER_STATUS_ENUM NOT NULL

@@ -14,7 +14,7 @@
 							<li><a href="member_approval">Member Approval</a></li> 
 						</ul>
 					</li>
-				<% } else { %>
+				<% } else if(priv == 'Member') { %>
 					<li><a href="members">Members</a></li>
 				<% } %>
 				<% if(priv == 'Admin'){ %>

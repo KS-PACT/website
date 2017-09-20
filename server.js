@@ -131,7 +131,27 @@ app.get('/signout', function (req, res) {
 // use browserify or webpack to put them together in the end
 // This is for people whose computers aren't the best
 
-app.get('/members', function(req, res){
+var checkAdmin = function(req, res, next) {
+	console.log("Start admin check");
+	console.log(req.session.priv);
+	if(req.session.priv == 'Admin') {
+		next();
+	} else {
+		res.redirect('/home');
+	}
+}
+
+var checkMember = function(req, res, next) {
+	console.log("Start member or higher check");
+	console.log(req.session.priv);
+	if(req.session.priv == 'Member' || req.session.priv == 'Admin') {
+		next();
+	} else {
+		res.redirect('/home');
+	}
+}
+
+app.get('/members', checkMember, function(req, res){
   db.any("select * from webuser where status = 'Confirmed'")
     .then(data => {
 		res.render('members', {data: data, 'priv': req.session.priv });
@@ -141,7 +161,7 @@ app.get('/members', function(req, res){
 	});
 });
 
-app.post('/members', function(req, res){
+app.post('/members', checkMember, function(req, res){
 	if(req.body.action == "get info") {
 		db.any("select * from webuser where id = $1", [req.body.id])
 		.then(data => {
@@ -164,26 +184,6 @@ app.post('/members', function(req, res){
 		res.json({'status': 'Invalid member action was requested'});
 	}
 });
-
-var checkAdmin = function(req, res, next) {
-	console.log("Start admin check");
-	console.log(req.session.priv);
-	if(req.session.priv == 'Admin') {
-		next();
-	} else {
-		res.redirect('/home');
-	}
-}
-
-var checkMember = function(req, res, next) {
-	console.log("Start member or higher check");
-	console.log(req.session.priv);
-	if(req.session.priv == 'Member' || req.session.priv == 'Admin') {
-		next();
-	} else {
-		res.redirect('/home');
-	}
-}
 
 app.get('/member_approval', checkAdmin, function(req, res){
 	db.any("select * from webuser where status = 'Processing'")

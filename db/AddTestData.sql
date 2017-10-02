@@ -1,3 +1,14 @@
+/* Title test data */
+INSERT INTO Title (
+	name) VALUES (
+	'President');
+INSERT INTO Title (
+	name) VALUES (
+	'Vice President');
+INSERT INTO Title (
+	name) VALUES (
+	'Secretary');
+
 /* User test data */
 INSERT INTO WebUser (
 	first_name,
@@ -9,6 +20,7 @@ INSERT INTO WebUser (
 	bio,
 	picture,
 	grade_level,
+	title,
 	privilege,
 	status) VALUES (
 	'Josh',
@@ -20,6 +32,7 @@ INSERT INTO WebUser (
 	NULL,
 	'blah',
 	'{ 3rd }',
+	1,
 	'Admin',
 	'Confirmed'
 	);
@@ -33,6 +46,7 @@ INSERT INTO WebUser (
 	bio,
 	picture,
 	grade_level,
+	title,
 	privilege,
 	status) VALUES (
 	'Nathan',
@@ -44,6 +58,7 @@ INSERT INTO WebUser (
 	NULL,
 	'Hello World',
 	'{ 5th, 6th }',
+	2,
 	'Member',
 	'Confirmed'
 	);
@@ -57,6 +72,7 @@ INSERT INTO WebUser (
 	bio,
 	picture,
 	grade_level,
+	title,
 	privilege,
 	status) VALUES (
 	'Blahahahahahahahahahahahahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
@@ -68,12 +84,13 @@ INSERT INTO WebUser (
 	NULL,
 	'All of the wordssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
 	'{ 1st, College Prep }',
+	3,
 	'Admin',
 	'Confirmed'
 	);
 
 /* Forums test data */
-INSERT INTO Forums (
+INSERT INTO Forum (
 	user_id,
 	date_time,
 	title,
@@ -82,7 +99,7 @@ INSERT INTO Forums (
 	CURRENT_TIMESTAMP(0),
 	'Forum #1',
 	'Body #1');
-INSERT INTO Forums (
+INSERT INTO Forum (
 	user_id,
 	date_time,
 	title,
@@ -91,7 +108,7 @@ INSERT INTO Forums (
 	CURRENT_TIMESTAMP(0),
 	'Forum #2',
 	'This totally has a completely legit body.');
-INSERT INTO Forums (
+INSERT INTO Forum (
 	user_id,
 	date_time,
 	title,

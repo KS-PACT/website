@@ -83,3 +83,7 @@ $('.reset-btn').on('click', function() {
 $('.save-btn').on('click', function() {
 	updateSoftware();
 });
+
+$(".modal").on("hidden.bs.modal", function () {
+    location.reload();
+});

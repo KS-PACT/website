@@ -18,3 +18,9 @@ CREATE VIEW Hardware_Request_Info_View AS
 		ON h.id = r.item_id
 	JOIN WebUser w
 		ON w.id = r.user_id;
+		
+CREATE VIEW Officers_View AS
+	SELECT w.first_name, w.last_name, t.name
+	FROM WebUser w
+	JOIN Title t
+		ON w.title = t.id;

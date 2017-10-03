@@ -1,9 +1,5 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>                       
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 <!-- Modal -->
 <div class="modal fade" id="requestHardwareModal" role="dialog">
@@ -19,26 +15,22 @@
 				<form>
 					<div class="form-group row">
 						<label for="requestStart" class="col-sm-2 col-form-label">Start</label>
-						<div class='col-md-10'>
+						<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="form-group">
-								<div class='input-group date' id='datetimepicker6'>
-									<input type='text' class="form-control" id="requestStart" />
-									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar"></span>
-									</span>
+								<div class='input-group' id='datepicker'>
+									<i class="fa fa-calendar"></i>
+									<input type='text' class="form-control" id="requestStart" placeholder="MM/DD/YYYY" />
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="requestEnd" class="col-sm-2 col-form-label">End</label>
-						<div class='col-md-10'>
+						<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="form-group">
-								<div class='input-group date' id='datetimepicker7'>
-									<input type='text' class="form-control" id="requestEnd" />
-									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar"></span>
-									</span>
+								<div class='input-group' id='datepicker'>
+									<i class="fa fa-calendar"></i>
+									<input type='text' class="form-control" id="requestEnd" placeholder="MM/DD/YYYY" />
 								</div>
 							</div>
 						</div>

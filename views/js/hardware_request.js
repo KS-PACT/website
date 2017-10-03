@@ -53,57 +53,35 @@ function getDisabledDates() {
 	});
 }
 
-// Handle calendar buttons
-/*$(function () {
-	$('#datetimepicker6').datetimepicker({
-		disabledDates: ["05/26/2017 00:00"]
-	});
-  	$('#datetimepicker7').datetimepicker({
-		useCurrent: false, //Important! See issue #1075
-		disabledDates: disabled_dates
-  	});
-  	$("#datetimepicker6").on("dp.change", function (e) {
-  		$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-  	});
-  	$("#datetimepicker7").on("dp.change", function (e) {
-  		$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-  	});
-});*/
+$('#datepicker1').datepicker();
 
-$('#datetimepicker6').datetimepicker({
-	disabledDates: ["05/26/2017 01:00 AM"]
+$('#datepicker2').datepicker('show');
+
+$("#datepicker").on("dp.change", function (e) {
+	$('#datepicker').data("DateTimePicker").minDate(e.date);
 });
 
-$('#datetimepicker7').datetimepicker({
-	useCurrent: false, //Important! See issue #1075
-	disabledDates: disabled_dates
-});
-
-$("#datetimepicker6").on("dp.change", function (e) {
-	$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-});
-
-$("#datetimepicker7").on("dp.change", function (e) {
-	alert(disabled_dates);
-	$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+$("#datepicker").on("dp.change", function (e) {
+	///alert(disabled_dates);
+	$('#datepicker').data("DateTimePicker").maxDate(e.date);
 });
 
 // Handle on click events
 $(".request-btn").on("click", function () {
+	console.log("Open the request modal");
+	
 	cur_hardware_id = $(this).data("id")
 	
 	// Ignore overarching action
 	event.cancelBubble = true;
 	if(event.stopPropagation) event.stopPropagation();
 	
-	getDisabledDates();
+	//getDisabledDates();
 	
-	$('#datetimepicker').empty().datetimepicker({})
-	
-	$('#datetimepicker7').datetimepicker({
+	/*$('#datepicker').datetimepicker({
 		useCurrent: false, //Important! See issue #1075
 		disabledDates: disabled_dates
-	});
+	});*/
 	
 	$('#requestHardwareModal').modal('show');
 });

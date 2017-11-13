@@ -144,46 +144,34 @@ INSERT INTO SoftwareResource (
 	name,
 	description,
 	link,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'Resource #1',
 	'Da best resource!',
 	'http://www.google.com',
-	'Selected Color',
 	'blue',
-	'red',
 	NULL);
 INSERT INTO SoftwareResource (
 	name,
 	description,
 	link,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'Pie',
 	'The pie is real',
 	'http://www.stackoverflow.com',
-	'Generated Color',
 	'green',
-	NULL,
 	NULL);
 INSERT INTO SoftwareResource (
 	name,
 	description,
 	link,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRReeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssource',
 	'This is a rant that will talk about the blah resource because it os very meh quality, but it has good points. For example, the point that it is round which is funny because most resources ae square, like the box from Portal. The box from Halo is friends with this resource as they are both discarded by the resource when the user finally starts to love them. This resource is very sad because of this as it only wants a friend in life and feels very lonely. Please be the friend of this resource as I would only feel ok with it being read by a good home. Thanks, - The crew of BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHH',
 	'http://www.invalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalid.com',
-	'Selected Color',
 	'black',
-	'blue',
 	NULL);
 
 /* Curriculum utilities test data */
@@ -191,46 +179,34 @@ INSERT INTO CurriculumUtil (
 	name,
 	description,
 	link,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'Curriculum example',
 	'All of the curriculum goodness',
 	'http://www.google.com',
-	'Selected Color',
 	'green',
-	'red',
 	NULL);
 INSERT INTO CurriculumUtil (
 	name,
 	description,
 	link,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'Lesson plan example',
 	'All of the raspberry pi knowledge',
 	'http://www.stackoverflow.com',
-	'Generated Color',
 	'blue',
-	'green',
 	NULL);
 INSERT INTO CurriculumUtil (
 	name,
 	description,
 	link,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDSSSSSSSSSSSSSSSSSSSSSSSSS',
 	'Da best DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN',
 	'http://www.invalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalidinvalid.com',
-	'Selected Color',
 	'blue',
-	'green',
 	NULL);
 
 /* Hardware resource test data */
@@ -238,46 +214,34 @@ INSERT INTO HardwareResource (
 	serial_num,
 	name,
 	description,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'00000000000111111111222222222223333',
 	'Hardware #1',
 	'Da description',
-	'Picture',
 	'gray',
-	'blue',
 	'images/defaults/hardware_default.jpg');
 INSERT INTO HardwareResource (
 	serial_num,
 	name,
 	description,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'00660-11155GH-12228882-223333',
 	'Hardware #2',
 	'Da description #2',
-	'Selected Color',
-	'gray',
-	'green',
+	'yellow',
 	NULL);
 INSERT INTO HardwareResource (
 	serial_num,
 	name,
 	description,
-	rep_decision,
 	generated_color,
-	selected_color,
 	picture) VALUES (
 	'0000000000011111111122222222222333344444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444445555555555555555555555555555555555555555555555555666666666666666666666666666666666666666666666666666',
 	'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHH',
 	'Da best DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRIPTION',
-	'Generated Color',
 	'green',
-	'red',
 	NULL);
 
 /* Resource request test data */

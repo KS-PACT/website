@@ -31,11 +31,6 @@ CREATE TYPE USER_STATUS_ENUM AS ENUM (
 	'Confirmed',
 	'Closed');
 
-CREATE TYPE REP_TYPE_ENUM AS ENUM (
-	'Picture',
-	'Selected Color',
-	'Generated Color');
-
 CREATE TABLE WebUser (
 	id serial PRIMARY KEY,
 	first_name varchar NOT NULL,
@@ -73,9 +68,7 @@ CREATE TABLE SoftwareResource (
 	name varchar NOT NULL,
 	description varchar,
 	link varchar NOT NULL,
-	rep_decision REP_TYPE_ENUM NOT NULL,
 	generated_color varchar NOT NULL,
-	selected_color varchar NOT NULL,
 	picture varchar
 );
 
@@ -84,9 +77,7 @@ CREATE TABLE CurriculumUtil (
 	name varchar NOT NULL,
 	description varchar NOT NULL,
 	link varchar NOT NULL,
-	rep_decision REP_TYPE_ENUM NOT NULL,
 	generated_color varchar NOT NULL,
-	selected_color varchar NOT NULL,
 	picture varchar
 );
 
@@ -95,9 +86,7 @@ CREATE TABLE HardwareResource (
 	serial_num varchar,
 	name varchar,
 	description varchar,
-	rep_decision REP_TYPE_ENUM NOT NULL,
 	generated_color varchar NOT NULL,
-	selected_color varchar NOT NULL,
 	picture varchar
 );
 

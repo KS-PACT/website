@@ -4,9 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var pgp = require('pg-promise')();
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var curriculums = require('./routes/curriculums');
 
 var app = express();
 
@@ -22,8 +24,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*// Create connection to database
+var cn = {
+  host: 'localhost',
+  port: 5432,
+  database: 'kspact',
+  user: 'kspact',
+  password: 'kspact'
+};
+
+var db = pgp(cn);
+db.connect()
+    .then(function (obj) {
+        obj.done(); // success, release the connection;
+        console.log("successful connection to db");
+    })
+    .catch(function (error) {
+        console.log("ERROR:", error.message || error);
+});*/
+
+console.log('testy test test');
+
 app.use('/', index);
 app.use('/users', users);
+app.use('/curriculums', curriculums);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

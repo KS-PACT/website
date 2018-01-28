@@ -3,24 +3,16 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	//console.log("Accessed curriculums page");
+	var db = req.app.get('db');
 	
-	res.json([
-		{
-			id: 1,
-			name: 'Curriculum #1',
-			description: 'test',
-			link: 'http://www.google.com',
-			color: 'blue'
-		},
-		{
-			id: 2,
-			name: 'Curriculum #2',
-			description: 'test',
-			link: 'http://www.google.com',
-			color: 'red'
-		}
-	]);
+	db.any("select * from curriculumutil")
+    .then(data => {
+		console.log(data);
+		res.json(data);
+    })
+	.catch(error => {
+		res.json([]);
+    });
 });
 
 module.exports = router;

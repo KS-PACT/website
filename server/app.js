@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*// Create connection to database
+// Create connection to database
 var cn = {
   host: 'localhost',
   port: 5432,
@@ -41,9 +41,9 @@ db.connect()
     })
     .catch(function (error) {
         console.log("ERROR:", error.message || error);
-});*/
+});
 
-console.log('testy test test');
+app.set('db', db);
 
 app.use('/', index);
 app.use('/users', users);

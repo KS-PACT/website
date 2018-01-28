@@ -10,14 +10,14 @@ router.get('/', function(req, res, next) {
 			id: 1,
 			name: 'Curriculum #1',
 			description: 'test',
-			link: 'www.google.com',
+			link: 'http://www.google.com',
 			color: 'blue'
 		},
 		{
 			id: 2,
 			name: 'Curriculum #2',
 			description: 'test',
-			link: 'www.google.com',
+			link: 'http://www.google.com',
 			color: 'red'
 		}
 	]);

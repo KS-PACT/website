@@ -7,7 +7,6 @@ router.get('/', function(req, res, next) {
 	
 	db.any("select * from curriculumutil")
     .then(data => {
-		console.log(data);
 		res.json(data);
     })
 	.catch(error => {

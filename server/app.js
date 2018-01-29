@@ -8,6 +8,7 @@ var pgp = require('pg-promise')();
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var members = require('./routes/members');
 var curriculums = require('./routes/curriculums');
 
 var app = express();
@@ -47,6 +48,7 @@ app.set('db', db);
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/members', members);
 app.use('/curriculums', curriculums);
 
 // catch 404 and forward to error handler

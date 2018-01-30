@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
 	
 	db.any("select * from webuser where status = 'Confirmed'")
     .then(data => {
-		console.log(data);
 		res.json(data);
     })
 	.catch(error => {

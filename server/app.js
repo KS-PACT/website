@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 var pgp = require('pg-promise')();
 
 var members = require('./routes/members');
-var curriculums = require('./routes/curriculums');
+var hardware = require('./routes/hardware');
 var software = require('./routes/software');
+var curriculums = require('./routes/curriculums');
 
 var app = express();
 
@@ -46,8 +47,9 @@ db.connect()
 app.set('db', db);
 
 app.use('/members', members);
-app.use('/curriculums', curriculums);
+app.use('/hardware', hardware);
 app.use('/software', software);
+app.use('/curriculums', curriculums);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

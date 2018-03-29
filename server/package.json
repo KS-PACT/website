@@ -1,19 +1,29 @@
 {
-  "name": "server",
-  "version": "0.0.0",
-  "private": true,
+  "name": "ks-pact-website",
+  "version": "1.0.0",
+  "description": "\"Node.js application for the KS-PACT organization\"",
+  "main": "server.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node server.js",
+    "test": "mocha test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KS-PACT/website.git"
+  },
+  "author": "KS-PACT",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/KS-PACT/website/issues"
+  },
+  "homepage": "https://github.com/KS-PACT/website#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "cookie-parser": "^1.4.3",
-    "debug": "^2.6.9",
-    "express": "^4.15.5",
-    "firebase": "^4.9.1",
-    "jade": "~1.11.0",
-    "morgan": "^1.9.0",
-    "pg-promise": "^7.4.1",
-    "serve-favicon": "^2.4.5"
-  }
+    "dateformat": "^2.2.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "pg-promise": "^6.10.3"
+  },
+  "devDependencies": {}
 }
